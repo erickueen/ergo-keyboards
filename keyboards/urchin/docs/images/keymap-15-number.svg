@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="430" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">15 / Number Urchin keymap layer</title>
+  <desc id="desc">Desktop shortcut number row. Hold RET to access. Home row keeps pure modifiers only.</desc>
+  <style>
+    .title { font: 800 28px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; letter-spacing: .2px; }
+    .subtitle { font: 500 14px Inter, Avenir Next, Segoe UI, sans-serif; fill: #a5adcb; }
+    .legend-text { font: 600 12px Inter, Avenir Next, Segoe UI, sans-serif; fill: #b8c0e0; }
+    .half { font: 800 12px Inter, Avenir Next, Segoe UI, sans-serif; fill: #8087a2; letter-spacing: 3px; text-anchor: middle; }
+    .tap { font-family: Berkeley Mono, SFMono-Regular, Consolas, Liberation Mono, monospace; font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+    .tap.transparent { font-size: 16px; fill: #6e738d; }
+    .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
+    .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
+    .shortcut path { fill: none; stroke: #8bd5ca; stroke-width: 1.2; opacity: .62; stroke-linecap: round; }
+    .shortcut circle { fill: #8bd5ca; stroke: #24273a; stroke-width: 1.5; }
+    .shortcut rect { fill: #181926; stroke: #8bd5ca; stroke-width: 1.2; }
+    .shortcut text { font: 800 11px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; text-anchor: middle; letter-spacing: .2px; }
+  </style>
+  <rect x="0" y="0" width="920" height="430" rx="28" fill="#24273a"/>
+  <circle cx="105" cy="42" r="140" fill="#c6a0f6" opacity="0.10"/>
+  <circle cx="790" cy="70" r="190" fill="#8aadf4" opacity="0.10"/>
+  <text x="60" y="50" class="title">15 / Number</text>
+  <text x="60" y="78" class="subtitle">Desktop shortcut number row. Hold RET to access. Home row keeps pure modifiers only.</text>
+  <rect x="60" y="112" width="14" height="14" rx="3" fill="#7dc4e4"/>
+<text x="80" y="124" class="legend-text">Number / F-Key</text>
+<rect x="192" y="112" width="14" height="14" rx="3" fill="#181926"/>
+<text x="212" y="124" class="legend-text">None</text>
+<rect x="254" y="112" width="14" height="14" rx="3" fill="#363a4f"/>
+<text x="274" y="124" class="legend-text">Transparent</text>
+  <rect x="117" y="138" width="686" height="248" rx="22" fill="#1e2030" stroke="#494d64" stroke-width="1.5"/>
+  <text x="268" y="160" class="half">LEFT</text>
+  <text x="652" y="160" class="half">RIGHT</text>
+  <g transform="translate(133 176)">
+    <rect class="key" x="0" y="48" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="24" y="74" class="tap" style="font-size:17px;fill:#24273a">1</text>
+    <rect class="key" x="48" y="18" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="72" y="44" class="tap" style="font-size:17px;fill:#24273a">2</text>
+    <rect class="key" x="96" y="0" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="120" y="26" class="tap" style="font-size:17px;fill:#24273a">3</text>
+    <rect class="key" x="144" y="18" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="168" y="44" class="tap" style="font-size:17px;fill:#24273a">4</text>
+    <rect class="key" x="192" y="27.6" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="216" y="53.6" class="tap" style="font-size:17px;fill:#24273a">5</text>
+    <rect class="key" x="393.6" y="27.6" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="417.6" y="53.6" class="tap" style="font-size:17px;fill:#24273a">6</text>
+    <rect class="key" x="441.6" y="18" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="465.6" y="44" class="tap" style="font-size:17px;fill:#24273a">7</text>
+    <rect class="key" x="489.6" y="0" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="513.6" y="26" class="tap" style="font-size:17px;fill:#24273a">8</text>
+    <rect class="key" x="537.6" y="18" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="561.6" y="44" class="tap" style="font-size:17px;fill:#24273a">9</text>
+    <rect class="key" x="585.6" y="48" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="609.6" y="74" class="tap" style="font-size:17px;fill:#24273a">0</text>
+    <rect class="key" x="0" y="96" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="24" y="122" class="tap" style="font-size:17px;fill:#24273a">F1</text>
+    <rect class="key" x="48" y="66" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="72" y="92" class="tap" style="font-size:17px;fill:#24273a">F2</text>
+    <rect class="key" x="96" y="48" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="120" y="74" class="tap" style="font-size:17px;fill:#24273a">F3</text>
+    <rect class="key" x="144" y="66" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="168" y="92" class="tap" style="font-size:17px;fill:#24273a">F4</text>
+    <rect class="key" x="192" y="75.6" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="216" y="101.6" class="tap" style="font-size:17px;fill:#24273a">F5</text>
+    <rect class="key" x="393.6" y="75.6" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="417.6" y="101.6" class="tap" style="font-size:17px;fill:#24273a">F6</text>
+    <rect class="key" x="441.6" y="66" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="465.6" y="92" class="tap" style="font-size:17px;fill:#24273a">F7</text>
+    <rect class="key" x="489.6" y="48" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="513.6" y="74" class="tap" style="font-size:17px;fill:#24273a">F8</text>
+    <rect class="key" x="537.6" y="66" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="561.6" y="92" class="tap" style="font-size:17px;fill:#24273a">F9</text>
+    <rect class="key" x="585.6" y="96" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="609.6" y="122" class="tap" style="font-size:12px;fill:#24273a">F10</text>
+    <rect class="key" x="0" y="144" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="48" y="114" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="96" y="96" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="144" y="114" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="168" y="140" class="tap" style="font-size:12px;fill:#24273a">F11</text>
+    <rect class="key" x="192" y="123.6" width="48" height="48" rx="8" fill="#7dc4e4"/>
+    <text x="216" y="149.6" class="tap" style="font-size:12px;fill:#24273a">F12</text>
+    <rect class="key" x="393.6" y="123.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="441.6" y="114" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="489.6" y="96" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="537.6" y="114" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="585.6" y="144" width="48" height="48" rx="8" fill="#181926"/>
+    <g transform="rotate(15 192 202.8)">
+    <rect class="key" x="168" y="178.8" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="192" y="203.8" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(30 249.6 224.4)">
+    <rect class="key" x="225.6" y="200.4" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="249.6" y="225.4" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(-30 384 224.4)">
+    <rect class="key" x="360" y="200.4" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="384" y="225.4" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(-15 441.6 202.8)">
+    <rect class="key" x="417.6" y="178.8" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="441.6" y="203.8" class="tap transparent">↓</text>
+    </g>
+  </g>
+  
+</svg>

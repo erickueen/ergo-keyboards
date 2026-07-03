@@ -1,0 +1,875 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ * Corne 3x6+3 keymap adapted from MoErgo Go60 with bilateral HRM
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+/* ── Helper macros ── */
+
+#pragma once
+
+#define ZMK_BEHAVIOR_CORE_tap_dance  \
+    compatible = "zmk,behavior-tap-dance"; \
+    #binding-cells = <0>
+
+#define ZMK_BEHAVIOR(name, type, ...) \
+    name: name { \
+        ZMK_BEHAVIOR_CORE_ ## type; \
+        __VA_ARGS__ \
+    };
+
+#define ZMK_TAP_DANCE(name, ...) \
+    ZMK_BEHAVIOR(name, tap_dance, __VA_ARGS__)
+
+#define ZMK_TD_LAYER(name, layer) \
+    ZMK_TAP_DANCE(name, \
+        tapping-term-ms = <200>; \
+        bindings = <&mo layer>, <&to layer>; \
+)
+
+/* ── Layer IDs ── */
+
+#define LAYER_HRM_macOS 0
+#define LAYER_Typing 1
+#define LAYER_Autoshift 2
+#define LAYER_LeftPinky 3
+#define LAYER_LeftRingy 4
+#define LAYER_LeftMiddy 5
+#define LAYER_LeftIndex 6
+#define LAYER_RightPinky 7
+#define LAYER_RightRingy 8
+#define LAYER_RightMiddy 9
+#define LAYER_RightIndex 10
+#define LAYER_Cursor 11
+#define LAYER_Keypad 12
+#define LAYER_Symbol 13
+#define LAYER_Magic 14
+#define LAYER_Number 15
+
+#ifndef LAYER_Lower
+#define LAYER_Lower 0
+#endif
+
+/* ── Bilateral HRM trigger positions ── */
+
+#define LEFT_HRM_TRIGGERS \
+    6 7 8 9 10 11 \
+    18 19 20 21 22 23 \
+    30 31 32 33 34 35 \
+    39 40 41 \
+    36 37 38
+
+#define RIGHT_HRM_TRIGGERS \
+    0 1 2 3 4 5 \
+    12 13 14 15 16 17 \
+    24 25 26 27 28 29 \
+    36 37 38 \
+    39 40 41
+
+/* ── System behaviors ── */
+
+/ {
+    behaviors {
+        ZMK_TD_LAYER(lower, LAYER_Lower)
+
+        crgbstat: crgbstat {
+            compatible = "corne,behavior-rgb-status";
+            #binding-cells = <0>;
+        };
+    };
+};
+
+/* ── Macros ── */
+
+/ {
+    macros {
+
+        rgb_ug_status_macro: rgb_ug_status_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&crgbstat>;
+        };
+
+        spanish_acute: spanish_acute {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp CAPS>, <&kp SQT>;
+        };
+
+        AS_Shifted: AS_Shifted {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>;
+            wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&kp LSHFT>
+                , <&macro_tap>
+                , <&macro_param_1to1>
+                , <&kp MACRO_PLACEHOLDER>
+                , <&macro_release>
+                , <&kp LSHFT>;
+        };
+
+        AS_macro: AS_macro {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>;
+            wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>
+                , <&macro_param_1to2>
+                , <&AS_HT MACRO_PLACEHOLDER MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>
+                , <&macro_param_1to2>
+                , <&AS_HT MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+        };
+
+        cur_EXTEND_LINE: cur_EXTEND_LINE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_WORD: cur_EXTEND_WORD {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LS(RIGHT))>;
+        };
+
+        cur_SELECT_LINE: cur_SELECT_LINE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LEFT)>, <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_SELECT_NONE: cur_SELECT_NONE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp DOWN>, <&kp UP>, <&kp RIGHT>, <&kp LEFT>;
+        };
+
+        cur_SELECT_WORD: cur_SELECT_WORD {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LEFT)>, <&kp LA(LS(RIGHT))>;
+        };
+
+        /* Bilateral HRM hold macros — press modifier + activate layer */
+
+        lP_hold: lP_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftPinky>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftPinky>;
+        };
+        lR_hold: lR_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftRingy>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftRingy>;
+        };
+        lM_hold: lM_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftMiddy>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftMiddy>;
+        };
+        lI_hold: lI_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftIndex>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_LeftIndex>;
+        };
+        rI_hold: rI_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightIndex>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightIndex>;
+        };
+        rM_hold: rM_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightMiddy>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightMiddy>;
+        };
+        rR_hold: rR_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightRingy>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightRingy>;
+        };
+        rP_hold: rP_hold {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightPinky>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp A>
+                , <&mo LAYER_RightPinky>;
+        };
+
+        /* Bilateral HRM tap macros — release all mods, tap held key, tap param key */
+
+        lP_tap: lP_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp A>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        lR_tap: lR_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp S>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        lM_tap: lM_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp D>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        lI_tap: lI_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp F>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        rI_tap: rI_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp J>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        rM_tap: rM_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp K>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        rR_tap: rR_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp L>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+        rP_tap: rP_tap {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_release>
+                , <&kp LSHFT>, <&kp RSHFT>, <&kp LALT>, <&kp RALT>
+                , <&kp LCTRL>, <&kp RCTRL>, <&kp LGUI>, <&kp RGUI>
+                , <&macro_tap>, <&kp SEMI>
+                , <&macro_tap>, <&macro_param_1to1>, <&kp A>;
+        };
+
+        /* Bluetooth macros */
+
+        bt_0: bt_0 { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
+            bindings = <&out OUT_BLE>, <&bt BT_SEL 0>; };
+        bt_1: bt_1 { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
+            bindings = <&out OUT_BLE>, <&bt BT_SEL 1>; };
+        bt_2: bt_2 { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
+            bindings = <&out OUT_BLE>, <&bt BT_SEL 2>; };
+        bt_3: bt_3 { compatible = "zmk,behavior-macro"; #binding-cells = <0>;
+            bindings = <&out OUT_BLE>, <&bt BT_SEL 3>; };
+
+        mod_tab: mod_tab {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>
+                , <&macro_tap>, <&kp TAB>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>;
+        };
+
+        mod_tab_chord: mod_tab_chord {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            tap-ms = <0>; wait-ms = <0>;
+            bindings = <&macro_press>
+                , <&macro_param_2to1>, <&mo MACRO_PLACEHOLDER>
+                , <&macro_press>
+                , <&macro_param_1to1>, <&mod_tab MACRO_PLACEHOLDER>
+                , <&macro_pause_for_release>
+                , <&macro_release>
+                , <&macro_param_1to1>, <&mod_tab MACRO_PLACEHOLDER>
+                , <&macro_release>
+                , <&macro_param_2to1>, <&mo MACRO_PLACEHOLDER>;
+        };
+    };
+};
+
+/* ── Behaviors ── */
+
+/ {
+    behaviors {
+
+        magic: magic {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&rgb_ug_status_macro>;
+        };
+
+        AS_HT: AS_HT {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <190>;
+            bindings = <&AS_Shifted>, <&kp>;
+            flavor = "tap-preferred";
+        };
+
+        ZMK_TD_LAYER(td_LAYER_Keypad, LAYER_Keypad)
+
+        space: space {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <150>;
+        };
+
+        thumb: thumb {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <300>;
+        };
+
+        enter_sym: enter_sym {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <300>;
+        };
+
+        caps_shift: caps_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            quick-tap-ms = <200>;
+        };
+
+        /* ── Left hand main HRM hold-taps ── */
+
+        lP: lP { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <280>; bindings = <&lP_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lR: lR { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&lR_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lM: lM { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&lM_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lI: lI { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&lI_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Right hand main HRM hold-taps ── */
+
+        rI: rI { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&rI_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rM: rM { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&rM_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rR: rR { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&rR_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rP: rP { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <260>; bindings = <&rP_hold>, <&kp>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Left pinky bilateral cross-variants ── */
+
+        lP_r: lP_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <280>; bindings = <&kp>, <&lP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lP_m: lP_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <280>; bindings = <&kp>, <&lP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lP_i: lP_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <280>; bindings = <&kp>, <&lP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Left ring bilateral cross-variants ── */
+
+        lR_p: lR_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&lR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lR_m: lR_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&lR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lR_i: lR_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&lR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <100>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Left middle bilateral cross-variants ── */
+
+        lM_p: lM_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&lM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lM_r: lM_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&lM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lM_i: lM_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&lM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Left index bilateral cross-variants ── */
+
+        lI_p: lI_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&lI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lI_r: lI_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&lI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        lI_m: lI_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&lI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <LEFT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Right index bilateral cross-variants ── */
+
+        rI_m: rI_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&rI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rI_r: rI_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&rI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rI_p: rI_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <190>; bindings = <&kp>, <&rI_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <25>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Right middle bilateral cross-variants ── */
+
+        rM_i: rM_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&rM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rM_r: rM_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&rM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rM_p: rM_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <210>; bindings = <&kp>, <&rM_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Right ring bilateral cross-variants ── */
+
+        rR_i: rR_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&rR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rR_m: rR_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&rR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rR_p: rR_p { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <240>; bindings = <&kp>, <&rR_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+
+        /* ── Right pinky bilateral cross-variants ── */
+
+        rP_i: rP_i { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <260>; bindings = <&kp>, <&rP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rP_m: rP_m { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <260>; bindings = <&kp>, <&rP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+        rP_r: rP_r { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
+            tapping-term-ms = <260>; bindings = <&kp>, <&rP_tap>;
+            flavor = "tap-preferred"; quick-tap-ms = <300>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <RIGHT_HRM_TRIGGERS>;
+            hold-trigger-on-release; };
+    };
+};
+
+/* ── Combos ── */
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_esc { timeout-ms = <50>; key-positions = <37 38>; bindings = <&kp ESC>;
+            layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>; };
+
+        combo_capslock { key-positions = <37 40>; bindings = <&caps_shift LSHFT CAPS>; slow-release;
+            layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>; };
+
+        combo_sticky_hyp_rght { timeout-ms = <50>; key-positions = <31 32>;
+            bindings = <&sk LG(LA(LC(LSHFT)))>;
+            layers = <LAYER_HRM_macOS LAYER_Autoshift LAYER_Typing>; };
+
+        combo_sticky_meh_rght { timeout-ms = <50>; key-positions = <32 33>;
+            bindings = <&sk LA(LC(LSHFT))>;
+            layers = <LAYER_HRM_macOS LAYER_Autoshift LAYER_Typing>; };
+
+        combo_F11 { key-positions = <11 23>; bindings = <&kp F11>; layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift LAYER_LeftPinky LAYER_LeftRingy LAYER_LeftMiddy LAYER_LeftIndex LAYER_RightPinky LAYER_RightRingy LAYER_RightMiddy LAYER_RightIndex>; };
+        combo_F12 { key-positions = <10 11>; bindings = <&kp F12>; layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift LAYER_LeftPinky LAYER_LeftRingy LAYER_LeftMiddy LAYER_LeftIndex LAYER_RightPinky LAYER_RightRingy LAYER_RightMiddy LAYER_RightIndex>; };
+    };
+};
+
+/* ── Keymap ── */
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        layer_HRM_macOS {
+            display-name = "BASE";
+            bindings = <
+   &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T       &kp Y     &kp U     &kp I     &kp O     &kp P      &kp BSLH
+   &kp ESC   &lP LCTRL A  &lR LALT S  &lM LGUI D  &lI LSHFT F  &kp G      &kp H     &rI RSHFT J  &rM RGUI K  &rR LALT L  &rP RCTRL SEMI  &kp SQT
+   &magic LAYER_Magic 0 &kp Z  &kp X  &kp C  &kp V  &kp B      &kp N     &kp M     &kp COMMA  &kp DOT  &kp FSLH    &td_LAYER_Keypad
+                                                     &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB      &thumb LAYER_Number RET   &space LAYER_Symbol SPACE  &none
+            >;
+        };
+
+        layer_Typing {
+            display-name = "TYPE";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+   &magic LAYER_Magic 0 &trans &trans &trans &trans &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_Autoshift {
+            display-name = "AUTO";
+            bindings = <
+   &AS_macro TAB &AS_macro Q  &AS_macro W  &AS_macro E  &AS_macro R  &AS_macro T    &AS_macro Y  &AS_macro U  &AS_macro I  &AS_macro O  &AS_macro P  &AS_macro BSLH
+   &trans  &AS_macro A  &AS_macro S  &AS_macro D  &AS_macro F  &AS_macro G    &AS_macro H  &AS_macro J  &AS_macro K  &AS_macro L  &AS_macro SEMI  &AS_macro SQT
+   &magic LAYER_Magic 0 &AS_macro Z &AS_macro X &AS_macro C &AS_macro V &AS_macro B   &AS_macro N  &AS_macro M  &AS_macro COMMA &AS_macro DOT &AS_macro FSLH &trans
+                                         &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_LeftPinky {
+            display-name = "LP";
+            bindings = <
+   &trans  &lP_tap Q  &lP_tap W  &lP_tap E  &lP_tap R  &lP_tap T    &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &none      &lP_r LALT S  &lP_m LGUI D  &lP_i LSHFT F  &lP_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+   &trans  &lP_tap Z  &lP_tap X  &lP_tap C  &lP_tap V  &lP_tap B    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_LeftRingy {
+            display-name = "LR";
+            bindings = <
+   &trans  &lR_tap Q  &lR_tap W  &lR_tap E  &lR_tap R  &lR_tap T    &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lR_p LCTRL A  &none      &lR_m LGUI D  &lR_i LSHFT F  &lR_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+   &trans  &lR_tap Z  &lR_tap X  &lR_tap C  &lR_tap V  &lR_tap B    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_LeftMiddy {
+            display-name = "LM";
+            bindings = <
+   &trans  &lM_tap Q  &lM_tap W  &lM_tap E  &lM_tap R  &lM_tap T    &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lM_p LCTRL A  &lM_r LALT S  &none      &lM_i LSHFT F  &lM_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+   &trans  &lM_tap Z  &lM_tap X  &lM_tap C  &lM_tap V  &lM_tap B    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_LeftIndex {
+            display-name = "LI";
+            bindings = <
+   &trans  &lI_tap Q  &lI_tap W  &lI_tap E  &lI_tap R  &lI_tap T    &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lI_p LCTRL A  &lI_r LALT S  &lI_m LGUI D  &none      &lI_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+   &trans  &lI_tap Z  &lI_tap X  &lI_tap C  &lI_tap V  &lI_tap B    &trans  &trans  &trans  &trans  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_RightPinky {
+            display-name = "RP";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans     &rP_tap Y  &rP_tap U  &rP_tap I  &rP_tap O  &rP_tap P  &rP_tap BSLH
+   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rP_tap H  &rP_i RSHFT J  &rP_m RGUI K  &rP_r LALT L  &none       &rP_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans     &rP_tap N  &rP_tap M  &rP_tap COMMA  &rP_tap DOT  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_RightRingy {
+            display-name = "RR";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans     &rR_tap Y  &rR_tap U  &rR_tap I  &rR_tap O  &rR_tap P  &rR_tap BSLH
+   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rR_tap H  &rR_i RSHFT J  &rR_m RGUI K  &none       &rR_p RCTRL SEMI  &rR_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans     &rR_tap N  &rR_tap M  &rR_tap COMMA  &rR_tap DOT  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_RightMiddy {
+            display-name = "RM";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans     &rM_tap Y  &rM_tap U  &rM_tap I  &rM_tap O  &rM_tap P  &rM_tap BSLH
+   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rM_tap H  &rM_i RSHFT J  &none       &rM_r LALT L  &rM_p RCTRL SEMI  &rM_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans     &rM_tap N  &rM_tap M  &rM_tap COMMA  &rM_tap DOT  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_RightIndex {
+            display-name = "RI";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans     &rI_tap Y  &rI_tap U  &rI_tap I  &rI_tap O  &rI_tap P  &rI_tap BSLH
+   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rI_tap H  &none       &rI_m RGUI K  &rI_r LALT L  &rI_p RCTRL SEMI  &rI_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans     &rI_tap N  &rI_tap M  &rI_tap COMMA  &rI_tap DOT  &trans  &trans
+                                      &trans  &trans  &trans    &trans  &trans  &trans
+            >;
+        };
+
+        layer_Cursor {
+            display-name = "CUR";
+            bindings = <
+   &kp CAPS  &kp RET     &kp LS(LG(Z))  &kp LG(Z)      &kp BSPC       &kp LG(X)     &kp LG(X)  &kp LS(TAB)    &kp LG(Z)      &kp LS(LG(Z))  &kp TAB    &kp PSCRN
+   &sk LSHFT &kp LCTRL   &kp LALT       &kp LGUI        &kp LSHFT      &kp LG(C)     &kp LEFT   &kp DOWN       &kp UP         &kp RIGHT      &none      &sk RSHFT
+   &kp LG(L) &kp LG(A)   &cur_SELECT_LINE &cur_SELECT_WORD &kp LG(F)    &kp LG(V)     &kp LG(V)  &kp HOME       &kp PG_UP      &kp PG_DN      &kp END    &kp LG(L)
+                                                 &none          &none          &none         &cur_SELECT_NONE &cur_EXTEND_LINE &cur_EXTEND_WORD
+            >;
+        };
+
+        layer_Keypad {
+            display-name = "PAD";
+            bindings = <
+   &kp TAB  &none       &kp HOME  &kp UP    &kp END   &kp PG_UP     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &kp F12
+   &kp ESC  &kp Z       &kp LEFT  &kp DOWN  &kp RIGHT &kp PG_DN     &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp KP_MULTIPLY &kp KP_NUM
+   &magic LAYER_Magic 0 &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LS(LG(V)) &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL     &to 0
+                                        &none      &trans     &trans        &kp KP_N0  &kp KP_DOT  &kp KP_ENTER
+            >;
+        };
+
+        layer_Symbol {
+            display-name = "SYM";
+            bindings = <
+   &kp COMMA      &kp GRAVE      &kp LS(N9)    &kp LS(N0)    &kp SEMI      &kp DOT       &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS      &kp LS(DOT)   &kp FSLH
+   &spanish_acute &kp LBKT       &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT      &kp LS(N3)    &kp LS(SQT)    &kp LS(N1)     &kp LS(FSLH)  &kp LS(N7)     &kp LS(N8)    &kp LA(E)
+   &none          &kp LS(N6)     &kp EQUAL     &kp LS(MINUS) &kp LS(N4)    &kp LS(N8)    &kp SQT        &kp BSLH       &kp FSLH      &none          &none         &none
+                                               &kp LS(N5)     &kp GLOBE      &kp LS(N2)      &none          &none          &none
+            >;
+        };
+
+        layer_Magic {
+            display-name = "MAG";
+            bindings = <
+   &bootloader      &none            &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI    &kp C_MUTE    &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &none    &none         &bootloader
+   &sys_reset       &none            &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD    &kp C_PREV    &kp C_PP             &kp C_NEXT         &bt BT_CLR &none       &sys_reset
+   &none            &none            &bt_0            &bt_1            &bt_2            &bt_3              &none         &none                &none              &none    &none         &none
+                                                      &to 0             &out OUT_USB      &to LAYER_Autoshift    &none    &none    &none
+            >;
+        };
+
+        layer_Number {
+            display-name = "NUM";
+            bindings = <
+   &kp EQUAL  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5      &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS
+   &trans     &kp F1    &kp F2    &kp F3    &kp F4    &kp F5      &kp F6     &kp F7     &kp F8     &kp F9     &kp F10    &trans
+   &trans     &none     &none     &none     &kp F11   &kp F12     &none      &none      &none      &none      &none      &trans
+                                            &trans     &trans      &trans       &trans     &trans     &trans
+            >;
+        };
+
+    };
+};

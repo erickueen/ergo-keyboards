@@ -1,0 +1,8 @@
+zephyr_library()
+
+zephyr_library_include_directories(include)
+zephyr_library_include_directories(${APPLICATION_SOURCE_DIR}/include)
+
+zephyr_library_sources_ifdef(CONFIG_CORNE_RGB_UNDERGLOW src/corne_rgb_underglow.c)
+zephyr_library_sources_ifdef(CONFIG_CORNE_RGB_UNDERGLOW src/behavior_rgb_underglow.c)
+zephyr_library_sources_ifdef(CONFIG_CORNE_RGB_STATUS src/behavior_corne_rgb_status.c)

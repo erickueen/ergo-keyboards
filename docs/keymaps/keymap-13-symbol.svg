@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1032" height="807" viewBox="0 0 1032 807" role="img" aria-labelledby="title desc">
+  <title id="title">13 / Symbol shared keymap layer</title>
+  <desc id="desc">Symbol and punctuation layer.</desc>
+  <style>
+    .title { font: 800 28px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; letter-spacing: .2px; }
+    .subtitle { font: 500 14px Inter, Avenir Next, Segoe UI, sans-serif; fill: #a5adcb; }
+    .legend-text { font: 600 12px Inter, Avenir Next, Segoe UI, sans-serif; fill: #b8c0e0; }
+    .tap { font-family: Berkeley Mono, SFMono-Regular, Consolas, Liberation Mono, monospace; font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+    .tap.transparent { font-size: 16px; fill: #6e738d; }
+    .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
+    .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
+    .ghost-key { fill: transparent; stroke: rgba(202,211,245,.13); stroke-width: 1; stroke-dasharray: 4 7; }
+    .keyboard-boundary { fill: transparent; stroke-width: 3; opacity: .74; }
+    .layer-activator { opacity: .96; filter: drop-shadow(0 1px 2px rgba(24,25,38,.8)); }
+    .layer-activator * { stroke: #24273a; stroke-width: 1.15; }
+    .outline-legend-line { stroke-width: 4; stroke-linecap: round; }
+    .shortcut path { fill: none; stroke: #8bd5ca; stroke-width: 1.2; opacity: .62; stroke-linecap: round; }
+    .shortcut circle { fill: #8bd5ca; stroke: #24273a; stroke-width: 1.5; }
+    .shortcut rect { fill: #181926; stroke: #8bd5ca; stroke-width: 1.2; }
+    .shortcut text { font: 800 11px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; text-anchor: middle; letter-spacing: .2px; }
+  </style>
+  <rect x="0" y="0" width="1032" height="807" rx="28" fill="#24273a"/>
+  <circle cx="105" cy="42" r="140" fill="#c6a0f6" opacity="0.10"/>
+  <circle cx="902" cy="70" r="190" fill="#8aadf4" opacity="0.10"/>
+  <text x="60" y="50" class="title">13 / Symbol</text>
+  <text x="60" y="78" class="subtitle">Symbol and punctuation layer.</text>
+  <rect x="60" y="114" width="14" height="14" rx="3" fill="#181926"/>
+<text x="80" y="126" class="legend-text">None</text>
+<rect x="122" y="114" width="14" height="14" rx="3" fill="#eed49f"/>
+<text x="142" y="126" class="legend-text">Symbol</text>
+<rect x="198" y="114" width="14" height="14" rx="3" fill="#8aadf4"/>
+<text x="218" y="126" class="legend-text">Navigation</text>
+<rect x="302" y="114" width="14" height="14" rx="3" fill="#b7bdf8"/>
+<text x="322" y="126" class="legend-text">Alpha</text>
+<rect x="371" y="114" width="14" height="14" rx="3" fill="#f4dbd6"/>
+<text x="391" y="126" class="legend-text">Sticky Mod</text>
+<rect x="475" y="114" width="14" height="14" rx="3" fill="#ed8796"/>
+<text x="495" y="126" class="legend-text">Macro</text>
+  <g transform="translate(60 184)">
+    <rect class="ghost-key" x="108" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="324" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="594" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="0" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="54" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="108" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="324" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="594" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="864" y="64.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="54" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="108" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="324" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="594" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="864" y="129.6" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="54" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="108" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="324" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="594" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="864" y="194.4" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="54" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="108" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="324" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="291.6" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="345.6" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="399.6" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="518.4" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="572.4" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="626.4" y="388.8" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="594" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="864" y="259.2" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="54" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="108" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="162" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="216" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="270" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="291.6" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="345.6" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="399.6" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="518.4" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="572.4" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="626.4" y="459" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="648" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="702" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="756" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="810" y="324" width="48" height="48" rx="8"/>
+    <rect class="ghost-key" x="864" y="324" width="48" height="48" rx="8"/>
+    <rect class="key" x="108" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="162" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="216" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="270" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="324" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="594" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="648" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="702" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="756" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="810" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="78" y="90.8" class="tap" style="font-size:17px;fill:#24273a">`</text>
+    <rect class="key" x="108" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="132" y="90.8" class="tap" style="font-size:17px;fill:#24273a">,</text>
+    <rect class="key" x="162" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="186" y="90.8" class="tap" style="font-size:17px;fill:#24273a">(</text>
+    <rect class="key" x="216" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="240" y="90.8" class="tap" style="font-size:17px;fill:#24273a">)</text>
+    <rect class="key" x="270" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="294" y="90.8" class="tap" style="font-size:17px;fill:#24273a">;</text>
+    <rect class="key" x="324" y="64.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="348" y="90.8" class="tap" style="font-size:17px;fill:#24273a">.</text>
+    <rect class="key" x="594" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="648" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="702" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="756" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="810" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="864" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="78" y="155.6" class="tap" style="font-size:17px;fill:#24273a">!</text>
+    <rect class="key" x="108" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="132" y="155.6" class="tap" style="font-size:17px;fill:#24273a">[</text>
+    <rect class="key" x="162" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="186" y="155.6" class="tap" style="font-size:17px;fill:#24273a">{</text>
+    <rect class="key" x="216" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="240" y="155.6" class="tap" style="font-size:17px;fill:#24273a">}</text>
+    <rect class="key" x="270" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="294" y="155.6" class="tap" style="font-size:17px;fill:#24273a">]</text>
+    <rect class="key" x="324" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="348" y="155.6" class="tap" style="font-size:17px;fill:#24273a">?</text>
+    <rect class="key" x="594" y="129.6" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="618" y="155.6" class="tap" style="font-size:17px;fill:#24273a">`</text>
+    <rect class="key" x="648" y="129.6" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="672" y="155.6" class="tap" style="font-size:12px;fill:#24273a">DEL</text>
+    <rect class="key" x="702" y="129.6" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="726" y="155.6" class="tap" style="font-size:9px;fill:#24273a">PrevTab</text>
+    <rect class="key" x="756" y="129.6" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="780" y="155.6" class="tap" style="font-size:12px;fill:#24273a">Ins</text>
+    <rect class="key" x="810" y="129.6" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="834" y="155.6" class="tap" style="font-size:12px;fill:#24273a">ESC</text>
+    <rect class="key" x="864" y="129.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="78" y="220.4" class="tap" style="font-size:17px;fill:#24273a">#</text>
+    <rect class="key" x="108" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="132" y="220.4" class="tap" style="font-size:17px;fill:#24273a">^</text>
+    <rect class="key" x="162" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="186" y="220.4" class="tap" style="font-size:17px;fill:#24273a">=</text>
+    <rect class="key" x="216" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="240" y="220.4" class="tap" style="font-size:17px;fill:#24273a">_</text>
+    <rect class="key" x="270" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="294" y="220.4" class="tap" style="font-size:17px;fill:#24273a">$</text>
+    <rect class="key" x="324" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="348" y="220.4" class="tap" style="font-size:17px;fill:#24273a">*</text>
+    <rect class="key" x="594" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="618" y="220.4" class="tap" style="font-size:17px;fill:#24273a">&quot;</text>
+    <rect class="key" x="648" y="194.4" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="672" y="220.4" class="tap" style="font-size:12px;fill:#24273a">BSPC</text>
+    <rect class="key" x="702" y="194.4" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="726" y="220.4" class="tap" style="font-size:12px;fill:#24273a">TAB</text>
+    <rect class="key" x="756" y="194.4" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="780" y="220.4" class="tap" style="font-size:12px;fill:#24273a">SPC</text>
+    <rect class="key" x="810" y="194.4" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="834" y="220.4" class="tap" style="font-size:12px;fill:#24273a">RET</text>
+    <rect class="key" x="864" y="194.4" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="78" y="285.2" class="tap" style="font-size:17px;fill:#24273a">~</text>
+    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="132" y="285.2" class="tap" style="font-size:17px;fill:#24273a">&lt;</text>
+    <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="186" y="285.2" class="tap" style="font-size:17px;fill:#24273a">|</text>
+    <rect class="key" x="216" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="240" y="285.2" class="tap" style="font-size:17px;fill:#24273a">-</text>
+    <rect class="key" x="270" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="294" y="285.2" class="tap" style="font-size:17px;fill:#24273a">&gt;</text>
+    <rect class="key" x="324" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="348" y="285.2" class="tap" style="font-size:17px;fill:#24273a">/</text>
+    <rect class="key" x="291.6" y="388.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="315.6" y="414.8" class="tap" style="font-size:17px;fill:#24273a">\</text>
+    <rect class="key" x="345.6" y="388.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="369.6" y="414.8" class="tap" style="font-size:17px;fill:#24273a">.</text>
+    <rect class="key" x="399.6" y="388.8" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="423.6" y="414.8" class="tap" style="font-size:17px;fill:#24273a">*</text>
+    <rect class="key" x="518.4" y="388.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="572.4" y="388.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="626.4" y="388.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="594" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="618" y="285.2" class="tap" style="font-size:17px;fill:#24273a">&apos;</text>
+    <rect class="key" x="648" y="259.2" width="48" height="48" rx="8" fill="#f4dbd6"/>
+    <text x="672" y="285.2" class="tap" style="font-size:12px;fill:#24273a">sk⇧</text>
+    <rect class="key" x="702" y="259.2" width="48" height="48" rx="8" fill="#f4dbd6"/>
+    <text x="726" y="285.2" class="tap" style="font-size:10px;fill:#24273a">skGui</text>
+    <rect class="key" x="756" y="259.2" width="48" height="48" rx="8" fill="#f4dbd6"/>
+    <text x="780" y="285.2" class="tap" style="font-size:10px;fill:#24273a">skAlt</text>
+    <rect class="key" x="810" y="259.2" width="48" height="48" rx="8" fill="#f4dbd6"/>
+    <text x="834" y="285.2" class="tap" style="font-size:10px;fill:#24273a">skCtrl</text>
+    <rect class="key" x="864" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="324" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="78" y="350" class="tap" style="font-size:17px;fill:#24273a">..</text>
+    <rect class="key" x="108" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="132" y="350" class="tap" style="font-size:17px;fill:#24273a">&amp;</text>
+    <rect class="key" x="162" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="186" y="350" class="tap" style="font-size:17px;fill:#24273a">&apos;</text>
+    <rect class="key" x="216" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="240" y="350" class="tap" style="font-size:17px;fill:#24273a">&quot;</text>
+    <rect class="key" x="270" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="294" y="350" class="tap" style="font-size:17px;fill:#24273a">+</text>
+    <rect class="key" x="291.6" y="459" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="315.6" y="477" class="tap" style="font-size:17px;fill:#24273a">%</text>
+    <rect class="key" x="345.6" y="459" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="369.6" y="477" class="tap" style="font-size:17px;fill:#24273a">:</text>
+    <rect class="key" x="399.6" y="459" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="423.6" y="477" class="tap" style="font-size:17px;fill:#24273a">@</text>
+    <rect class="key" x="518.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="572.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="626.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="648" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="672" y="350" class="tap" style="font-size:17px;fill:#24273a">\</text>
+    <rect class="key" x="702" y="324" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="726" y="350" class="tap" style="font-size:17px;fill:#24273a">&amp;</text>
+    <rect class="key" x="756" y="324" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="780" y="350" class="tap" style="font-size:17px;fill:#24273a">..</text>
+    <rect class="key" x="810" y="324" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="864" y="324" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="keyboard-boundary" x="98" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="584" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="335.6" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="508.4" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="44" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="584" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="44" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
+    <rect class="keyboard-boundary" x="584" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
+    <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
+    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(591.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
+        </g>
+        <g class="layer-activator" aria-label="Corne activation key" transform="translate(600.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(645.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
+        </g>
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(654.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
+        </g>
+  </g>
+  
+  
+  <line x1="60" y1="759" x2="92" y2="759" class="outline-legend-line" style="stroke:#8bd5ca"/><text x="102" y="763" class="legend-text">Urchin</text>
+  <line x1="190" y1="759" x2="222" y2="759" class="outline-legend-line" style="stroke:#8aadf4"/><text x="232" y="763" class="legend-text">Corne</text>
+  <line x1="320" y1="759" x2="352" y2="759" class="outline-legend-line" style="stroke:#f5a97f"/><text x="362" y="763" class="legend-text">GO60</text>
+  <text x="60" y="787" class="subtitle">Keys are rendered once from the shared layer; colored margins show which physical region exists on each smaller keyboard. Glove80 is the full superset.</text>
+</svg>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="498" viewBox="0 0 920 498" role="img" aria-labelledby="title desc">
+  <title id="title">01 / Typing Urchin keymap layer</title>
+  <desc id="desc">Plain typing layer that removes home-row mod behavior from the alpha home row.</desc>
+  <style>
+    .title { font: 800 28px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; letter-spacing: .2px; }
+    .subtitle { font: 500 14px Inter, Avenir Next, Segoe UI, sans-serif; fill: #a5adcb; }
+    .legend-text { font: 600 12px Inter, Avenir Next, Segoe UI, sans-serif; fill: #b8c0e0; }
+    .half { font: 800 12px Inter, Avenir Next, Segoe UI, sans-serif; fill: #8087a2; letter-spacing: 3px; text-anchor: middle; }
+    .tap { font-family: Berkeley Mono, SFMono-Regular, Consolas, Liberation Mono, monospace; font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+    .tap.transparent { font-size: 16px; fill: #6e738d; }
+    .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
+    .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
+    .shortcut path { fill: none; stroke: #8bd5ca; stroke-width: 1.2; opacity: .62; stroke-linecap: round; }
+    .shortcut circle { fill: #8bd5ca; stroke: #24273a; stroke-width: 1.5; }
+    .shortcut rect { fill: #181926; stroke: #8bd5ca; stroke-width: 1.2; }
+    .shortcut text { font: 800 11px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; text-anchor: middle; letter-spacing: .2px; }
+  </style>
+  <rect x="0" y="0" width="920" height="498" rx="28" fill="#24273a"/>
+  <circle cx="105" cy="42" r="140" fill="#c6a0f6" opacity="0.10"/>
+  <circle cx="790" cy="70" r="190" fill="#8aadf4" opacity="0.10"/>
+  <text x="60" y="50" class="title">01 / Typing</text>
+  <text x="60" y="78" class="subtitle">Plain typing layer that removes home-row mod behavior from the alpha home row.</text>
+  <rect x="60" y="112" width="14" height="14" rx="3" fill="#363a4f"/>
+<text x="80" y="124" class="legend-text">Transparent</text>
+<rect x="171" y="112" width="14" height="14" rx="3" fill="#b7bdf8"/>
+<text x="191" y="124" class="legend-text">Alpha</text>
+<rect x="240" y="112" width="14" height="14" rx="3" fill="#eed49f"/>
+<text x="260" y="124" class="legend-text">Symbol</text>
+  <rect x="117" y="206" width="686" height="248" rx="22" fill="#1e2030" stroke="#494d64" stroke-width="1.5"/>
+  <text x="268" y="228" class="half">LEFT</text>
+  <text x="652" y="228" class="half">RIGHT</text>
+  <g transform="translate(133 244)">
+    <rect class="key" x="0" y="48" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="24" y="73" class="tap transparent">↓</text>
+    <rect class="key" x="48" y="18" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="72" y="43" class="tap transparent">↓</text>
+    <rect class="key" x="96" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="120" y="25" class="tap transparent">↓</text>
+    <rect class="key" x="144" y="18" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="168" y="43" class="tap transparent">↓</text>
+    <rect class="key" x="192" y="27.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="216" y="52.6" class="tap transparent">↓</text>
+    <rect class="key" x="393.6" y="27.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="417.6" y="52.6" class="tap transparent">↓</text>
+    <rect class="key" x="441.6" y="18" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="465.6" y="43" class="tap transparent">↓</text>
+    <rect class="key" x="489.6" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="513.6" y="25" class="tap transparent">↓</text>
+    <rect class="key" x="537.6" y="18" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="561.6" y="43" class="tap transparent">↓</text>
+    <rect class="key" x="585.6" y="48" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="609.6" y="73" class="tap transparent">↓</text>
+    <rect class="key" x="0" y="96" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="24" y="122" class="tap" style="font-size:17px;fill:#24273a">A</text>
+    <rect class="key" x="48" y="66" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="72" y="92" class="tap" style="font-size:17px;fill:#24273a">S</text>
+    <rect class="key" x="96" y="48" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="120" y="74" class="tap" style="font-size:17px;fill:#24273a">D</text>
+    <rect class="key" x="144" y="66" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="168" y="92" class="tap" style="font-size:17px;fill:#24273a">F</text>
+    <rect class="key" x="192" y="75.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="216" y="100.6" class="tap transparent">↓</text>
+    <rect class="key" x="393.6" y="75.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="417.6" y="100.6" class="tap transparent">↓</text>
+    <rect class="key" x="441.6" y="66" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="465.6" y="92" class="tap" style="font-size:17px;fill:#24273a">J</text>
+    <rect class="key" x="489.6" y="48" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="513.6" y="74" class="tap" style="font-size:17px;fill:#24273a">K</text>
+    <rect class="key" x="537.6" y="66" width="48" height="48" rx="8" fill="#b7bdf8"/>
+    <text x="561.6" y="92" class="tap" style="font-size:17px;fill:#24273a">L</text>
+    <rect class="key" x="585.6" y="96" width="48" height="48" rx="8" fill="#eed49f"/>
+    <text x="609.6" y="122" class="tap" style="font-size:17px;fill:#24273a">;</text>
+    <rect class="key" x="0" y="144" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="24" y="169" class="tap transparent">↓</text>
+    <rect class="key" x="48" y="114" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="72" y="139" class="tap transparent">↓</text>
+    <rect class="key" x="96" y="96" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="120" y="121" class="tap transparent">↓</text>
+    <rect class="key" x="144" y="114" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="168" y="139" class="tap transparent">↓</text>
+    <rect class="key" x="192" y="123.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="216" y="148.6" class="tap transparent">↓</text>
+    <rect class="key" x="393.6" y="123.6" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="417.6" y="148.6" class="tap transparent">↓</text>
+    <rect class="key" x="441.6" y="114" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="465.6" y="139" class="tap transparent">↓</text>
+    <rect class="key" x="489.6" y="96" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="513.6" y="121" class="tap transparent">↓</text>
+    <rect class="key" x="537.6" y="114" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="561.6" y="139" class="tap transparent">↓</text>
+    <rect class="key" x="585.6" y="144" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="609.6" y="169" class="tap transparent">↓</text>
+    <g transform="rotate(15 192 202.8)">
+    <rect class="key" x="168" y="178.8" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="192" y="203.8" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(30 249.6 224.4)">
+    <rect class="key" x="225.6" y="200.4" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="249.6" y="225.4" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(-30 384 224.4)">
+    <rect class="key" x="360" y="200.4" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="384" y="225.4" class="tap transparent">↓</text>
+    </g>
+    <g transform="rotate(-15 441.6 202.8)">
+    <rect class="key" x="417.6" y="178.8" width="48" height="48" rx="8" fill="#363a4f"/>
+    <text x="441.6" y="203.8" class="tap transparent">↓</text>
+    </g>
+  </g>
+  <g class="shortcut">
+  <path d="M 449.8 180 C 449.8 210, 325.0 210, 325.0 446.8"/>
+  <circle cx="325.0" cy="446.8" r="4.2"/>
+  <path d="M 449.8 180 C 449.8 210, 574.6 210, 574.6 446.8"/>
+  <circle cx="574.6" cy="446.8" r="4.2"/>
+  <rect x="404.3" y="160" width="91" height="22" rx="11"/>
+  <text x="449.8" y="175">Caps Lock</text>
+  </g>
+</svg>

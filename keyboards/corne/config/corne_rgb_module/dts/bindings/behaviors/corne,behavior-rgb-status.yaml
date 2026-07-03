@@ -1,0 +1,5 @@
+description: Corne RGB status overlay behavior
+
+compatible: "corne,behavior-rgb-status"
+
+include: zero_param.yaml
