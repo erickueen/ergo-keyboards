@@ -1595,14 +1595,14 @@
             >;
         };
 
-        layer_ThumbShift {
-            display-name = "SHIFT";
+        layer_Keypad {
+            display-name = "PAD";
             bindings = <
    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)  &kp LS(Y)  &kp LS(U)  &kp LS(I)  &kp LS(O)  &kp LS(P)  &trans
-   &trans  &kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp LS(H)  &kp LS(J)  &kp LS(K)  &kp LS(L)  &kp LS(SEMI)  &trans
-   &trans  &kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &trans  &trans  &trans  &trans  &trans  &trans  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)  &trans
+   &trans  &none  &kp HOME  &kp UP  &kp END  &kp PG_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &trans
+   &trans  &kp Z  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS  &kp KP_MULTIPLY  &trans
+   &trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(V))  &trans  &trans  &trans  &trans  &trans  &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL  &trans
    &trans  &trans  &trans  &trans  &trans  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE  &trans  &trans  &trans  &trans  &trans
 >;
         };
@@ -1619,14 +1619,14 @@
 >;
         };
 
-        layer_Keypad {
-            display-name = "PAD";
+        layer_ThumbShift {
+            display-name = "SHIFT";
             bindings = <
    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &none  &kp HOME  &kp UP  &kp END  &kp PG_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &trans
-   &trans  &kp Z  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS  &kp KP_MULTIPLY  &trans
-   &trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(V))  &trans  &trans  &trans  &trans  &trans  &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL  &trans
+   &trans  &kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)  &kp LS(Y)  &kp LS(U)  &kp LS(I)  &kp LS(O)  &kp LS(P)  &trans
+   &trans  &kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp LS(H)  &kp LS(J)  &kp LS(K)  &kp LS(L)  &kp LS(SEMI)  &trans
+   &trans  &kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &trans  &trans  &trans  &trans  &trans  &trans  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)  &trans
    &trans  &trans  &trans  &trans  &trans  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE  &trans  &trans  &trans  &trans  &trans
 >;
         };

@@ -122,6 +122,20 @@ function readLayers(name) {
   return layers;
 }
 
+function readLayerOrder(name) {
+  const source = fs.readFileSync(path.join(root, KEYBOARDS[name]), 'utf8');
+  const keymapStart = source.lastIndexOf('compatible = "zmk,keymap"');
+  const keymap = keymapStart >= 0 ? source.slice(keymapStart) : source;
+  return [...keymap.matchAll(/layer_(\w+)\s*\{/g)].map((match) => match[1]);
+}
+
+function readLayerDefines(name) {
+  const source = fs.readFileSync(path.join(root, KEYBOARDS[name]), 'utf8');
+  const fallbackIndex = source.search(/\n(?:\/\* To deal with[\s\S]*?\*\/\n)?#ifndef\s+LAYER_Lower\b/);
+  const topLevelSource = fallbackIndex === -1 ? source : source.slice(0, fallbackIndex);
+  return new Map([...topLevelSource.matchAll(/^#define\s+LAYER_(\S+)\s+(\d+)$/gm)].map((match) => [match[1], Number(match[2])]));
+}
+
 function splitBindings(block) {
   const tokens = block.trim().split(/\s+/).filter(Boolean);
   const bindings = [];
@@ -205,9 +219,23 @@ function verifyCanonicalThumbAccess(allLayers) {
   return failures;
 }
 
+function verifyLayerOrder() {
+  const failures = [];
+  for (const keyboard of Object.keys(KEYBOARDS)) {
+    const defines = readLayerDefines(keyboard);
+    const order = readLayerOrder(keyboard);
+    order.forEach((layer, actualIndex) => {
+      const expectedIndex = defines.get(layer);
+      if (!Number.isFinite(expectedIndex)) failures.push(`${keyboard} layer_${layer}: missing #define LAYER_${layer}`);
+      else if (expectedIndex !== actualIndex) failures.push(`${keyboard} layer_${layer}: #define LAYER_${layer} is ${expectedIndex}, but keymap order is ${actualIndex}`);
+    });
+  }
+  return failures;
+}
+
 function verify() {
   const allLayers = Object.fromEntries(Object.keys(KEYBOARDS).map((name) => [name, readLayers(name)]));
-  const failures = verifyCanonicalThumbAccess(allLayers);
+  const failures = [...verifyLayerOrder(), ...verifyCanonicalThumbAccess(allLayers)];
   for (const layer of REQUIRED_LAYERS) {
     const baseBindings = allLayers.Urchin.get(layer);
     if (!baseBindings) failures.push(`Urchin is missing required layer ${layer}`);

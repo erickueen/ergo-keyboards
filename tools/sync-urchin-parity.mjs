@@ -131,6 +131,12 @@ function parseLayers(source) {
   return layers;
 }
 
+function parseLayerIds(source) {
+  const fallbackIndex = source.search(/\n(?:\/\* To deal with[\s\S]*?\*\/\n)?#ifndef\s+LAYER_Lower\b/);
+  const topLevelSource = fallbackIndex === -1 ? source : source.slice(0, fallbackIndex);
+  return new Map([...topLevelSource.matchAll(/^#define\s+LAYER_(\S+)\s+(\d+)$/gm)].map((match) => [match[1], Number(match[2])]));
+}
+
 function bindingForTarget(target, binding) {
   return (TARGET_BINDING_ALIASES[target] ?? []).reduce((value, [pattern, replacement]) => value.replace(pattern, replacement), binding);
 }
@@ -168,6 +174,20 @@ function layerBlock(layer, target, bindings) {
             display-name = "${displayName(layer)}";
             bindings = <${formatBindings(target, bindings)}            >;
         };`;
+}
+
+function insertLayerBlock(source, layerName, block) {
+  const layerIds = parseLayerIds(source);
+  const targetIndex = layerIds.get(layerName);
+  const layers = parseLayers(source);
+  if (Number.isFinite(targetIndex)) {
+    const next = [...layers].find(([name]) => (layerIds.get(name) ?? Infinity) > targetIndex)?.[1];
+    if (next) return source.replace(next.full, `${block}${next.full}`);
+  }
+
+  const last = [...layers.values()].at(-1);
+  if (!last) throw new Error(`Cannot insert ${layerName}; no keymap layers found`);
+  return source.replace(last.full, `${last.full}${block}`);
 }
 
 function normalizeThumbAccess(target, source) {
@@ -236,9 +256,7 @@ function syncTarget(target, source, baseLayers) {
     if (current) {
       next = next.replace(current.full, `${current.prefix}${formatBindings(target, synced)}${current.suffix}`);
     } else {
-      const magic = parseLayers(next).get('Magic');
-      if (!magic) throw new Error(`${target} missing Magic layer; cannot insert ${layer}`);
-      next = next.replace(magic.full, `${magic.full}${layerBlock(layer, target, synced)}`);
+      next = insertLayerBlock(next, layer, layerBlock(layer, target, synced));
     }
     targetLayers = parseLayers(next);
   }
