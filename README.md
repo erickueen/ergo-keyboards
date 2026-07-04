@@ -9,6 +9,19 @@ Monorepo for ZMK keyboard firmware configs:
 
 The current migration preserves each keyboard's existing keymap first. Shared-keymap inheritance will be layered on top after the monorepo build path is stable.
 
+## Latest Firmware Downloads
+
+CI publishes ZIP files to the moving `latest` release tag, so these links always point at the newest successful `main` build:
+
+| Firmware | Download |
+| --- | --- |
+| GO60 | [firmware-go60.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-go60.zip) |
+| Glove80 | [firmware-glove80.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-glove80.zip) |
+| Corne | [firmware-corne.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-corne.zip) |
+| Urchin | [firmware-urchin.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-urchin.zip) |
+| Settings reset | [firmware-settings-reset.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-settings-reset.zip) |
+| All firmware | [firmware-all.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-all.zip) |
+
 ## Generate Keymaps
 
 The generator mirrors the source keymaps into `keymap/generated/` so CI can detect drift while the inheritance model is introduced. Nix supplies the Node runtime used by the generator.
@@ -116,19 +129,6 @@ CI uses the upstream MoErgo Cachix cache read-only for dependency acceleration. 
 GitHub Actions creates or updates an automated PR from `ci/regenerate-keymap-svgs` when Nix-generated SVGs differ from committed `docs/keymaps/*.svg` on trusted `push` or manual runs. Pull requests still fail the SVG check instead of pushing changes into contributor branches.
 
 CI uploads firmware as separate downloadable artifacts for `firmware-go60`, `firmware-glove80`, `firmware-corne`, `firmware-urchin`, and `firmware-settings-reset`, plus a combined `firmware-all` artifact containing every UF2.
-
-## Latest Firmware Downloads
-
-CI also publishes ZIP files to the moving `latest` release tag, so these links always point at the newest successful `main` build:
-
-| Firmware | Download |
-| --- | --- |
-| GO60 | [firmware-go60.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-go60.zip) |
-| Glove80 | [firmware-glove80.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-glove80.zip) |
-| Corne | [firmware-corne.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-corne.zip) |
-| Urchin | [firmware-urchin.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-urchin.zip) |
-| Settings reset | [firmware-settings-reset.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-settings-reset.zip) |
-| All firmware | [firmware-all.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-all.zip) |
 
 ## Build Outputs
 
