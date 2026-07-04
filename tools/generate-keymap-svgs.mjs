@@ -55,6 +55,9 @@ const KEY_TYPES = {
   as: { fill: COLORS.teal, label: 'AutoShift' },
   media: { fill: COLORS.sky, label: 'Media' },
   kp: { fill: COLORS.green, label: 'Keypad' },
+  mouseMove: { fill: COLORS.sky, label: 'Mouse Move' },
+  mouseScroll: { fill: COLORS.teal, label: 'Mouse Scroll' },
+  mouseButton: { fill: COLORS.peach, label: 'Mouse Button' },
 };
 
 const LAYER_META = {
@@ -105,6 +108,12 @@ const LAYER_SHORT_NAMES = {
   LAYER_Number: 'Number',
 };
 
+const MOUSE_LAYER_GUIDES = {
+  'mouse-slow': { title: 'Slow pointer overlay', label: 'SLOW', desc: 'Transparent key layer; input processors reduce pointer and scroll speed while active.', bars: 1 },
+  'mouse-fast': { title: 'Fast pointer overlay', label: 'FAST', desc: 'Transparent key layer; input processors increase pointer and scroll speed while active.', bars: 3 },
+  'mouse-warp': { title: 'Warp pointer overlay', label: 'WARP', desc: 'Transparent key layer; input processors jump pointer and scroll speed to maximum while active.', bars: 5 },
+};
+
 const KEY_LABELS = {
   BSLH: '\\', SQT: "'", SINGLE_QUOTE: "'", SEMI: ';', COMMA: ',', DOT: '.', FSLH: '/', GRAVE: '`',
   LBKT: '[', RBKT: ']', EQUAL: '=', MINUS: '-', SPACE: 'SPC', BSPC: 'BSPC', RET: 'RET', ENTER: 'Enter',
@@ -140,13 +149,13 @@ const URCHIN_TO_SHARED = [
   23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
   35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
   64, 48, 49, 50, 51, 58, 59, 60, 61, 62,
-  70, 71, 72, 73,
+  69, 70, 73, 74,
 ];
 const CORNE_TO_SHARED = [
   22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
   34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
-  64, 47, 48, 49, 50, 51, 58, 59, 60, 61, 62, 63,
-  69, 70, 71, 72, 73, 74,
+  46, 47, 48, 49, 50, 51, 58, 59, 60, 61, 62, 63,
+  null, 69, 70, 73, 74, null,
 ];
 const GO60_TO_SHARED = [
   10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -253,7 +262,7 @@ function marginPositionsForLayer(positions) {
         23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
         35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
         47, 48, 49, 50, 51, 58, 59, 60, 61, 62,
-        70, 71, 72, 73,
+        69, 70, 73, 74,
       ]),
     },
     {
@@ -263,7 +272,7 @@ function marginPositionsForLayer(positions) {
         22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
         34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
         46, 47, 48, 49, 50, 51, 58, 59, 60, 61, 62, 63,
-        69, 70, 71, 72, 73, 74,
+        69, 70, 73, 74,
       ]),
     },
     {
@@ -288,27 +297,34 @@ function sharedMappingForKeyboard(title) {
 function applyLayerPreviewOverrides(layerId, keys) {
   if (layerId !== 'hrm') return keys;
   const overrides = new Map([
-    [69, { tap: 'Alt', hold: '', type: 'mod' }],
-    [70, { tap: 'BSPC', hold: 'Cursor', type: 'layer' }],
-    [71, { tap: 'Tab', hold: 'Keypad', type: 'layer' }],
-    [72, { tap: 'Esc', hold: 'Number', type: 'layer' }],
-    [73, { tap: 'SPC', hold: 'Symbol', type: 'layer' }],
-    [74, { tap: 'RAlt', hold: '', type: 'mod' }],
+    [69, { tap: 'BSPC', hold: 'Cursor', type: 'layer' }],
+    [70, { tap: 'Tab', hold: 'Keypad', type: 'layer' }],
+    [71, { tap: 'Alt', hold: '', type: 'mod' }],
+    [72, { tap: 'RAlt', hold: '', type: 'mod' }],
+    [73, { tap: 'Esc', hold: 'Number', type: 'layer' }],
+    [74, { tap: 'SPC', hold: 'Symbol', type: 'layer' }],
   ]);
   return keys.map((keyData, index) => keyData ? { ...keyData, ...(overrides.get(index) ?? {}) } : keyData);
 }
 
 function buildSharedLayerKeys(familyLayer, source, keyboardData) {
   const sourceMapping = sharedMappingForKeyboard(source.keyboard.title);
-  if (source.layer.keys.length !== sourceMapping.length) throw new Error(`${source.keyboard.title} ${source.layer.key} has ${source.layer.keys.length} bindings; expected ${sourceMapping.length}`);
+  const layer = previewLayerForFamily(familyLayer, source) ?? source.layer;
+  if (layer.keys.length !== sourceMapping.length) throw new Error(`${source.keyboard.title} ${layer.key} has ${layer.keys.length} bindings; expected ${sourceMapping.length}`);
 
   const keys = Array.from({ length: SHARED_POSITIONS.length }, () => null);
-  source.layer.keys.forEach((keyData, index) => {
-    keys[sourceMapping[index]] = keyData;
+  layer.keys.forEach((keyData, index) => {
+    const sharedIndex = sourceMapping[index];
+    if (Number.isFinite(sharedIndex)) keys[sharedIndex] = keyData;
   });
 
   if (familyLayer.id === 'magic') overlayCorneMagicRgb(keys, keyboardData);
   return applyLayerPreviewOverrides(familyLayer.id, keys);
+}
+
+function previewLayerForFamily(familyLayer, source) {
+  if (!MOUSE_LAYER_GUIDES[familyLayer.id]) return null;
+  return source.layersById.get('mouse') ?? null;
 }
 
 function overlayCorneMagicRgb(keys, keyboardData) {
@@ -318,7 +334,8 @@ function overlayCorneMagicRgb(keys, keyboardData) {
   const mapping = sharedMappingForKeyboard('Corne');
   magic.keys.forEach((keyData, index) => {
     if (keyData.type !== 'rgb') return;
-    keys[mapping[index]] = keyData;
+    const sharedIndex = mapping[index];
+    if (Number.isFinite(sharedIndex)) keys[sharedIndex] = keyData;
   });
 }
 
@@ -404,7 +421,7 @@ function bindingToKey(binding) {
   if (behavior === 'bt') return key(params[0] === 'BT_CLR' ? 'BT_CLR' : params[0] === 'BT_CLR_ALL' ? 'BT_ALL' : `BT${params[1] ?? ''}`, 'bt');
   if (behavior === 'out') return key(String(params[0]).replace(/^OUT_/, ''), 'system');
   if (behavior === 'ext_power') return key(params[0] === 'EP_OFF' ? 'LED Off' : 'LED Tog', 'system');
-  if (behavior === 'mmv' || behavior === 'msc' || behavior === 'mkp') return key(keycodeToLabel(params[0]), 'nav');
+  if (behavior === 'mmv' || behavior === 'msc' || behavior === 'mkp') return mouseBindingToKey(behavior, params[0]);
   if (MACRO_LABELS[behavior]) return key(MACRO_LABELS[behavior], behavior.startsWith('bt_') ? 'bt' : 'macro');
   if (behavior.endsWith('_tap') || behavior.includes('_tap_')) return key(keycodeToLabel(params[0]), 'hrm');
   if (behavior.startsWith('HRM_')) return key(keycodeToLabel(params.at(-1)), 'hrm', hrmLabel(behavior));
@@ -421,6 +438,20 @@ function hrmLabel(behavior) {
 
 function key(tap, type = 'alpha', hold = null) {
   return { tap, type, hold };
+}
+
+function mouseBindingToKey(behavior, code) {
+  if (behavior === 'mmv') return key(directionLabel(code), 'mouseMove', 'Move');
+  if (behavior === 'msc') return key(directionLabel(code), 'mouseScroll', 'Scroll');
+  return key(mouseButtonLabel(code), 'mouseButton', 'Click');
+}
+
+function directionLabel(code) {
+  return String(code).replace(/^MOVE_/, '').replace(/^SCRL_/, '');
+}
+
+function mouseButtonLabel(code) {
+  return { LCLK: 'L', RCLK: 'R', MCLK: 'M', MB4: 'B4', MB5: 'B5' }[code] ?? keycodeToLabel(code);
 }
 
 function keyFromKeycode(keycode) {
@@ -603,15 +634,55 @@ function renderKey(keyData, pos) {
   const inner = [];
   const parts = pos.r ? [`<g transform="rotate(${pos.r} ${x + KW / 2} ${y + KH / 2})">`] : [];
   inner.push(`<rect class="key" x="${x}" y="${y}" width="${KW}" height="${KH}" rx="8" fill="${fill}"/>`);
-  if (keyData.tap === '↓') inner.push(`<text x="${x + KW / 2}" y="${y + KH / 2 + 1}" class="tap transparent">↓</text>`);
+  if (isMouseType(keyData.type)) inner.push(renderMouseKeyContent(keyData, x, y, primary));
+  else if (keyData.tap === '↓') inner.push(`<text x="${x + KW / 2}" y="${y + KH / 2 + 1}" class="tap transparent">↓</text>`);
   else if (keyData.tap !== '—') {
     const tapY = keyData.hold || pos.topTap ? y + KH / 2 - 6 : y + KH / 2 + 2;
     inner.push(`<text x="${x + KW / 2}" y="${tapY}" class="tap" style="font-size:${fontSize(String(keyData.tap))}px;fill:${primary}">${esc(keyData.tap)}</text>`);
   }
-  if (keyData.hold) inner.push(`<text x="${x + KW / 2}" y="${y + KH - 9}" class="hold" style="fill:${hold}">${esc(keyData.hold)}</text>`);
+  if (keyData.hold && !isMouseType(keyData.type)) inner.push(`<text x="${x + KW / 2}" y="${y + KH - 9}" class="hold" style="fill:${hold}">${esc(keyData.hold)}</text>`);
   parts.push(...inner);
   if (pos.r) parts.push('</g>');
   return parts.join('\n');
+}
+
+function isMouseType(type) {
+  return ['mouseMove', 'mouseScroll', 'mouseButton'].includes(type);
+}
+
+function renderMouseKeyContent(keyData, x, y, color) {
+  const cx = x + KW / 2;
+  const cy = y + 20;
+  if (keyData.type === 'mouseButton') return renderMouseButtonIcon(keyData.tap, cx, y + 7, color);
+  const ring = keyData.type === 'mouseScroll'
+    ? `<circle cx="${cx}" cy="${cy}" r="13" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.45"/>`
+    : '';
+  return `${ring}${renderDirectionArrow(keyData.tap, cx, cy, color)}<text x="${cx}" y="${y + KH - 8}" class="hold" style="fill:${color}">${keyData.type === 'mouseScroll' ? 'Scroll' : 'Move'}</text>`;
+}
+
+function renderDirectionArrow(direction, cx, cy, color) {
+  const arrows = {
+    UP: [`M ${cx} ${cy + 12} L ${cx} ${cy - 11}`, `M ${cx - 7} ${cy - 4} L ${cx} ${cy - 11} L ${cx + 7} ${cy - 4}`],
+    DOWN: [`M ${cx} ${cy - 12} L ${cx} ${cy + 11}`, `M ${cx - 7} ${cy + 4} L ${cx} ${cy + 11} L ${cx + 7} ${cy + 4}`],
+    LEFT: [`M ${cx + 12} ${cy} L ${cx - 11} ${cy}`, `M ${cx - 4} ${cy - 7} L ${cx - 11} ${cy} L ${cx - 4} ${cy + 7}`],
+    RIGHT: [`M ${cx - 12} ${cy} L ${cx + 11} ${cy}`, `M ${cx + 4} ${cy - 7} L ${cx + 11} ${cy} L ${cx + 4} ${cy + 7}`],
+  }[direction] ?? [`M ${cx - 8} ${cy} L ${cx + 8} ${cy}`];
+  return `<path d="${arrows.join(' ')}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+}
+
+function renderMouseButtonIcon(label, cx, y, color) {
+  const leftFill = label === 'L' ? color : 'none';
+  const rightFill = label === 'R' ? color : 'none';
+  const midFill = label === 'M' ? color : 'none';
+  return `<g>
+      <path d="M ${cx - 10} ${y + 9} C ${cx - 10} ${y + 3}, ${cx - 6} ${y}, ${cx} ${y} C ${cx + 6} ${y}, ${cx + 10} ${y + 3}, ${cx + 10} ${y + 9} L ${cx + 10} ${y + 24} C ${cx + 10} ${y + 31}, ${cx + 6} ${y + 35}, ${cx} ${y + 35} C ${cx - 6} ${y + 35}, ${cx - 10} ${y + 31}, ${cx - 10} ${y + 24} Z" fill="none" stroke="${color}" stroke-width="2"/>
+      <path d="M ${cx} ${y} L ${cx} ${y + 15}" stroke="${color}" stroke-width="1.4" opacity="0.7"/>
+      <path d="M ${cx - 10} ${y + 14} L ${cx + 10} ${y + 14}" stroke="${color}" stroke-width="1.4" opacity="0.7"/>
+      <path d="M ${cx - 9} ${y + 9} C ${cx - 9} ${y + 4}, ${cx - 5} ${y + 1}, ${cx} ${y + 1} L ${cx} ${y + 14} L ${cx - 10} ${y + 14} Z" fill="${leftFill}" opacity="0.38"/>
+      <path d="M ${cx} ${y + 1} C ${cx + 5} ${y + 1}, ${cx + 9} ${y + 4}, ${cx + 9} ${y + 9} L ${cx + 10} ${y + 14} L ${cx} ${y + 14} Z" fill="${rightFill}" opacity="0.38"/>
+      <rect x="${cx - 2}" y="${y + 5}" width="4" height="8" rx="2" fill="${midFill}" stroke="${color}" stroke-width="1"/>
+      <text x="${cx}" y="${y + 39}" class="hold" style="fill:${color}">${esc(label)}</text>
+    </g>`;
 }
 
 function renderGhost(pos) {
@@ -619,6 +690,21 @@ function renderGhost(pos) {
   const y = pos.y;
   const body = `<rect class="ghost-key" x="${x}" y="${y}" width="${KW}" height="${KH}" rx="8"/>`;
   return pos.r ? `<g transform="rotate(${pos.r} ${x + KW / 2} ${y + KH / 2})">${body}</g>` : body;
+}
+
+function renderCorneDisabledThumbGhosts(positions) {
+  const left = positions[69];
+  const right = positions[74];
+  if (!left || !right) return '';
+  const ghostPositions = [
+    { x: left.x - KW - 6, y: left.y },
+    { x: right.x + KW + 6, y: right.y },
+  ];
+  return ghostPositions.map((pos) => `<g class="corne-disabled-thumb" aria-label="Corne disabled thumb key">
+      <rect x="${pos.x}" y="${pos.y}" width="${KW}" height="${KH}" rx="8"/>
+      <text x="${pos.x + KW / 2}" y="${pos.y + 20}">Corne</text>
+      <text x="${pos.x + KW / 2}" y="${pos.y + 34}">off</text>
+    </g>`).join('\n    ');
 }
 
 function renderShortcuts(shortcuts, positions, keyboardY) {
@@ -700,18 +786,39 @@ function renderFootprintMarker(pos, marker, index, total) {
 function renderLayerAccessGuide(layerId, x, y) {
   if (layerId !== 'hrm') return { svg: '', height: 0 };
   const rows = [
-    ['Urchin', 'Cursor: BSPC', 'Keypad: Tab', 'Number: Esc', 'Symbol: SPC'],
-    ['Corne', 'Cursor: BSPC', 'Keypad: Tab', 'Number: RET', 'Symbol: SPC'],
-    ['GO60/Glove80', 'Cursor: BSPC', 'Keypad: DEL', 'Mouse: RET', 'Symbol: SPC'],
+    ['Visual order', 'BSPC / TAB / Alt', 'RAlt / ESC / SPC'],
+    ['Corne ghosts', 'transparent disabled key before BSPC', 'transparent disabled key after SPC'],
+    ['GO60 + Glove80', 'physical six-key thumb order', 'matches visual order'],
   ];
   const svg = [
-    `<text x="${x}" y="${y}" class="legend-text">Thumb layer access</text>`,
+    `<text x="${x}" y="${y}" class="legend-text">Thumb cluster model</text>`,
     ...rows.map((row, index) => {
       const rowY = y + 22 + index * 20;
       return `<text x="${x}" y="${rowY}" class="subtitle">${esc(row[0])}: ${row.slice(1).map(esc).join(' · ')}</text>`;
     }),
   ].join('\n  ');
-  return { svg, height: 88 };
+  return { svg, height: 108 };
+}
+
+function renderMouseLayerGuide(layerId, x, y, width) {
+  const guide = MOUSE_LAYER_GUIDES[layerId];
+  if (!guide) return { svg: '', height: 0 };
+  const barX = x + 28;
+  const barY = y + 44;
+  const bars = Array.from({ length: 5 }, (_, index) => {
+    const height = 8 + index * 5;
+    const fill = index < guide.bars ? COLORS.teal : COLORS.surface1;
+    return `<rect x="${barX + index * 12}" y="${barY - height}" width="8" height="${height}" rx="3" fill="${fill}"/>`;
+  }).join('\n    ');
+  const pointer = `<path d="M ${x + width - 86} ${y + 18} L ${x + width - 48} ${y + 46} L ${x + width - 66} ${y + 50} L ${x + width - 57} ${y + 68} L ${x + width - 68} ${y + 72} L ${x + width - 77} ${y + 54} L ${x + width - 92} ${y + 66} Z" fill="${COLORS.peach}" opacity="0.88"/>`;
+  const svg = `<g class="mouse-layer-guide">
+    <rect x="${x}" y="${y}" width="${width}" height="76" rx="18" fill="${COLORS.surface0}" stroke="${COLORS.teal}" stroke-width="1.4" opacity="0.96"/>
+    ${bars}
+    <text x="${barX + 76}" y="${y + 32}" class="legend-text">${esc(guide.title)} · ${esc(guide.label)}</text>
+    <text x="${barX + 76}" y="${y + 54}" class="subtitle">${esc(guide.desc)}</text>
+    ${pointer}
+  </g>`;
+  return { svg, height: 92 };
 }
 
 function renderFamilyLayer(familyLayer, keyboardData, sharedCombos) {
@@ -729,12 +836,15 @@ function renderFamilyLayer(familyLayer, keyboardData, sharedCombos) {
   const shortcutBand = shortcuts.length ? 72 : 0;
   const keyboardY = legend.bottom + 50 + shortcutBand;
   const keyboardHeight = Math.ceil(supersetBounds.maxY + margin);
-  const accessGuideY = keyboardY + keyboardHeight + 8;
+  const mouseGuideY = keyboardY + keyboardHeight + 8;
+  const mouseGuide = renderMouseLayerGuide(familyLayer.id, margin, mouseGuideY, width - margin * 2);
+  const accessGuideY = mouseGuideY + mouseGuide.height;
   const accessGuide = renderLayerAccessGuide(familyLayer.id, margin, accessGuideY);
   const outlineLegendY = accessGuideY + accessGuide.height;
   const height = outlineLegendY + 48;
   const title = `${String(familyLayer.index).padStart(2, '0')} / ${familyLayer.name}`;
   const ghostKeys = canvasPositions.map(renderGhost).join('\n');
+  const corneDisabledThumbGhosts = renderCorneDisabledThumbGhosts(canvasPositions);
   const keys = previewKeys.map((keyData, index) => keyData ? renderKey(keyData, canvasPositions[index]) : '').filter(Boolean).join('\n');
   const activationMarkers = renderActivationMarkers(activationMarkersForLayer(familyLayer.id, keyboardData), canvasPositions);
   const boundaryKeyboards = marginPositionsForLayer(canvasPositions);
@@ -757,6 +867,8 @@ function renderFamilyLayer(familyLayer, keyboardData, sharedCombos) {
     .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
     .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
     .ghost-key { fill: transparent; stroke: rgba(202,211,245,.13); stroke-width: 1; stroke-dasharray: 4 7; }
+    .corne-disabled-thumb rect { fill: rgba(138,173,244,.08); stroke: ${KEYBOARDS.corne.color}; stroke-width: 1.25; stroke-dasharray: 5 5; }
+    .corne-disabled-thumb text { font: 800 9px Inter, Avenir Next, Segoe UI, sans-serif; fill: ${KEYBOARDS.corne.color}; text-anchor: middle; letter-spacing: .15px; opacity: .88; }
     .keyboard-boundary { fill: transparent; stroke-width: 3; opacity: .74; }
     .layer-activator { opacity: .96; filter: drop-shadow(0 1px 2px rgba(24,25,38,.8)); }
     .layer-activator * { stroke: ${COLORS.base}; stroke-width: 1.15; }
@@ -774,11 +886,13 @@ function renderFamilyLayer(familyLayer, keyboardData, sharedCombos) {
   ${legend.svg}
   <g transform="translate(${margin} ${keyboardY})">
     ${ghostKeys.split('\n').join('\n    ')}
+    ${corneDisabledThumbGhosts.split('\n').join('\n    ')}
     ${keys.split('\n').join('\n    ')}
     ${boundaries.split('\n').join('\n    ')}
     ${activationMarkers.split('\n').join('\n    ')}
   </g>
   ${renderShortcuts(shortcuts, canvasPositions.map((pos) => ({ ...pos, x: pos.x + margin })), keyboardY)}
+  ${mouseGuide.svg}
   ${accessGuide.svg}
   ${outlineLegend}
   <text x="${margin}" y="${outlineLegendY + 28}" class="subtitle">Keys are rendered once from the shared layer; colored margins show which physical region exists on each smaller keyboard. Glove80 is the full superset.</text>

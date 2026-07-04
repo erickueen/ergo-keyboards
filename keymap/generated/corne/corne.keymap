@@ -10,6 +10,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 /* ── Helper macros ── */
 
@@ -52,6 +54,10 @@
 #define LAYER_Symbol 13
 #define LAYER_Magic 14
 #define LAYER_Number 15
+#define LAYER_Mouse 16
+#define LAYER_MouseSlow 17
+#define LAYER_MouseFast 18
+#define LAYER_MouseWarp 19
 
 #ifndef LAYER_Lower
 #define LAYER_Lower 0
@@ -74,6 +80,36 @@
     39 40 41
 
 /* ── System behaviors ── */
+
+&mmv_input_listener {
+    layer_MouseSlow {
+        layers = <LAYER_MouseSlow>;
+        input-processors = <&zip_xy_scaler 1 9>;
+    };
+    layer_MouseFast {
+        layers = <LAYER_MouseFast>;
+        input-processors = <&zip_xy_scaler 3 1>;
+    };
+    layer_MouseWarp {
+        layers = <LAYER_MouseWarp>;
+        input-processors = <&zip_xy_scaler 12 1>;
+    };
+};
+
+&msc_input_listener {
+    layer_MouseSlow {
+        layers = <LAYER_MouseSlow>;
+        input-processors = <&zip_scroll_scaler 1 9>;
+    };
+    layer_MouseFast {
+        layers = <LAYER_MouseFast>;
+        input-processors = <&zip_scroll_scaler 3 1>;
+    };
+    layer_MouseWarp {
+        layers = <LAYER_MouseWarp>;
+        input-processors = <&zip_scroll_scaler 12 1>;
+    };
+};
 
 / {
     behaviors {
@@ -717,138 +753,138 @@
    &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T       &kp Y     &kp U     &kp I     &kp O     &kp P      &kp BSLH
    &kp ESC   &lP LCTRL A  &lR LALT S  &lM LGUI D  &lI LSHFT F  &kp G      &kp H     &rI RSHFT J  &rM RGUI K  &rR LALT L  &rP RCTRL SEMI  &kp SQT
    &magic LAYER_Magic 0 &kp Z  &kp X  &kp C  &kp V  &kp B      &kp N     &kp M     &kp COMMA  &kp DOT  &kp FSLH    &td_LAYER_Keypad
-                                                     &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB      &thumb LAYER_Number RET   &space LAYER_Symbol SPACE  &none
+                                                     &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB      &thumb LAYER_Number ESC   &space LAYER_Symbol SPACE  &none
             >;
         };
 
         layer_Typing {
             display-name = "TYPE";
             bindings = <
-   &trans  &trans  &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
-   &magic LAYER_Magic 0 &trans &trans &trans &trans &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &magic LAYER_Magic 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_Autoshift {
             display-name = "AUTO";
             bindings = <
-   &AS_macro TAB &AS_macro Q  &AS_macro W  &AS_macro E  &AS_macro R  &AS_macro T    &AS_macro Y  &AS_macro U  &AS_macro I  &AS_macro O  &AS_macro P  &AS_macro BSLH
-   &trans  &AS_macro A  &AS_macro S  &AS_macro D  &AS_macro F  &AS_macro G    &AS_macro H  &AS_macro J  &AS_macro K  &AS_macro L  &AS_macro SEMI  &AS_macro SQT
-   &magic LAYER_Magic 0 &AS_macro Z &AS_macro X &AS_macro C &AS_macro V &AS_macro B   &AS_macro N  &AS_macro M  &AS_macro COMMA &AS_macro DOT &AS_macro FSLH &trans
-                                         &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &AS_macro TAB  &AS_macro Q  &AS_macro W  &AS_macro E  &AS_macro R  &AS_macro T  &AS_macro Y  &AS_macro U  &AS_macro I  &AS_macro O  &AS_macro P  &AS_macro BSLH
+   &trans  &AS_macro A  &AS_macro S  &AS_macro D  &AS_macro F  &AS_macro G  &AS_macro H  &AS_macro J  &AS_macro K  &AS_macro L  &AS_macro SEMI  &AS_macro SQT
+   &magic LAYER_Magic 0  &AS_macro Z  &AS_macro X  &AS_macro C  &AS_macro V  &AS_macro B  &AS_macro N  &AS_macro M  &AS_macro COMMA  &AS_macro DOT  &AS_macro FSLH  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_LeftPinky {
             display-name = "LP";
             bindings = <
-   &trans  &lP_tap Q  &lP_tap W  &lP_tap E  &lP_tap R  &lP_tap T    &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &none      &lP_r LALT S  &lP_m LGUI D  &lP_i LSHFT F  &lP_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
-   &trans  &lP_tap Z  &lP_tap X  &lP_tap C  &lP_tap V  &lP_tap B    &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &lP_tap Q  &lP_tap W  &lP_tap E  &lP_tap R  &lP_tap T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &none  &lP_r LALT S  &lP_m LGUI D  &lP_i LSHFT F  &lP_tap G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &lP_tap Z  &lP_tap X  &lP_tap C  &lP_tap V  &lP_tap B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_LeftRingy {
             display-name = "LR";
             bindings = <
-   &trans  &lR_tap Q  &lR_tap W  &lR_tap E  &lR_tap R  &lR_tap T    &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &lR_p LCTRL A  &none      &lR_m LGUI D  &lR_i LSHFT F  &lR_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
-   &trans  &lR_tap Z  &lR_tap X  &lR_tap C  &lR_tap V  &lR_tap B    &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &lR_tap Q  &lR_tap W  &lR_tap E  &lR_tap R  &lR_tap T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lR_p LCTRL A  &none  &lR_m LGUI D  &lR_i LSHFT F  &lR_tap G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &lR_tap Z  &lR_tap X  &lR_tap C  &lR_tap V  &lR_tap B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_LeftMiddy {
             display-name = "LM";
             bindings = <
-   &trans  &lM_tap Q  &lM_tap W  &lM_tap E  &lM_tap R  &lM_tap T    &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &lM_p LCTRL A  &lM_r LALT S  &none      &lM_i LSHFT F  &lM_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
-   &trans  &lM_tap Z  &lM_tap X  &lM_tap C  &lM_tap V  &lM_tap B    &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &lM_tap Q  &lM_tap W  &lM_tap E  &lM_tap R  &lM_tap T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lM_p LCTRL A  &lM_r LALT S  &none  &lM_i LSHFT F  &lM_tap G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &lM_tap Z  &lM_tap X  &lM_tap C  &lM_tap V  &lM_tap B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_LeftIndex {
             display-name = "LI";
             bindings = <
-   &trans  &lI_tap Q  &lI_tap W  &lI_tap E  &lI_tap R  &lI_tap T    &trans  &trans  &trans  &trans  &trans  &trans
-   &trans  &lI_p LCTRL A  &lI_r LALT S  &lI_m LGUI D  &none      &lI_tap G    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
-   &trans  &lI_tap Z  &lI_tap X  &lI_tap C  &lI_tap V  &lI_tap B    &trans  &trans  &trans  &trans  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &lI_tap Q  &lI_tap W  &lI_tap E  &lI_tap R  &lI_tap T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &lI_p LCTRL A  &lI_r LALT S  &lI_m LGUI D  &none  &lI_tap G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &lI_tap Z  &lI_tap X  &lI_tap C  &lI_tap V  &lI_tap B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_RightPinky {
             display-name = "RP";
             bindings = <
-   &trans  &trans  &trans  &trans  &trans  &trans     &rP_tap Y  &rP_tap U  &rP_tap I  &rP_tap O  &rP_tap P  &rP_tap BSLH
-   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rP_tap H  &rP_i RSHFT J  &rP_m RGUI K  &rP_r LALT L  &none       &rP_tap SQT
-   &trans  &trans  &trans  &trans  &trans  &trans     &rP_tap N  &rP_tap M  &rP_tap COMMA  &rP_tap DOT  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &rP_tap Y  &rP_tap U  &rP_tap I  &rP_tap O  &rP_tap P  &rP_tap BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &rP_tap H  &rP_i RSHFT J  &rP_m RGUI K  &rP_r LALT L  &none  &rP_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &rP_tap N  &rP_tap M  &rP_tap COMMA  &rP_tap DOT  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_RightRingy {
             display-name = "RR";
             bindings = <
-   &trans  &trans  &trans  &trans  &trans  &trans     &rR_tap Y  &rR_tap U  &rR_tap I  &rR_tap O  &rR_tap P  &rR_tap BSLH
-   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rR_tap H  &rR_i RSHFT J  &rR_m RGUI K  &none       &rR_p RCTRL SEMI  &rR_tap SQT
-   &trans  &trans  &trans  &trans  &trans  &trans     &rR_tap N  &rR_tap M  &rR_tap COMMA  &rR_tap DOT  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &rR_tap Y  &rR_tap U  &rR_tap I  &rR_tap O  &rR_tap P  &rR_tap BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &rR_tap H  &rR_i RSHFT J  &rR_m RGUI K  &none  &rR_p RCTRL SEMI  &rR_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &rR_tap N  &rR_tap M  &rR_tap COMMA  &rR_tap DOT  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_RightMiddy {
             display-name = "RM";
             bindings = <
-   &trans  &trans  &trans  &trans  &trans  &trans     &rM_tap Y  &rM_tap U  &rM_tap I  &rM_tap O  &rM_tap P  &rM_tap BSLH
-   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rM_tap H  &rM_i RSHFT J  &none       &rM_r LALT L  &rM_p RCTRL SEMI  &rM_tap SQT
-   &trans  &trans  &trans  &trans  &trans  &trans     &rM_tap N  &rM_tap M  &rM_tap COMMA  &rM_tap DOT  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &rM_tap Y  &rM_tap U  &rM_tap I  &rM_tap O  &rM_tap P  &rM_tap BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &rM_tap H  &rM_i RSHFT J  &none  &rM_r LALT L  &rM_p RCTRL SEMI  &rM_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &rM_tap N  &rM_tap M  &rM_tap COMMA  &rM_tap DOT  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_RightIndex {
             display-name = "RI";
             bindings = <
-   &trans  &trans  &trans  &trans  &trans  &trans     &rI_tap Y  &rI_tap U  &rI_tap I  &rI_tap O  &rI_tap P  &rI_tap BSLH
-   &trans  &kp A   &kp S   &kp D   &kp F   &trans     &rI_tap H  &none       &rI_m RGUI K  &rI_r LALT L  &rI_p RCTRL SEMI  &rI_tap SQT
-   &trans  &trans  &trans  &trans  &trans  &trans     &rI_tap N  &rI_tap M  &rI_tap COMMA  &rI_tap DOT  &trans  &trans
-                                      &trans  &trans  &trans    &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &rI_tap Y  &rI_tap U  &rI_tap I  &rI_tap O  &rI_tap P  &rI_tap BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &rI_tap H  &none  &rI_m RGUI K  &rI_r LALT L  &rI_p RCTRL SEMI  &rI_tap SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &rI_tap N  &rI_tap M  &rI_tap COMMA  &rI_tap DOT  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_Cursor {
             display-name = "CUR";
             bindings = <
-   &kp CAPS  &kp RET     &kp LS(LG(Z))  &kp LG(Z)      &kp BSPC       &kp LG(X)     &kp LG(X)  &kp LS(TAB)    &kp LG(Z)      &kp LS(LG(Z))  &kp TAB    &kp PSCRN
-   &sk LSHFT &kp LCTRL   &kp LALT       &kp LGUI        &kp LSHFT      &kp LG(C)     &kp LEFT   &kp DOWN       &kp UP         &kp RIGHT      &none      &sk RSHFT
-   &kp LG(L) &kp LG(A)   &cur_SELECT_LINE &cur_SELECT_WORD &kp LG(F)    &kp LG(V)     &kp LG(V)  &kp HOME       &kp PG_UP      &kp PG_DN      &kp END    &kp LG(L)
-                                                 &none          &none          &none         &cur_SELECT_NONE &cur_EXTEND_LINE &cur_EXTEND_WORD
-            >;
+   &kp CAPS  &kp RET  &kp LS(LG(Z))  &kp LG(Z)  &kp BSPC  &kp LG(X)  &kp LG(X)  &kp LS(TAB)  &kp LG(Z)  &kp LS(LG(Z))  &kp TAB  &kp PSCRN
+   &sk LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &kp LSHFT  &kp LG(C)  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &sk RSHFT
+   &kp LG(L)  &kp LG(A)  &cur_SELECT_LINE  &cur_SELECT_WORD  &kp LG(F)  &kp LG(V)  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &kp PSCRN  &kp LG(L)
+   &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &cur_EXTEND_WORD
+>;
         };
 
         layer_Keypad {
             display-name = "PAD";
             bindings = <
-   &kp TAB  &none       &kp HOME  &kp UP    &kp END   &kp PG_UP     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &kp F12
-   &kp ESC  &kp Z       &kp LEFT  &kp DOWN  &kp RIGHT &kp PG_DN     &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp KP_MULTIPLY &kp KP_NUM
-   &magic LAYER_Magic 0 &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LS(LG(V)) &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL     &to 0
-                                        &none      &trans     &trans        &kp KP_N0  &kp KP_DOT  &kp KP_ENTER
-            >;
+   &kp TAB  &none  &kp HOME  &kp UP  &kp END  &kp PG_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &kp F12
+   &kp ESC  &kp Z  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS  &kp KP_MULTIPLY  &kp KP_NUM
+   &magic LAYER_Magic 0  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(V))  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL  &to 0
+   &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &kp KP_ENTER
+>;
         };
 
         layer_Symbol {
             display-name = "SYM";
             bindings = <
-   &kp COMMA      &kp GRAVE      &kp LS(N9)    &kp LS(N0)    &kp SEMI      &kp DOT       &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS      &kp LS(DOT)   &kp FSLH
-   &spanish_acute &kp LBKT       &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT      &kp LS(N3)    &kp LS(SQT)    &kp LS(N1)     &kp LS(FSLH)  &kp LS(N7)     &kp LS(N8)    &kp LA(E)
-   &none          &kp LS(N6)     &kp EQUAL     &kp LS(MINUS) &kp LS(N4)    &kp LS(N8)    &kp SQT        &kp BSLH       &kp FSLH      &none          &none         &none
-                                               &kp LS(N5)     &kp GLOBE      &kp LS(N2)      &none          &none          &none
-            >;
+   &kp COMMA  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &kp FSLH
+   &spanish_acute  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &kp LA(E)
+   &none  &kp LS(N6)  &kp EQUAL  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
+   &kp LS(N5)  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &none
+>;
         };
 
         layer_Magic {
@@ -864,11 +900,51 @@
         layer_Number {
             display-name = "NUM";
             bindings = <
-   &kp EQUAL  &kp N1    &kp N2    &kp N3    &kp N4    &kp N5      &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS
-   &trans     &kp F1    &kp F2    &kp F3    &kp F4    &kp F5      &kp F6     &kp F7     &kp F8     &kp F9     &kp F10    &trans
-   &trans     &none     &none     &none     &kp F11   &kp F12     &none      &none      &none      &none      &none      &trans
-                                            &trans     &trans      &trans       &trans     &trans     &trans
-            >;
+   &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
+   &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+   &trans  &none  &none  &none  &kp F11  &kp F12  &none  &none  &none  &none  &none  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
+        };
+
+        layer_Mouse {
+            display-name = "MOUSE";
+            bindings = <
+   &none  &none  &msc SCRL_LEFT  &mmv MOVE_UP  &msc SCRL_RIGHT  &none  &msc SCRL_LEFT  &mkp LCLK  &mkp MCLK  &mkp RCLK  &msc SCRL_RIGHT  &none
+   &none  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP  &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow  &kp K_APP  &mkp MB4
+   &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
+   &mkp LCLK  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &none
+>;
+        };
+
+        layer_MouseSlow {
+            display-name = "MSLOW";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
+        };
+
+        layer_MouseFast {
+            display-name = "MFAST";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
+        };
+
+        layer_MouseWarp {
+            display-name = "MWARP";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
     };

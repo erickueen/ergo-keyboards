@@ -11,6 +11,8 @@
     .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
     .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
     .ghost-key { fill: transparent; stroke: rgba(202,211,245,.13); stroke-width: 1; stroke-dasharray: 4 7; }
+    .corne-disabled-thumb rect { fill: rgba(138,173,244,.08); stroke: #8aadf4; stroke-width: 1.25; stroke-dasharray: 5 5; }
+    .corne-disabled-thumb text { font: 800 9px Inter, Avenir Next, Segoe UI, sans-serif; fill: #8aadf4; text-anchor: middle; letter-spacing: .15px; opacity: .88; }
     .keyboard-boundary { fill: transparent; stroke-width: 3; opacity: .74; }
     .layer-activator { opacity: .96; filter: drop-shadow(0 1px 2px rgba(24,25,38,.8)); }
     .layer-activator * { stroke: #24273a; stroke-width: 1.15; }
@@ -116,6 +118,16 @@
     <rect class="ghost-key" x="756" y="324" width="48" height="48" rx="8"/>
     <rect class="ghost-key" x="810" y="324" width="48" height="48" rx="8"/>
     <rect class="ghost-key" x="864" y="324" width="48" height="48" rx="8"/>
+    <g class="corne-disabled-thumb" aria-label="Corne disabled thumb key">
+          <rect x="237.60000000000002" y="459" width="48" height="48" rx="8"/>
+          <text x="261.6" y="479">Corne</text>
+          <text x="261.6" y="493">off</text>
+        </g>
+        <g class="corne-disabled-thumb" aria-label="Corne disabled thumb key">
+          <rect x="680.4" y="459" width="48" height="48" rx="8"/>
+          <text x="704.4" y="479">Corne</text>
+          <text x="704.4" y="493">off</text>
+        </g>
     <rect class="key" x="108" y="129.6" width="48" height="48" rx="8" fill="#939ab7"/>
     <text x="132" y="155.6" class="tap" style="font-size:12px;fill:#24273a">Boot</text>
     <rect class="key" x="162" y="129.6" width="48" height="48" rx="8" fill="#f5bde6"/>
@@ -169,53 +181,54 @@
     <rect class="key" x="756" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="810" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="54" y="324" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="291.6" y="459" width="48" height="48" rx="8" fill="#939ab7"/>
+    <text x="315.6" y="477" class="tap" style="font-size:12px;fill:#24273a">USB</text>
     <rect class="key" x="345.6" y="459" width="48" height="48" rx="8" fill="#939ab7"/>
-    <text x="369.6" y="477" class="tap" style="font-size:12px;fill:#24273a">USB</text>
-    <rect class="key" x="399.6" y="459" width="48" height="48" rx="8" fill="#939ab7"/>
-    <text x="423.6" y="477" class="tap" style="font-size:12px;fill:#24273a">→AS</text>
-    <rect class="key" x="518.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
+    <text x="369.6" y="477" class="tap" style="font-size:12px;fill:#24273a">→AS</text>
     <rect class="key" x="572.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="626.4" y="459" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="keyboard-boundary" x="98" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
     <rect class="keyboard-boundary" x="584" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
-    <rect class="keyboard-boundary" x="335.6" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
-    <rect class="keyboard-boundary" x="508.4" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="562.4" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
     <rect class="keyboard-boundary" x="44" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
     <rect class="keyboard-boundary" x="584" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
-    <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
-    <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="122" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="562.4" y="449" width="122" height="68" rx="18" style="stroke:#8aadf4"/>
     <rect class="keyboard-boundary" x="44" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="584" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
-    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(64.5 349.0)">
+    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(69.0 349.0)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
         </g>
-        <g class="layer-activator" aria-label="Corne activation key" transform="translate(73.5 349.0)">
-          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
-          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
-          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
-          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
-          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
-        </g>
-        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(82.5 349.0)">
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(78.0 349.0)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
         </g>
-        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(91.5 349.0)">
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(87.0 349.0)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
         </g>
+        <g class="layer-activator" aria-label="Corne activation key" transform="translate(78.0 284.2)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
   </g>
+  
   
   
   <line x1="60" y1="759" x2="92" y2="759" class="outline-legend-line" style="stroke:#8bd5ca"/><text x="102" y="763" class="legend-text">Urchin</text>

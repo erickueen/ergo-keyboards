@@ -174,6 +174,7 @@
 #define LAYER_MouseFast 16
 #define LAYER_MouseWarp 17
 #define LAYER_Magic 18
+#define LAYER_Number 19
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -1504,200 +1505,200 @@
 
         layer_HRM_macOS {
             bindings = <
-            &kp EQUAL                           &kp N1                         &kp N2                          &kp N3                           &kp N4  &kp N5                                                                                                                                                         &kp N6                            &kp N7                           &kp N8                          &kp N9                               &kp N0         &kp MINUS
-              &kp TAB                            &kp Q                          &kp W                           &kp E                            &kp R   &kp T                                                                                                                                                          &kp Y                             &kp U                            &kp I                           &kp O                                &kp P          &kp BSLH
-              &kp ESC  &HRM_left_pinky_v1B_TKZ LCTRL A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LGUI D  &HRM_left_index_v1B_TKZ LSHFT F   &kp G                                                                                                                                                          &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RGUI K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RCTRL SEMI           &kp SQT
- &magic LAYER_Magic 0                            &kp Z                          &kp X                           &kp C                            &kp V   &kp B                                                                                                                                                          &kp N                             &kp M                        &kp COMMA                         &kp DOT                             &kp FSLH  &td_LAYER_Keypad
-                                                                             &kp HOME                        &kp LEFT                        &kp RIGHT                                                                                                                                                                                                   &kp UP                         &kp DOWN                         &kp END
-                                                                                                                                                                &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad DEL  &kp LSHFT  &kp RALT  &thumb_v2_TKZ LAYER_Mouse RET  &space_v3_TKZ LAYER_Symbol SPACE
-            >;
+   &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
+   &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BSLH
+   &kp ESC  &HRM_left_pinky_v1B_TKZ LCTRL A  &HRM_left_ring_v1B_TKZ LALT S  &HRM_left_middy_v1B_TKZ LGUI D  &HRM_left_index_v1B_TKZ LSHFT F  &kp G  &kp H  &HRM_right_index_v1B_TKZ RSHFT J  &HRM_right_middy_v1B_TKZ RGUI K  &HRM_right_ring_v1B_TKZ LALT L  &HRM_right_pinky_v1B_TKZ RCTRL SEMI  &kp SQT
+   &magic LAYER_Magic 0  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &td_LAYER_Keypad
+   &kp HOME  &kp LEFT  &kp RIGHT  &kp UP  &kp DOWN  &kp END
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Typing {
             bindings = <
-               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
-               &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
-               &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
- &magic LAYER_Magic 0  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                               &trans  &trans  &trans                                                                  &trans  &trans  &trans
-                                                               &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &magic LAYER_Magic 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Autoshift {
             bindings = <
-     &AS_v1_TKZ EQUAL  &AS_v1_TKZ N1  &AS_v1_TKZ N2  &AS_v1_TKZ N3  &AS_v1_TKZ N4  &AS_v1_TKZ N5                                                  &AS_v1_TKZ N6  &AS_v1_TKZ N7     &AS_v1_TKZ N8   &AS_v1_TKZ N9    &AS_v1_TKZ N0  &AS_v1_TKZ MINUS
-               &trans   &AS_v1_TKZ Q   &AS_v1_TKZ W   &AS_v1_TKZ E   &AS_v1_TKZ R   &AS_v1_TKZ T                                                   &AS_v1_TKZ Y   &AS_v1_TKZ U      &AS_v1_TKZ I    &AS_v1_TKZ O     &AS_v1_TKZ P   &AS_v1_TKZ BSLH
-               &trans   &AS_v1_TKZ A   &AS_v1_TKZ S   &AS_v1_TKZ D   &AS_v1_TKZ F   &AS_v1_TKZ G                                                   &AS_v1_TKZ H   &AS_v1_TKZ J      &AS_v1_TKZ K    &AS_v1_TKZ L  &AS_v1_TKZ SEMI    &AS_v1_TKZ SQT
- &magic LAYER_Magic 0   &AS_v1_TKZ Z   &AS_v1_TKZ X   &AS_v1_TKZ C   &AS_v1_TKZ V   &AS_v1_TKZ B                                                   &AS_v1_TKZ N   &AS_v1_TKZ M  &AS_v1_TKZ COMMA  &AS_v1_TKZ DOT  &AS_v1_TKZ FSLH            &trans
-                                             &trans         &trans         &trans                                                                                       &trans            &trans          &trans
-                                                                                                  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &AS_v1_TKZ EQUAL  &AS_v1_TKZ N1  &AS_v1_TKZ N2  &AS_v1_TKZ N3  &AS_v1_TKZ N4  &AS_v1_TKZ N5  &AS_v1_TKZ N6  &AS_v1_TKZ N7  &AS_v1_TKZ N8  &AS_v1_TKZ N9  &AS_v1_TKZ N0  &AS_v1_TKZ MINUS
+   &trans  &AS_v1_TKZ Q  &AS_v1_TKZ W  &AS_v1_TKZ E  &AS_v1_TKZ R  &AS_v1_TKZ T  &AS_v1_TKZ Y  &AS_v1_TKZ U  &AS_v1_TKZ I  &AS_v1_TKZ O  &AS_v1_TKZ P  &AS_v1_TKZ BSLH
+   &trans  &AS_v1_TKZ A  &AS_v1_TKZ S  &AS_v1_TKZ D  &AS_v1_TKZ F  &AS_v1_TKZ G  &AS_v1_TKZ H  &AS_v1_TKZ J  &AS_v1_TKZ K  &AS_v1_TKZ L  &AS_v1_TKZ SEMI  &AS_v1_TKZ SQT
+   &magic LAYER_Magic 0  &AS_v1_TKZ Z  &AS_v1_TKZ X  &AS_v1_TKZ C  &AS_v1_TKZ V  &AS_v1_TKZ B  &AS_v1_TKZ N  &AS_v1_TKZ M  &AS_v1_TKZ COMMA  &AS_v1_TKZ DOT  &AS_v1_TKZ FSLH  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_LeftPinky {
             bindings = <
- &HRM_left_pinky_tap_v1B_TKZ EQUAL  &HRM_left_pinky_tap_v1B_TKZ N1       &HRM_left_pinky_tap_v1B_TKZ N2        &HRM_left_pinky_tap_v1B_TKZ N3         &HRM_left_pinky_tap_v1B_TKZ N4  &HRM_left_pinky_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans   &HRM_left_pinky_tap_v1B_TKZ Q        &HRM_left_pinky_tap_v1B_TKZ W         &HRM_left_pinky_tap_v1B_TKZ E          &HRM_left_pinky_tap_v1B_TKZ R   &HRM_left_pinky_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans                           &none  &HRM_left_pinky_ring_v1B_TKZ LALT S  &HRM_left_pinky_middy_v1B_TKZ LGUI D  &HRM_left_pinky_index_v1B_TKZ LSHFT F   &HRM_left_pinky_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans   &HRM_left_pinky_tap_v1B_TKZ Z        &HRM_left_pinky_tap_v1B_TKZ X         &HRM_left_pinky_tap_v1B_TKZ C          &HRM_left_pinky_tap_v1B_TKZ V   &HRM_left_pinky_tap_v1B_TKZ B                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                                                                                                 &trans                                &trans                                 &trans                                                                                          &trans  &trans  &trans
-                                                                                                                                                                                                                      &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &HRM_left_pinky_tap_v1B_TKZ EQUAL  &HRM_left_pinky_tap_v1B_TKZ N1  &HRM_left_pinky_tap_v1B_TKZ N2  &HRM_left_pinky_tap_v1B_TKZ N3  &HRM_left_pinky_tap_v1B_TKZ N4  &HRM_left_pinky_tap_v1B_TKZ N5  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_pinky_tap_v1B_TKZ Q  &HRM_left_pinky_tap_v1B_TKZ W  &HRM_left_pinky_tap_v1B_TKZ E  &HRM_left_pinky_tap_v1B_TKZ R  &HRM_left_pinky_tap_v1B_TKZ T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &none  &HRM_left_pinky_ring_v1B_TKZ LALT S  &HRM_left_pinky_middy_v1B_TKZ LGUI D  &HRM_left_pinky_index_v1B_TKZ LSHFT F  &HRM_left_pinky_tap_v1B_TKZ G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &HRM_left_pinky_tap_v1B_TKZ Z  &HRM_left_pinky_tap_v1B_TKZ X  &HRM_left_pinky_tap_v1B_TKZ C  &HRM_left_pinky_tap_v1B_TKZ V  &HRM_left_pinky_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_LeftRingy {
             bindings = <
- &HRM_left_ring_tap_v1B_TKZ EQUAL         &HRM_left_ring_tap_v1B_TKZ N1  &HRM_left_ring_tap_v1B_TKZ N2        &HRM_left_ring_tap_v1B_TKZ N3         &HRM_left_ring_tap_v1B_TKZ N4  &HRM_left_ring_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                           &trans          &HRM_left_ring_tap_v1B_TKZ Q   &HRM_left_ring_tap_v1B_TKZ W         &HRM_left_ring_tap_v1B_TKZ E          &HRM_left_ring_tap_v1B_TKZ R   &HRM_left_ring_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                           &trans  &HRM_left_ring_pinky_v1B_TKZ LCTRL A                          &none  &HRM_left_ring_middy_v1B_TKZ LGUI D  &HRM_left_ring_index_v1B_TKZ LSHFT F   &HRM_left_ring_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                           &trans          &HRM_left_ring_tap_v1B_TKZ Z   &HRM_left_ring_tap_v1B_TKZ X         &HRM_left_ring_tap_v1B_TKZ C          &HRM_left_ring_tap_v1B_TKZ V   &HRM_left_ring_tap_v1B_TKZ B                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                                                                                                &trans                               &trans                                &trans                                                                                         &trans  &trans  &trans
-                                                                                                                                                                                                                  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &HRM_left_ring_tap_v1B_TKZ EQUAL  &HRM_left_ring_tap_v1B_TKZ N1  &HRM_left_ring_tap_v1B_TKZ N2  &HRM_left_ring_tap_v1B_TKZ N3  &HRM_left_ring_tap_v1B_TKZ N4  &HRM_left_ring_tap_v1B_TKZ N5  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_ring_tap_v1B_TKZ Q  &HRM_left_ring_tap_v1B_TKZ W  &HRM_left_ring_tap_v1B_TKZ E  &HRM_left_ring_tap_v1B_TKZ R  &HRM_left_ring_tap_v1B_TKZ T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_ring_pinky_v1B_TKZ LCTRL A  &none  &HRM_left_ring_middy_v1B_TKZ LGUI D  &HRM_left_ring_index_v1B_TKZ LSHFT F  &HRM_left_ring_tap_v1B_TKZ G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &HRM_left_ring_tap_v1B_TKZ Z  &HRM_left_ring_tap_v1B_TKZ X  &HRM_left_ring_tap_v1B_TKZ C  &HRM_left_ring_tap_v1B_TKZ V  &HRM_left_ring_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_LeftMiddy {
             bindings = <
- &HRM_left_middy_tap_v1B_TKZ EQUAL         &HRM_left_middy_tap_v1B_TKZ N1       &HRM_left_middy_tap_v1B_TKZ N2  &HRM_left_middy_tap_v1B_TKZ N3         &HRM_left_middy_tap_v1B_TKZ N4  &HRM_left_middy_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans          &HRM_left_middy_tap_v1B_TKZ Q        &HRM_left_middy_tap_v1B_TKZ W   &HRM_left_middy_tap_v1B_TKZ E          &HRM_left_middy_tap_v1B_TKZ R   &HRM_left_middy_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans  &HRM_left_middy_pinky_v1B_TKZ LCTRL A  &HRM_left_middy_ring_v1B_TKZ LALT S                           &none  &HRM_left_middy_index_v1B_TKZ LSHFT F   &HRM_left_middy_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans          &HRM_left_middy_tap_v1B_TKZ Z        &HRM_left_middy_tap_v1B_TKZ X   &HRM_left_middy_tap_v1B_TKZ C          &HRM_left_middy_tap_v1B_TKZ V   &HRM_left_middy_tap_v1B_TKZ B                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                                                                                                        &trans                          &trans                                 &trans                                                                                          &trans  &trans  &trans
-                                                                                                                                                                                                                       &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &HRM_left_middy_tap_v1B_TKZ EQUAL  &HRM_left_middy_tap_v1B_TKZ N1  &HRM_left_middy_tap_v1B_TKZ N2  &HRM_left_middy_tap_v1B_TKZ N3  &HRM_left_middy_tap_v1B_TKZ N4  &HRM_left_middy_tap_v1B_TKZ N5  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_middy_tap_v1B_TKZ Q  &HRM_left_middy_tap_v1B_TKZ W  &HRM_left_middy_tap_v1B_TKZ E  &HRM_left_middy_tap_v1B_TKZ R  &HRM_left_middy_tap_v1B_TKZ T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_middy_pinky_v1B_TKZ LCTRL A  &HRM_left_middy_ring_v1B_TKZ LALT S  &none  &HRM_left_middy_index_v1B_TKZ LSHFT F  &HRM_left_middy_tap_v1B_TKZ G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &HRM_left_middy_tap_v1B_TKZ Z  &HRM_left_middy_tap_v1B_TKZ X  &HRM_left_middy_tap_v1B_TKZ C  &HRM_left_middy_tap_v1B_TKZ V  &HRM_left_middy_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_LeftIndex {
             bindings = <
- &HRM_left_index_tap_v1B_TKZ EQUAL         &HRM_left_index_tap_v1B_TKZ N1     &HRM_left_index_tap_v1B_TKZ N2        &HRM_left_index_tap_v1B_TKZ N3  &HRM_left_index_tap_v1B_TKZ N4  &HRM_left_index_tap_v1B_TKZ N5                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans          &HRM_left_index_tap_v1B_TKZ Q      &HRM_left_index_tap_v1B_TKZ W         &HRM_left_index_tap_v1B_TKZ E   &HRM_left_index_tap_v1B_TKZ R   &HRM_left_index_tap_v1B_TKZ T                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                            &trans  &HRM_left_index_pinky_v1B_TKZ LCTRL A  &HRM_left_index_ringv1_TKZ LALT S  &HRM_left_index_middy_v1B_TKZ LGUI D                           &none   &HRM_left_index_tap_v1B_TKZ G                                                  &trans   &kp J   &kp K   &kp L  &kp SEMI  &trans
-                            &trans          &HRM_left_index_tap_v1B_TKZ Z      &HRM_left_index_tap_v1B_TKZ X         &HRM_left_index_tap_v1B_TKZ C   &HRM_left_index_tap_v1B_TKZ V   &HRM_left_index_tap_v1B_TKZ B                                                  &trans  &trans  &trans  &trans    &trans  &trans
-                                                                                                      &trans                                &trans                          &trans                                                                                          &trans  &trans  &trans
-                                                                                                                                                                                                                    &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &HRM_left_index_tap_v1B_TKZ EQUAL  &HRM_left_index_tap_v1B_TKZ N1  &HRM_left_index_tap_v1B_TKZ N2  &HRM_left_index_tap_v1B_TKZ N3  &HRM_left_index_tap_v1B_TKZ N4  &HRM_left_index_tap_v1B_TKZ N5  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_index_tap_v1B_TKZ Q  &HRM_left_index_tap_v1B_TKZ W  &HRM_left_index_tap_v1B_TKZ E  &HRM_left_index_tap_v1B_TKZ R  &HRM_left_index_tap_v1B_TKZ T  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &HRM_left_index_pinky_v1B_TKZ LCTRL A  &HRM_left_index_ringv1_TKZ LALT S  &HRM_left_index_middy_v1B_TKZ LGUI D  &none  &HRM_left_index_tap_v1B_TKZ G  &trans  &kp J  &kp K  &kp L  &kp SEMI  &trans
+   &trans  &HRM_left_index_tap_v1B_TKZ Z  &HRM_left_index_tap_v1B_TKZ X  &HRM_left_index_tap_v1B_TKZ C  &HRM_left_index_tap_v1B_TKZ V  &HRM_left_index_tap_v1B_TKZ B  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_RightPinky {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_pinky_tap_v1B_TKZ N6         &HRM_right_pinky_tap_v1B_TKZ N7        &HRM_right_pinky_tap_v1B_TKZ N8       &HRM_right_pinky_tap_v1B_TKZ N9  &HRM_right_pinky_tap_v1B_TKZ N0  &HRM_right_pinky_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_pinky_tap_v1B_TKZ Y          &HRM_right_pinky_tap_v1B_TKZ U         &HRM_right_pinky_tap_v1B_TKZ I        &HRM_right_pinky_tap_v1B_TKZ O   &HRM_right_pinky_tap_v1B_TKZ P   &HRM_right_pinky_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_pinky_tap_v1B_TKZ H  &HRM_right_pinky_index_v1B_TKZ RSHFT J  &HRM_right_pinky_middy_v1B_TKZ RGUI K  &HRM_right_pinky_ring_v1B_TKZ LALT L                            &none    &HRM_right_pinky_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_pinky_tap_v1B_TKZ N          &HRM_right_pinky_tap_v1B_TKZ M     &HRM_right_pinky_tap_v1B_TKZ COMMA      &HRM_right_pinky_tap_v1B_TKZ DOT                           &trans                              &trans
-                 &trans  &trans  &trans                                                                                                                           &trans                                 &trans                                &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_pinky_tap_v1B_TKZ N6  &HRM_right_pinky_tap_v1B_TKZ N7  &HRM_right_pinky_tap_v1B_TKZ N8  &HRM_right_pinky_tap_v1B_TKZ N9  &HRM_right_pinky_tap_v1B_TKZ N0  &HRM_right_pinky_tap_v1B_TKZ MINUS
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_pinky_tap_v1B_TKZ Y  &HRM_right_pinky_tap_v1B_TKZ U  &HRM_right_pinky_tap_v1B_TKZ I  &HRM_right_pinky_tap_v1B_TKZ O  &HRM_right_pinky_tap_v1B_TKZ P  &HRM_right_pinky_tap_v1B_TKZ BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &HRM_right_pinky_tap_v1B_TKZ H  &HRM_right_pinky_index_v1B_TKZ RSHFT J  &HRM_right_pinky_middy_v1B_TKZ RGUI K  &HRM_right_pinky_ring_v1B_TKZ LALT L  &none  &HRM_right_pinky_tap_v1B_TKZ SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_pinky_tap_v1B_TKZ N  &HRM_right_pinky_tap_v1B_TKZ M  &HRM_right_pinky_tap_v1B_TKZ COMMA  &HRM_right_pinky_tap_v1B_TKZ DOT  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_RightRingy {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_ring_tap_v1B_TKZ N6         &HRM_right_ring_tap_v1B_TKZ N7        &HRM_right_ring_tap_v1B_TKZ N8   &HRM_right_ring_tap_v1B_TKZ N9            &HRM_right_ring_tap_v1B_TKZ N0  &HRM_right_ring_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_ring_tap_v1B_TKZ Y          &HRM_right_ring_tap_v1B_TKZ U         &HRM_right_ring_tap_v1B_TKZ I    &HRM_right_ring_tap_v1B_TKZ O             &HRM_right_ring_tap_v1B_TKZ P   &HRM_right_ring_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_ring_tap_v1B_TKZ H  &HRM_right_ring_index_v1B_TKZ RSHFT J  &HRM_right_ring_middy_v1B_TKZ RGUI K                            &none  &HRM_right_ring_pinky_v1B_TKZ RCTRL SEMI    &HRM_right_ring_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_ring_tap_v1B_TKZ N          &HRM_right_ring_tap_v1B_TKZ M     &HRM_right_ring_tap_v1B_TKZ COMMA  &HRM_right_ring_tap_v1B_TKZ DOT                                    &trans                             &trans
-                 &trans  &trans  &trans                                                                                                                         &trans                                &trans                           &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_ring_tap_v1B_TKZ N6  &HRM_right_ring_tap_v1B_TKZ N7  &HRM_right_ring_tap_v1B_TKZ N8  &HRM_right_ring_tap_v1B_TKZ N9  &HRM_right_ring_tap_v1B_TKZ N0  &HRM_right_ring_tap_v1B_TKZ MINUS
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_ring_tap_v1B_TKZ Y  &HRM_right_ring_tap_v1B_TKZ U  &HRM_right_ring_tap_v1B_TKZ I  &HRM_right_ring_tap_v1B_TKZ O  &HRM_right_ring_tap_v1B_TKZ P  &HRM_right_ring_tap_v1B_TKZ BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &HRM_right_ring_tap_v1B_TKZ H  &HRM_right_ring_index_v1B_TKZ RSHFT J  &HRM_right_ring_middy_v1B_TKZ RGUI K  &none  &HRM_right_ring_pinky_v1B_TKZ RCTRL SEMI  &HRM_right_ring_tap_v1B_TKZ SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_ring_tap_v1B_TKZ N  &HRM_right_ring_tap_v1B_TKZ M  &HRM_right_ring_tap_v1B_TKZ COMMA  &HRM_right_ring_tap_v1B_TKZ DOT  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_RightMiddy {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_middy_tap_v1B_TKZ N6         &HRM_right_middy_tap_v1B_TKZ N7     &HRM_right_middy_tap_v1B_TKZ N8       &HRM_right_middy_tap_v1B_TKZ N9            &HRM_right_middy_tap_v1B_TKZ N0  &HRM_right_middy_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_middy_tap_v1B_TKZ Y          &HRM_right_middy_tap_v1B_TKZ U      &HRM_right_middy_tap_v1B_TKZ I        &HRM_right_middy_tap_v1B_TKZ O             &HRM_right_middy_tap_v1B_TKZ P   &HRM_right_middy_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_middy_tap_v1B_TKZ H  &HRM_right_middy_index_v1B_TKZ RSHFT J                               &none  &HRM_right_middy_ring_v1B_TKZ LALT L  &HRM_right_middy_pinky_v1B_TKZ RCTRL SEMI    &HRM_right_middy_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_middy_tap_v1B_TKZ N          &HRM_right_middy_tap_v1B_TKZ M  &HRM_right_middy_tap_v1B_TKZ COMMA      &HRM_right_middy_tap_v1B_TKZ DOT                                     &trans                              &trans
-                 &trans  &trans  &trans                                                                                                                           &trans                              &trans                                &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_middy_tap_v1B_TKZ N6  &HRM_right_middy_tap_v1B_TKZ N7  &HRM_right_middy_tap_v1B_TKZ N8  &HRM_right_middy_tap_v1B_TKZ N9  &HRM_right_middy_tap_v1B_TKZ N0  &HRM_right_middy_tap_v1B_TKZ MINUS
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_middy_tap_v1B_TKZ Y  &HRM_right_middy_tap_v1B_TKZ U  &HRM_right_middy_tap_v1B_TKZ I  &HRM_right_middy_tap_v1B_TKZ O  &HRM_right_middy_tap_v1B_TKZ P  &HRM_right_middy_tap_v1B_TKZ BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &HRM_right_middy_tap_v1B_TKZ H  &HRM_right_middy_index_v1B_TKZ RSHFT J  &none  &HRM_right_middy_ring_v1B_TKZ LALT L  &HRM_right_middy_pinky_v1B_TKZ RCTRL SEMI  &HRM_right_middy_tap_v1B_TKZ SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_middy_tap_v1B_TKZ N  &HRM_right_middy_tap_v1B_TKZ M  &HRM_right_middy_tap_v1B_TKZ COMMA  &HRM_right_middy_tap_v1B_TKZ DOT  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_RightIndex {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &HRM_right_index_tap_v1B_TKZ N6  &HRM_right_index_tap_v1B_TKZ N7        &HRM_right_index_tap_v1B_TKZ N8       &HRM_right_index_tap_v1B_TKZ N9            &HRM_right_index_tap_v1B_TKZ N0  &HRM_right_index_tap_v1B_TKZ MINUS
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_index_tap_v1B_TKZ Y   &HRM_right_index_tap_v1B_TKZ U         &HRM_right_index_tap_v1B_TKZ I        &HRM_right_index_tap_v1B_TKZ O             &HRM_right_index_tap_v1B_TKZ P   &HRM_right_index_tap_v1B_TKZ BSLH
- &trans   &kp A   &kp S   &kp D   &kp F  &trans                                                   &HRM_right_index_tap_v1B_TKZ H                            &none  &HRM_right_index_middy_v1B_TKZ RGUI K  &HRM_right_index_ring_v1B_TKZ LALT L  &HRM_right_index_pinky_v1B_TKZ RCTRL SEMI    &HRM_right_index_tap_v1B_TKZ SQT
- &trans  &trans  &trans  &trans  &trans  &trans                                                   &HRM_right_index_tap_v1B_TKZ N   &HRM_right_index_tap_v1B_TKZ M     &HRM_right_index_tap_v1B_TKZ COMMA      &HRM_right_index_tap_v1B_TKZ DOT                                     &trans                              &trans
-                 &trans  &trans  &trans                                                                                                                    &trans                                 &trans                                &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_index_tap_v1B_TKZ N6  &HRM_right_index_tap_v1B_TKZ N7  &HRM_right_index_tap_v1B_TKZ N8  &HRM_right_index_tap_v1B_TKZ N9  &HRM_right_index_tap_v1B_TKZ N0  &HRM_right_index_tap_v1B_TKZ MINUS
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_index_tap_v1B_TKZ Y  &HRM_right_index_tap_v1B_TKZ U  &HRM_right_index_tap_v1B_TKZ I  &HRM_right_index_tap_v1B_TKZ O  &HRM_right_index_tap_v1B_TKZ P  &HRM_right_index_tap_v1B_TKZ BSLH
+   &trans  &kp A  &kp S  &kp D  &kp F  &trans  &HRM_right_index_tap_v1B_TKZ H  &none  &HRM_right_index_middy_v1B_TKZ RGUI K  &HRM_right_index_ring_v1B_TKZ LALT L  &HRM_right_index_pinky_v1B_TKZ RCTRL SEMI  &HRM_right_index_tap_v1B_TKZ SQT
+   &trans  &trans  &trans  &trans  &trans  &trans  &HRM_right_index_tap_v1B_TKZ N  &HRM_right_index_tap_v1B_TKZ M  &HRM_right_index_tap_v1B_TKZ COMMA  &HRM_right_index_tap_v1B_TKZ DOT  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Cursor {
             bindings = <
-     &none    &kp ESC                        &kp INS                    &kp LS(TAB)    &kp DEL      &none                                                                                                                     &none        &none      &kp K_APP  &kp PAUSE_BREAK   &kp SLCK      &none
-  &kp CAPS    &kp RET                  &kp LS(LG(Z))                      &kp LG(Z)   &kp BSPC  &kp LG(X)                                                                                                                 &kp LG(X)  &kp LS(TAB)      &kp LG(Z)    &kp LS(LG(Z))    &kp TAB  &kp PSCRN
- &sk LSHFT  &kp LCTRL                       &kp LALT                       &kp LGUI  &kp LSHFT  &kp LG(C)                                                                                                                 &kp LG(C)     &kp LEFT         &kp UP         &kp DOWN  &kp RIGHT  &sk RSHFT
- &kp LG(L)  &kp LG(A)  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &kp LG(F)  &kp LG(V)                                                                                                                 &kp LG(V)     &kp HOME      &kp PG_UP        &kp PG_DN    &kp END  &kp LG(L)
-                                               &none                  &kp LS(LG(G))  &kp LG(G)                                                                                                                                         &kp LG(F)  &kp LS(LG(G))        &kp LG(G)
-                                                                                                            &none   &none   &none  &cur_SELECT_NONE_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ
-            >;
+   &none  &kp ESC  &kp INS  &kp LS(TAB)  &kp DEL  &none  &none  &none  &kp K_APP  &kp PAUSE_BREAK  &kp SLCK  &none
+   &kp CAPS  &kp RET  &kp LS(LG(Z))  &kp LG(Z)  &kp BSPC  &kp LG(X)  &kp LG(X)  &kp LS(TAB)  &kp LG(Z)  &kp LS(LG(Z))  &kp TAB  &kp PSCRN
+   &sk LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &kp LSHFT  &kp LG(C)  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &sk RSHFT
+   &kp LG(L)  &kp LG(A)  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &kp LG(F)  &kp LG(V)  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &kp PSCRN  &kp LG(L)
+   &none  &kp LS(LG(G))  &kp LG(G)  &kp LG(F)  &kp LS(LG(G))  &kp LG(G)
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Keypad {
             bindings = <
-                &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                        &kp F6     &kp F7      &kp F8        &kp F9          &kp F10     &kp F11
-              &kp TAB      &none   &kp HOME     &kp UP    &kp END      &kp PG_UP                                                     &kp KP_N7  &kp KP_N8   &kp KP_N9  &kp KP_MINUS     &kp KP_SLASH     &kp F12
-              &kp ESC      &kp Z   &kp LEFT   &kp DOWN  &kp RIGHT      &kp PG_DN                                                     &kp KP_N4  &kp KP_N5   &kp KP_N6   &kp KP_PLUS  &kp KP_MULTIPLY  &kp KP_NUM
- &magic LAYER_Magic 0  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(V))                                                     &kp KP_N1  &kp KP_N2   &kp KP_N3  &kp KP_ENTER        &kp EQUAL       &to 0
-                                      &none     &trans     &trans                                                                               &kp KP_N0  &kp KP_DOT  &kp KP_ENTER
-                                                                                   &none  &trans  &trans  &trans  &trans  &kp KP_N0
-            >;
+   &none  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11
+   &kp TAB  &none  &kp HOME  &kp UP  &kp END  &kp PG_UP  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp KP_SLASH  &kp F12
+   &kp ESC  &kp Z  &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS  &kp KP_MULTIPLY  &kp KP_NUM
+   &magic LAYER_Magic 0  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LS(LG(V))  &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_ENTER  &kp EQUAL  &to 0
+   &none  &trans  &trans  &kp KP_N0  &kp KP_DOT  &kp KP_ENTER
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Symbol {
             bindings = <
-     &kp GRAVE      &kp COMMA    &kp LS(N9)            &kp LS(N0)       &kp SEMI       &kp DOT                                                                               &none      &none        &none                &none      &none   &none
-    &kp LS(N1)       &kp LBKT  &kp LS(LBKT)          &kp LS(RBKT)       &kp RBKT  &kp LS(FSLH)                                                                           &kp GRAVE    &kp DEL  &kp LS(TAB)              &kp INS    &kp ESC   &none
-    &kp LS(N3)     &kp LS(N6)     &kp EQUAL         &kp LS(MINUS)     &kp LS(N4)    &kp LS(N8)                                                                &kp LS(SINGLE_QUOTE)   &kp BSPC      &kp TAB            &kp SPACE    &kp RET   &none
- &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)             &kp MINUS    &kp LS(DOT)      &kp FSLH                                                                             &kp SQT  &sk LSHFT     &sk LGUI             &sk LALT  &sk LCTRL   &none
-                                    &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)                                                                                                     &kp BSLH   &kp LS(N7)  &symb_dotdot_v1_TKZ
-                                                                                                &kp LS(N5)  &kp LS(SEMI)  &kp LS(N2)   &none   &none   &none
-            >;
+   &kp GRAVE  &kp COMMA  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &none  &none  &none  &none  &none  &none
+   &kp LS(N1)  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &none
+   &kp LS(N3)  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &none
+   &kp LS(GRAVE)  &kp LS(COMMA)  &kp EQUAL  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
+   &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)  &kp BSLH  &kp LS(N7)  &symb_dotdot_v1_TKZ
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Mouse {
             bindings = <
-  &none           &none                &none                &none                &none           &none                                                                                   &none                &none                &none                &none      &none     &none
-  &none           &none       &msc SCRL_LEFT         &mmv MOVE_UP      &msc SCRL_RIGHT           &none                                                                                   &none            &sk RSHFT            &sk RCTRL             &sk RALT   &sk RGUI     &none
-  &none    &msc SCRL_UP       &mmv MOVE_LEFT       &mmv MOVE_DOWN      &mmv MOVE_RIGHT    &msc SCRL_UP                                                                            &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow  &mkp LCLK  &mkp MB4
-  &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN                                                                          &msc SCRL_DOWN       &msc SCRL_LEFT         &mmv MOVE_UP      &msc SCRL_RIGHT  &mkp RCLK  &mkp MB5
-                                   &kp LG(X)            &kp LG(C)            &kp LG(V)                                                                                                               &mmv MOVE_LEFT       &mmv MOVE_DOWN      &mmv MOVE_RIGHT
-                                                                                                        &mkp LCLK  &mkp RCLK  &mkp MB4  &mkp LCLK  &tog LAYER_Mouse  &mkp RCLK
-            >;
+   &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+   &none  &none  &msc SCRL_LEFT  &mmv MOVE_UP  &msc SCRL_RIGHT  &none  &msc SCRL_LEFT  &mkp LCLK  &mkp MCLK  &mkp RCLK  &msc SCRL_RIGHT  &none
+   &none  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP  &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow  &kp K_APP  &mkp MB4
+   &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
+   &kp LG(X)  &kp LG(C)  &kp LG(V)  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_MouseSlow {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-                 &trans  &trans  &trans                                                                  &trans  &trans  &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_MouseFast {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-                 &trans  &trans  &trans                                                                  &trans  &trans  &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_MouseWarp {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans                                                  &trans  &trans  &trans  &trans  &trans  &trans
-                 &trans  &trans  &trans                                                                  &trans  &trans  &trans
-                                                 &trans  &trans  &trans  &trans  &trans  &trans
-            >;
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Magic {
@@ -1709,6 +1710,18 @@
                                     &out OUT_USB            &none  &to LAYER_Typing                                                                                                   &none         &none   &none
                                                                                                        &to 0   &none  &to LAYER_Autoshift   &none   &none   &none
             >;
+        };
+
+        layer_Number {
+            display-name = "NUM";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+   &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
+   &trans  &trans  &none  &none  &kp F11  &kp F12  &none  &none  &none  &none  &none  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
     };

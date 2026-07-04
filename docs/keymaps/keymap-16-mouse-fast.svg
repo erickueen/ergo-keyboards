@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1032" height="807" viewBox="0 0 1032 807" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1032" height="899" viewBox="0 0 1032 899" role="img" aria-labelledby="title desc">
   <title id="title">16 / Mouse Fast shared keymap layer</title>
   <desc id="desc">Fast pointer/scroll scaling overlay.</desc>
   <style>
@@ -11,6 +11,8 @@
     .hold { font: 800 10px Inter, Avenir Next, Segoe UI, sans-serif; text-anchor: middle; dominant-baseline: central; }
     .key { stroke: rgba(202,211,245,.22); stroke-width: 1.4; }
     .ghost-key { fill: transparent; stroke: rgba(202,211,245,.13); stroke-width: 1; stroke-dasharray: 4 7; }
+    .corne-disabled-thumb rect { fill: rgba(138,173,244,.08); stroke: #8aadf4; stroke-width: 1.25; stroke-dasharray: 5 5; }
+    .corne-disabled-thumb text { font: 800 9px Inter, Avenir Next, Segoe UI, sans-serif; fill: #8aadf4; text-anchor: middle; letter-spacing: .15px; opacity: .88; }
     .keyboard-boundary { fill: transparent; stroke-width: 3; opacity: .74; }
     .layer-activator { opacity: .96; filter: drop-shadow(0 1px 2px rgba(24,25,38,.8)); }
     .layer-activator * { stroke: #24273a; stroke-width: 1.15; }
@@ -20,13 +22,27 @@
     .shortcut rect { fill: #181926; stroke: #8bd5ca; stroke-width: 1.2; }
     .shortcut text { font: 800 11px Inter, Avenir Next, Segoe UI, sans-serif; fill: #cad3f5; text-anchor: middle; letter-spacing: .2px; }
   </style>
-  <rect x="0" y="0" width="1032" height="807" rx="28" fill="#24273a"/>
+  <rect x="0" y="0" width="1032" height="899" rx="28" fill="#24273a"/>
   <circle cx="105" cy="42" r="140" fill="#c6a0f6" opacity="0.10"/>
   <circle cx="902" cy="70" r="190" fill="#8aadf4" opacity="0.10"/>
   <text x="60" y="50" class="title">16 / Mouse Fast</text>
   <text x="60" y="78" class="subtitle">Fast pointer/scroll scaling overlay.</text>
-  <rect x="60" y="114" width="14" height="14" rx="3" fill="#363a4f"/>
-<text x="80" y="126" class="legend-text">Transparent</text>
+  <rect x="60" y="114" width="14" height="14" rx="3" fill="#181926"/>
+<text x="80" y="126" class="legend-text">None</text>
+<rect x="122" y="114" width="14" height="14" rx="3" fill="#8bd5ca"/>
+<text x="142" y="126" class="legend-text">Mouse Scroll</text>
+<rect x="240" y="114" width="14" height="14" rx="3" fill="#91d7e3"/>
+<text x="260" y="126" class="legend-text">Mouse Move</text>
+<rect x="344" y="114" width="14" height="14" rx="3" fill="#f5a97f"/>
+<text x="364" y="126" class="legend-text">Mouse Button</text>
+<rect x="462" y="114" width="14" height="14" rx="3" fill="#f5a97f"/>
+<text x="482" y="126" class="legend-text">Layer Switch</text>
+<rect x="580" y="114" width="14" height="14" rx="3" fill="#8aadf4"/>
+<text x="600" y="126" class="legend-text">Navigation</text>
+<rect x="684" y="114" width="14" height="14" rx="3" fill="#ed8796"/>
+<text x="704" y="126" class="legend-text">Macro</text>
+<rect x="753" y="114" width="14" height="14" rx="3" fill="#a6da95"/>
+<text x="773" y="126" class="legend-text">Modifier</text>
   <g transform="translate(60 184)">
     <rect class="ghost-key" x="108" y="0" width="48" height="48" rx="8"/>
     <rect class="ghost-key" x="162" y="0" width="48" height="48" rx="8"/>
@@ -108,200 +124,273 @@
     <rect class="ghost-key" x="756" y="324" width="48" height="48" rx="8"/>
     <rect class="ghost-key" x="810" y="324" width="48" height="48" rx="8"/>
     <rect class="ghost-key" x="864" y="324" width="48" height="48" rx="8"/>
-    <rect class="key" x="108" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="324" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="348" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="594" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="618" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="0" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="25" class="tap transparent">↓</text>
-    <rect class="key" x="54" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="78" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="108" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="324" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="348" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="594" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="618" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="864" y="64.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="888" y="89.8" class="tap transparent">↓</text>
-    <rect class="key" x="54" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="78" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="108" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="324" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="348" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="594" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="618" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="864" y="129.6" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="888" y="154.6" class="tap transparent">↓</text>
-    <rect class="key" x="54" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="78" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="108" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="324" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="348" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="594" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="618" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="864" y="194.4" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="888" y="219.4" class="tap transparent">↓</text>
-    <rect class="key" x="54" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="78" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="324" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="348" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="291.6" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="315.6" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="345.6" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="369.6" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="399.6" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="423.6" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="518.4" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="542.4" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="572.4" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="596.4" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="626.4" y="388.8" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="650.4" y="413.8" class="tap transparent">↓</text>
-    <rect class="key" x="594" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="618" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="864" y="259.2" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="888" y="284.2" class="tap transparent">↓</text>
-    <rect class="key" x="54" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="78" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="108" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="132" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="162" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="186" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="216" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="240" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="270" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="294" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="291.6" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="315.6" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="345.6" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="369.6" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="399.6" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="423.6" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="518.4" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="542.4" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="572.4" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="596.4" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="626.4" y="459" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="650.4" y="484" class="tap transparent">↓</text>
-    <rect class="key" x="648" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="672" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="702" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="726" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="756" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="780" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="810" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="834" y="349" class="tap transparent">↓</text>
-    <rect class="key" x="864" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
-    <text x="888" y="349" class="tap transparent">↓</text>
+    <g class="corne-disabled-thumb" aria-label="Corne disabled thumb key">
+          <rect x="237.60000000000002" y="459" width="48" height="48" rx="8"/>
+          <text x="261.6" y="479">Corne</text>
+          <text x="261.6" y="493">off</text>
+        </g>
+        <g class="corne-disabled-thumb" aria-label="Corne disabled thumb key">
+          <rect x="680.4" y="459" width="48" height="48" rx="8"/>
+          <text x="704.4" y="479">Corne</text>
+          <text x="704.4" y="493">off</text>
+        </g>
+    <rect class="key" x="108" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="162" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="216" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="270" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="324" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="594" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="648" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="702" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="756" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="810" y="0" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="108" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="162" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="216" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="270" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="324" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="594" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="648" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="702" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="756" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="810" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="864" y="64.8" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="129.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="108" y="129.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="162" y="129.6" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="186" cy="149.6" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 198 149.6 L 175 149.6 M 182 142.6 L 175 149.6 L 182 156.6" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="186" y="169.6" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="216" y="129.6" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 240 161.6 L 240 138.6 M 233 145.6 L 240 138.6 L 247 145.6" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="240" y="169.6" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="270" y="129.6" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="294" cy="149.6" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 282 149.6 L 305 149.6 M 298 142.6 L 305 149.6 L 298 156.6" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="294" y="169.6" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="324" y="129.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="594" y="129.6" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="618" cy="149.6" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 630 149.6 L 607 149.6 M 614 142.6 L 607 149.6 L 614 156.6" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="618" y="169.6" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="648" y="129.6" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 662 145.6 C 662 139.6, 666 136.6, 672 136.6 C 678 136.6, 682 139.6, 682 145.6 L 682 160.6 C 682 167.6, 678 171.6, 672 171.6 C 666 171.6, 662 167.6, 662 160.6 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 672 136.6 L 672 151.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 662 150.6 L 682 150.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 663 145.6 C 663 140.6, 667 137.6, 672 137.6 L 672 150.6 L 662 150.6 Z" fill="#24273a" opacity="0.38"/>
+          <path d="M 672 137.6 C 677 137.6, 681 140.6, 681 145.6 L 682 150.6 L 672 150.6 Z" fill="none" opacity="0.38"/>
+          <rect x="670" y="141.6" width="4" height="8" rx="2" fill="none" stroke="#24273a" stroke-width="1"/>
+          <text x="672" y="175.6" class="hold" style="fill:#24273a">L</text>
+        </g>
+    <rect class="key" x="702" y="129.6" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 716 145.6 C 716 139.6, 720 136.6, 726 136.6 C 732 136.6, 736 139.6, 736 145.6 L 736 160.6 C 736 167.6, 732 171.6, 726 171.6 C 720 171.6, 716 167.6, 716 160.6 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 726 136.6 L 726 151.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 716 150.6 L 736 150.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 717 145.6 C 717 140.6, 721 137.6, 726 137.6 L 726 150.6 L 716 150.6 Z" fill="none" opacity="0.38"/>
+          <path d="M 726 137.6 C 731 137.6, 735 140.6, 735 145.6 L 736 150.6 L 726 150.6 Z" fill="none" opacity="0.38"/>
+          <rect x="724" y="141.6" width="4" height="8" rx="2" fill="#24273a" stroke="#24273a" stroke-width="1"/>
+          <text x="726" y="175.6" class="hold" style="fill:#24273a">M</text>
+        </g>
+    <rect class="key" x="756" y="129.6" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 770 145.6 C 770 139.6, 774 136.6, 780 136.6 C 786 136.6, 790 139.6, 790 145.6 L 790 160.6 C 790 167.6, 786 171.6, 780 171.6 C 774 171.6, 770 167.6, 770 160.6 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 780 136.6 L 780 151.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 770 150.6 L 790 150.6" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 771 145.6 C 771 140.6, 775 137.6, 780 137.6 L 780 150.6 L 770 150.6 Z" fill="none" opacity="0.38"/>
+          <path d="M 780 137.6 C 785 137.6, 789 140.6, 789 145.6 L 790 150.6 L 780 150.6 Z" fill="#24273a" opacity="0.38"/>
+          <rect x="778" y="141.6" width="4" height="8" rx="2" fill="none" stroke="#24273a" stroke-width="1"/>
+          <text x="780" y="175.6" class="hold" style="fill:#24273a">R</text>
+        </g>
+    <rect class="key" x="810" y="129.6" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="834" cy="149.6" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 822 149.6 L 845 149.6 M 838 142.6 L 845 149.6 L 838 156.6" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="834" y="169.6" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="864" y="129.6" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="54" y="194.4" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="108" y="194.4" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="132" cy="214.4" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 132 226.4 L 132 203.4 M 125 210.4 L 132 203.4 L 139 210.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="132" y="234.4" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="162" y="194.4" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 198 214.4 L 175 214.4 M 182 207.4 L 175 214.4 L 182 221.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="186" y="234.4" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="216" y="194.4" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 240 202.4 L 240 225.4 M 233 218.4 L 240 225.4 L 247 218.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="240" y="234.4" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="270" y="194.4" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 282 214.4 L 305 214.4 M 298 207.4 L 305 214.4 L 298 221.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="294" y="234.4" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="324" y="194.4" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="348" cy="214.4" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 348 226.4 L 348 203.4 M 341 210.4 L 348 203.4 L 355 210.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="348" y="234.4" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="594" y="194.4" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="618" cy="214.4" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 618 226.4 L 618 203.4 M 611 210.4 L 618 203.4 L 625 210.4" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="618" y="234.4" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="648" y="194.4" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="672" y="212.4" class="tap" style="font-size:10px;fill:#24273a">MFast</text>
+    <text x="672" y="233.4" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="702" y="194.4" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="726" y="212.4" class="tap" style="font-size:10px;fill:#24273a">MWarp</text>
+    <text x="726" y="233.4" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="756" y="194.4" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="780" y="212.4" class="tap" style="font-size:10px;fill:#24273a">MSlow</text>
+    <text x="780" y="233.4" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="810" y="194.4" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="834" y="220.4" class="tap" style="font-size:12px;fill:#24273a">Menu</text>
+    <rect class="key" x="864" y="194.4" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 878 210.4 C 878 204.4, 882 201.4, 888 201.4 C 894 201.4, 898 204.4, 898 210.4 L 898 225.4 C 898 232.4, 894 236.4, 888 236.4 C 882 236.4, 878 232.4, 878 225.4 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 888 201.4 L 888 216.4" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 878 215.4 L 898 215.4" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 879 210.4 C 879 205.4, 883 202.4, 888 202.4 L 888 215.4 L 878 215.4 Z" fill="none" opacity="0.38"/>
+          <path d="M 888 202.4 C 893 202.4, 897 205.4, 897 210.4 L 898 215.4 L 888 215.4 Z" fill="none" opacity="0.38"/>
+          <rect x="886" y="206.4" width="4" height="8" rx="2" fill="none" stroke="#24273a" stroke-width="1"/>
+          <text x="888" y="240.4" class="hold" style="fill:#24273a">B4</text>
+        </g>
+    <rect class="key" x="54" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="132" cy="279.2" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 132 267.2 L 132 290.2 M 125 283.2 L 132 290.2 L 139 283.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="132" y="299.2" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="186" y="277.2" class="tap" style="font-size:10px;fill:#24273a">MSlow</text>
+    <text x="186" y="298.2" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="216" y="259.2" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="240" y="277.2" class="tap" style="font-size:10px;fill:#24273a">MWarp</text>
+    <text x="240" y="298.2" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="270" y="259.2" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="294" y="277.2" class="tap" style="font-size:10px;fill:#24273a">MFast</text>
+    <text x="294" y="298.2" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>
+    <rect class="key" x="324" y="259.2" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="348" cy="279.2" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 348 267.2 L 348 290.2 M 341 283.2 L 348 290.2 L 355 283.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="348" y="299.2" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="291.6" y="388.8" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 305.6 404.8 C 305.6 398.8, 309.6 395.8, 315.6 395.8 C 321.6 395.8, 325.6 398.8, 325.6 404.8 L 325.6 419.8 C 325.6 426.8, 321.6 430.8, 315.6 430.8 C 309.6 430.8, 305.6 426.8, 305.6 419.8 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 315.6 395.8 L 315.6 410.8" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 305.6 409.8 L 325.6 409.8" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 306.6 404.8 C 306.6 399.8, 310.6 396.8, 315.6 396.8 L 315.6 409.8 L 305.6 409.8 Z" fill="none" opacity="0.38"/>
+          <path d="M 315.6 396.8 C 320.6 396.8, 324.6 399.8, 324.6 404.8 L 325.6 409.8 L 315.6 409.8 Z" fill="none" opacity="0.38"/>
+          <rect x="313.6" y="400.8" width="4" height="8" rx="2" fill="#24273a" stroke="#24273a" stroke-width="1"/>
+          <text x="315.6" y="434.8" class="hold" style="fill:#24273a">M</text>
+        </g>
+    <rect class="key" x="345.6" y="388.8" width="48" height="48" rx="8" fill="#8aadf4"/>
+    <text x="369.6" y="414.8" class="tap" style="font-size:12px;fill:#24273a">Menu</text>
+    <rect class="key" x="399.6" y="388.8" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 413.6 404.8 C 413.6 398.8, 417.6 395.8, 423.6 395.8 C 429.6 395.8, 433.6 398.8, 433.6 404.8 L 433.6 419.8 C 433.6 426.8, 429.6 430.8, 423.6 430.8 C 417.6 430.8, 413.6 426.8, 413.6 419.8 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 423.6 395.8 L 423.6 410.8" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 413.6 409.8 L 433.6 409.8" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 414.6 404.8 C 414.6 399.8, 418.6 396.8, 423.6 396.8 L 423.6 409.8 L 413.6 409.8 Z" fill="none" opacity="0.38"/>
+          <path d="M 423.6 396.8 C 428.6 396.8, 432.6 399.8, 432.6 404.8 L 433.6 409.8 L 423.6 409.8 Z" fill="none" opacity="0.38"/>
+          <rect x="421.6" y="400.8" width="4" height="8" rx="2" fill="none" stroke="#24273a" stroke-width="1"/>
+          <text x="423.6" y="434.8" class="hold" style="fill:#24273a">B5</text>
+        </g>
+    <rect class="key" x="518.4" y="388.8" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="542.4" y="414.8" class="tap" style="font-size:17px;fill:#24273a">⌘X</text>
+    <rect class="key" x="572.4" y="388.8" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="596.4" y="414.8" class="tap" style="font-size:17px;fill:#24273a">⌘C</text>
+    <rect class="key" x="626.4" y="388.8" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="650.4" y="414.8" class="tap" style="font-size:17px;fill:#24273a">⌘V</text>
+    <rect class="key" x="594" y="259.2" width="48" height="48" rx="8" fill="#8bd5ca"/>
+    <circle cx="618" cy="279.2" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 618 267.2 L 618 290.2 M 611 283.2 L 618 290.2 L 625 283.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="618" y="299.2" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="648" y="259.2" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 684 279.2 L 661 279.2 M 668 272.2 L 661 279.2 L 668 286.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="672" y="299.2" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="702" y="259.2" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 726 291.2 L 726 268.2 M 719 275.2 L 726 268.2 L 733 275.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="726" y="299.2" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="756" y="259.2" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 780 267.2 L 780 290.2 M 773 283.2 L 780 290.2 L 787 283.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="780" y="299.2" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="810" y="259.2" width="48" height="48" rx="8" fill="#91d7e3"/>
+    <path d="M 822 279.2 L 845 279.2 M 838 272.2 L 845 279.2 L 838 286.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="834" y="299.2" class="hold" style="fill:#24273a">Move</text>
+    <rect class="key" x="864" y="259.2" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <g>
+          <path d="M 878 275.2 C 878 269.2, 882 266.2, 888 266.2 C 894 266.2, 898 269.2, 898 275.2 L 898 290.2 C 898 297.2, 894 301.2, 888 301.2 C 882 301.2, 878 297.2, 878 290.2 Z" fill="none" stroke="#24273a" stroke-width="2"/>
+          <path d="M 888 266.2 L 888 281.2" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 878 280.2 L 898 280.2" stroke="#24273a" stroke-width="1.4" opacity="0.7"/>
+          <path d="M 879 275.2 C 879 270.2, 883 267.2, 888 267.2 L 888 280.2 L 878 280.2 Z" fill="none" opacity="0.38"/>
+          <path d="M 888 267.2 C 893 267.2, 897 270.2, 897 275.2 L 898 280.2 L 888 280.2 Z" fill="none" opacity="0.38"/>
+          <rect x="886" y="271.2" width="4" height="8" rx="2" fill="none" stroke="#24273a" stroke-width="1"/>
+          <text x="888" y="305.2" class="hold" style="fill:#24273a">B5</text>
+        </g>
+    <rect class="key" x="54" y="324" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="108" y="324" width="48" height="48" rx="8" fill="#181926"/>
+    <rect class="key" x="162" y="324" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="186" y="350" class="tap" style="font-size:17px;fill:#24273a">⌘X</text>
+    <rect class="key" x="216" y="324" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="240" y="350" class="tap" style="font-size:17px;fill:#24273a">⌘C</text>
+    <rect class="key" x="270" y="324" width="48" height="48" rx="8" fill="#ed8796"/>
+    <text x="294" y="350" class="tap" style="font-size:17px;fill:#24273a">⌘V</text>
+    <rect class="key" x="291.6" y="459" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="315.6" y="477" class="tap" style="font-size:12px;fill:#24273a">BSPC</text>
+    <text x="315.6" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Cursor</text>
+    <rect class="key" x="345.6" y="459" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="369.6" y="477" class="tap" style="font-size:12px;fill:#24273a">TAB</text>
+    <text x="369.6" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Keypad</text>
+    <rect class="key" x="399.6" y="459" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="423.6" y="477" class="tap" style="font-size:12px;fill:#24273a">Alt</text>
+    <rect class="key" x="518.4" y="459" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="542.4" y="477" class="tap" style="font-size:12px;fill:#24273a">RAlt</text>
+    <rect class="key" x="572.4" y="459" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="596.4" y="477" class="tap" style="font-size:12px;fill:#24273a">ESC</text>
+    <text x="596.4" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Number</text>
+    <rect class="key" x="626.4" y="459" width="48" height="48" rx="8" fill="#f5a97f"/>
+    <text x="650.4" y="477" class="tap" style="font-size:12px;fill:#24273a">SPC</text>
+    <text x="650.4" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Symbol</text>
+    <rect class="key" x="648" y="324" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="672" y="350" class="tap" style="font-size:10px;fill:#24273a">Shift</text>
+    <rect class="key" x="702" y="324" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="726" y="350" class="tap" style="font-size:12px;fill:#24273a">Ctrl</text>
+    <rect class="key" x="756" y="324" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="780" y="350" class="tap" style="font-size:12px;fill:#24273a">RAlt</text>
+    <rect class="key" x="810" y="324" width="48" height="48" rx="8" fill="#a6da95"/>
+    <text x="834" y="350" class="tap" style="font-size:12px;fill:#24273a">Gui</text>
+    <rect class="key" x="864" y="324" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="keyboard-boundary" x="98" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
     <rect class="keyboard-boundary" x="584" y="119.6" width="284" height="197.6" rx="18" style="stroke:#8bd5ca"/>
-    <rect class="keyboard-boundary" x="335.6" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
-    <rect class="keyboard-boundary" x="508.4" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
+    <rect class="keyboard-boundary" x="562.4" y="449" width="122" height="68" rx="18" style="stroke:#8bd5ca"/>
     <rect class="keyboard-boundary" x="44" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
     <rect class="keyboard-boundary" x="584" y="119.6" width="338" height="197.6" rx="18" style="stroke:#8aadf4"/>
-    <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
-    <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="281.6" y="449" width="122" height="68" rx="18" style="stroke:#8aadf4"/>
+    <rect class="keyboard-boundary" x="562.4" y="449" width="122" height="68" rx="18" style="stroke:#8aadf4"/>
     <rect class="keyboard-boundary" x="44" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="584" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
-    <g class="layer-activator" aria-label="GO60 activation key" transform="translate(667.5 219.4)">
+    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(658.5 219.4)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
+        </g>
+        <g class="layer-activator" aria-label="Corne activation key" transform="translate(667.5 219.4)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(676.5 219.4)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
         </g>
-        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(676.5 219.4)">
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(685.5 219.4)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
         </g>
-        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(289.5 284.2)">
+        <g class="layer-activator" aria-label="Urchin activation key" transform="translate(280.5 284.2)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
+        </g>
+        <g class="layer-activator" aria-label="Corne activation key" transform="translate(289.5 284.2)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(298.5 284.2)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
         </g>
-        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(298.5 284.2)">
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(307.5 284.2)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
@@ -310,9 +399,20 @@
         </g>
   </g>
   
+  <g class="mouse-layer-guide">
+    <rect x="60" y="759" width="912" height="76" rx="18" fill="#363a4f" stroke="#8bd5ca" stroke-width="1.4" opacity="0.96"/>
+    <rect x="88" y="795" width="8" height="8" rx="3" fill="#8bd5ca"/>
+    <rect x="100" y="790" width="8" height="13" rx="3" fill="#8bd5ca"/>
+    <rect x="112" y="785" width="8" height="18" rx="3" fill="#8bd5ca"/>
+    <rect x="124" y="780" width="8" height="23" rx="3" fill="#494d64"/>
+    <rect x="136" y="775" width="8" height="28" rx="3" fill="#494d64"/>
+    <text x="164" y="791" class="legend-text">Fast pointer overlay · FAST</text>
+    <text x="164" y="813" class="subtitle">Transparent key layer; input processors increase pointer and scroll speed while active.</text>
+    <path d="M 886 777 L 924 805 L 906 809 L 915 827 L 904 831 L 895 813 L 880 825 Z" fill="#f5a97f" opacity="0.88"/>
+  </g>
   
-  <line x1="60" y1="759" x2="92" y2="759" class="outline-legend-line" style="stroke:#8bd5ca"/><text x="102" y="763" class="legend-text">Urchin</text>
-  <line x1="190" y1="759" x2="222" y2="759" class="outline-legend-line" style="stroke:#8aadf4"/><text x="232" y="763" class="legend-text">Corne</text>
-  <line x1="320" y1="759" x2="352" y2="759" class="outline-legend-line" style="stroke:#f5a97f"/><text x="362" y="763" class="legend-text">GO60</text>
-  <text x="60" y="787" class="subtitle">Keys are rendered once from the shared layer; colored margins show which physical region exists on each smaller keyboard. Glove80 is the full superset.</text>
+  <line x1="60" y1="851" x2="92" y2="851" class="outline-legend-line" style="stroke:#8bd5ca"/><text x="102" y="855" class="legend-text">Urchin</text>
+  <line x1="190" y1="851" x2="222" y2="851" class="outline-legend-line" style="stroke:#8aadf4"/><text x="232" y="855" class="legend-text">Corne</text>
+  <line x1="320" y1="851" x2="352" y2="851" class="outline-legend-line" style="stroke:#f5a97f"/><text x="362" y="855" class="legend-text">GO60</text>
+  <text x="60" y="879" class="subtitle">Keys are rendered once from the shared layer; colored margins show which physical region exists on each smaller keyboard. Glove80 is the full superset.</text>
 </svg>
