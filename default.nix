@@ -52,6 +52,17 @@ let
     node tools/verify-urchin-parity.mjs
   '';
 
+  keymaps = pkgs.runCommand "ergo-keyboards-keymaps" {
+    nativeBuildInputs = [ pkgs.nodejs ];
+  } ''
+    cp -R ${repoSource} source
+    chmod -R u+w source
+    cd source
+    node tools/generate-keymaps.mjs --all
+    mkdir -p $out
+    cp -R keymap/generated/. $out/
+  '';
+
   keymapSvgs = pkgs.runCommand "ergo-keyboards-keymap-svgs" {
     nativeBuildInputs = [ pkgs.nodejs ];
   } ''
@@ -154,11 +165,12 @@ let
   ci = pkgs.runCommand "ergo-keyboards-ci" {} ''
     mkdir -p $out
     cp -R ${checks} $out/checks
+    cp -R ${keymaps} $out/keymaps
     cp -R ${keymapSvgs} $out/keymap-svgs
     cp -R ${firmwareBundle} $out/firmware
   '';
 in {
   inherit go60 go60_left go60_right glove80 glove80_left glove80_right corne_left corne_right urchin_left urchin_right settings_reset;
-  inherit keymapsCheck keymapSvgsCheck parityCheck keymapSvgs checks ci;
+  inherit keymapsCheck keymapSvgsCheck parityCheck keymaps keymapSvgs checks ci;
   all = firmwareBundle;
 }

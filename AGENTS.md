@@ -41,7 +41,7 @@ This repo is a ZMK keyboard firmware monorepo for Urchin, Corne, GO60, and Glove
 - `tools/verify-urchin-parity.mjs`: enforces shared Urchin behavior parity and thumb access rules.
 - `tools/generate-keymaps.mjs`: regenerates checked-in mirror keymaps under `keymap/generated/`.
 - `tools/generate-keymap-svgs.mjs`: regenerates layer-centric SVG docs under `docs/keymaps/`.
-- `default.nix`: legacy Nix entry point for checks, firmware, SVG generation, and CI bundle.
+- `default.nix`: legacy Nix entry point for checks, generated keymaps, SVG generation, firmware, and CI bundle.
 - `.github/workflows/build.yml`: CI workflow for Nix checks, firmware artifacts, and SVG regeneration PRs.
 
 ## Common Workflows
@@ -50,16 +50,16 @@ After editing canonical keymap behavior, usually run:
 
 ```bash
 node tools/sync-urchin-parity.mjs
-node tools/generate-keymaps.mjs --all
-node tools/generate-keymap-svgs.mjs --all
+nix-build -A keymaps -o generated-keymaps
+cp -R generated-keymaps/. keymap/generated/
+nix-build -A keymapSvgs -o generated-keymap-svgs
+cp -R generated-keymap-svgs/. docs/keymaps/
 ```
 
 For fast local validation, run:
 
 ```bash
-node tools/verify-urchin-parity.mjs
-node tools/generate-keymaps.mjs --all --check
-node tools/generate-keymap-svgs.mjs --all --check
+nix-build -A checks -o checks
 ```
 
 For the standard Nix validation gate, run:
@@ -83,7 +83,7 @@ nix-build -A ci -o ci-build
 Clean local Nix result symlinks after validation when they are not intentionally needed:
 
 ```bash
-rm -f checks generated-keymaps ci-build firmware-glove80 result
+rm -f checks generated-keymaps generated-keymap-svgs keymaps-check keymap-svgs-check ci-build firmware-glove80 result
 ```
 
 ## SVG Documentation Rules
@@ -98,7 +98,7 @@ rm -f checks generated-keymaps ci-build firmware-glove80 result
 
 ## CI Behavior
 
-- CI runs `nix-build -A keymapSvgs -o generated-keymaps`.
+- CI runs `nix-build -A keymapSvgs -o generated-keymap-svgs`.
 - CI runs `nix-build -A ci -o ci-build`.
 - CI configures the upstream MoErgo Cachix cache as read-only for dependency acceleration. Do not add project-owned Cachix push steps unless the user explicitly asks for external Nix binary caching.
 - CI uploads firmware artifacts as separate downloadable ZIP artifacts: `firmware-go60`, `firmware-glove80`, `firmware-corne`, `firmware-urchin`, `firmware-settings-reset`, and combined `firmware-all`.

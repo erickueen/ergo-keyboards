@@ -11,11 +11,12 @@ The current migration preserves each keyboard's existing keymap first. Shared-ke
 
 ## Generate Keymaps
 
-The initial generator mirrors the copied source keymaps into `keymap/generated/` so CI can detect drift while the inheritance model is introduced.
+The generator mirrors the source keymaps into `keymap/generated/` so CI can detect drift while the inheritance model is introduced. Nix supplies the Node runtime used by the generator.
 
 ```bash
-node tools/generate-keymaps.mjs --all
-node tools/generate-keymaps.mjs --all --check
+nix-build -A keymaps -o generated-keymaps
+cp -R generated-keymaps/. keymap/generated/
+nix-build -A keymapsCheck -o keymaps-check
 ```
 
 ## Generate SVGs
@@ -23,16 +24,16 @@ node tools/generate-keymaps.mjs --all --check
 SVGs render one shared keymap layer on the superset layout. Colored margins show the physical regions used by Urchin, Corne, and GO60; Glove80 is the full superset.
 
 ```bash
-node tools/generate-keymap-svgs.mjs --all
-node tools/generate-keymap-svgs.mjs --all --check
-nix-build -A keymapSvgs -o generated-keymaps
+nix-build -A keymapSvgs -o generated-keymap-svgs
+cp -R generated-keymap-svgs/. docs/keymaps/
+nix-build -A keymapSvgsCheck -o keymap-svgs-check
 ```
 
-Generated diagrams are written directly under `docs/keymaps/`, one file per logical layer.
+Committed diagrams live under `docs/keymaps/`, one file per logical layer.
 
 ## Keymap Diagrams
 
-The generated SVG diagrams are checked in as documentation for the keyboard family. Regenerate them with `node tools/generate-keymap-svgs.mjs --all` after changing keymaps or layout geometry.
+The generated SVG diagrams are checked in as documentation for the keyboard family. Regenerate them with `nix-build -A keymapSvgs -o generated-keymap-svgs` after changing keymaps or layout geometry, then copy the output into `docs/keymaps/`.
 
 HRM helper layers such as pinky, ring, middle, and index are generated under `docs/keymaps/` but omitted here because they add noise to the overview.
 
@@ -93,6 +94,8 @@ HRM helper layers such as pinky, ring, middle, and index are generated under `do
 This repo uses legacy `nix-build`, matching MoErgo's current build style.
 
 ```bash
+nix-build -A keymaps -o generated-keymaps
+nix-build -A keymapSvgs -o generated-keymap-svgs
 nix-build -A checks -o checks
 nix-build -A go60
 nix-build -A glove80
@@ -106,7 +109,7 @@ nix-build -A ci -o ci-build
 
 `default.nix` uses `./src` when present for the MoErgo ZMK source, matching CI. If `./src` is missing, it fetches `moergo-sc/zmk` from `main`.
 
-`nix-build -A checks -o checks` runs generated keymap checks, generated SVG checks, and Urchin parity verification. `nix-build -A ci -o ci-build` runs the checks, regenerates SVGs in a Nix output, and builds the firmware bundle.
+`nix-build -A checks -o checks` runs generated keymap checks, generated SVG checks, and Urchin parity verification. `nix-build -A ci -o ci-build` runs the checks, regenerates keymap mirrors and SVGs in Nix outputs, and builds the firmware bundle.
 
 CI uses the upstream MoErgo Cachix cache read-only for dependency acceleration. Firmware downloads are published through GitHub Actions artifacts and the GitHub `latest` release.
 

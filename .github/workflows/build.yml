@@ -34,11 +34,11 @@ jobs:
           skipPush: true
 
       - name: Generate keymap SVGs with Nix
-        run: nix-build -A keymapSvgs -o generated-keymaps
+        run: nix-build -A keymapSvgs -o generated-keymap-svgs
 
       - name: Refresh committed SVGs for auto-PR
         if: github.event_name != 'pull_request'
-        run: cp -R generated-keymaps/. docs/keymaps/
+        run: cp -R generated-keymap-svgs/. docs/keymaps/
 
       - name: Build CI bundle
         run: nix-build -A ci -o ci-build
