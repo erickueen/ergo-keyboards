@@ -124,115 +124,55 @@ static struct led_rgb scale_rgb_brightness(struct led_rgb color, uint8_t pct) {
 
 static struct rgb_underglow_state state;
 
+struct position_led_map {
+    uint32_t position;
+    uint8_t led;
+};
+
+/* Left half: Z. Right half: /. */
+#define USB_STATUS_LED 21
+
 #if CORNE_IS_LEFT_HALF
-static const uint8_t status_meter_positions[] = {1, 2, 3, 4, 5, 13, 14, 15, 16, 17};
-static const uint8_t usb_status_position = 25;
+static const uint8_t status_meter_leds[] = {23, 18, 17, 10, 9, 22, 19, 16, 11, 8};
 #if IS_ENABLED(CONFIG_ZMK_BLE) && IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
-static const uint8_t bt_status_positions[] = {26, 27, 28, 29};
+static const uint8_t bt_status_leds[] = {20, 15, 12, 7}; /* X C V B */
 #endif
+
+static const struct position_led_map position_leds[] = {
+    {38, 6},  {29, 7},  {17, 8},  {5, 9},  {4, 10}, {16, 11}, {28, 12},
+    {37, 13}, {36, 14}, {27, 15}, {15, 16}, {3, 17}, {2, 18},  {14, 19},
+    {26, 20}, {25, 21}, {13, 22}, {1, 23},  {0, 24}, {12, 25}, {24, 26},
+};
 #elif CORNE_IS_RIGHT_HALF
-static const uint8_t status_meter_positions[] = {6, 7, 8, 9, 10, 18, 19, 20, 21, 22};
-static const uint8_t usb_status_position = 34;
+static const uint8_t status_meter_leds[] = {9, 10, 17, 18, 23, 8, 11, 16, 19, 22};
 #if IS_ENABLED(CONFIG_ZMK_BLE) && IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
-static const uint8_t bt_status_positions[] = {33, 32, 31, 30};
+static const uint8_t bt_status_leds[] = {20, 15, 12, 7}; /* . , M N */
+#endif
+
+static const struct position_led_map position_leds[] = {
+    {39, 6},  {30, 7},  {18, 8},  {6, 9},  {7, 10}, {19, 11}, {31, 12},
+    {40, 13}, {41, 14}, {32, 15}, {20, 16}, {8, 17}, {9, 18},  {21, 19},
+    {33, 20}, {34, 21}, {22, 22}, {10, 23}, {11, 24}, {23, 25}, {35, 26},
+};
+#endif
+
+#if CORNE_IS_LEFT_HALF || CORNE_IS_RIGHT_HALF
+BUILD_ASSERT(ARRAY_SIZE(status_meter_leds) == 10, "Corne status meter must have 10 LEDs");
+BUILD_ASSERT(USB_STATUS_LED < STRIP_NUM_PIXELS, "Corne USB status LED outside strip");
+#if IS_ENABLED(CONFIG_ZMK_BLE) && IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+BUILD_ASSERT(ARRAY_SIZE(bt_status_leds) == 4, "Corne BT status must have 4 LEDs");
 #endif
 #endif
 
 static int position_to_led_index(uint32_t position) {
-#if CORNE_IS_LEFT_HALF
-    switch (position) {
-    case 38:
-        return 6;
-    case 29:
-        return 7;
-    case 17:
-        return 8;
-    case 5:
-        return 9;
-    case 4:
-        return 10;
-    case 16:
-        return 11;
-    case 28:
-        return 12;
-    case 37:
-        return 13;
-    case 36:
-        return 14;
-    case 27:
-        return 15;
-    case 15:
-        return 16;
-    case 3:
-        return 17;
-    case 2:
-        return 18;
-    case 14:
-        return 19;
-    case 26:
-        return 20;
-    case 25:
-        return 21;
-    case 13:
-        return 22;
-    case 1:
-        return 23;
-    case 0:
-        return 24;
-    case 12:
-        return 25;
-    case 24:
-        return 26;
-    default:
-        return NO_LED_INDEX;
+#if CORNE_IS_LEFT_HALF || CORNE_IS_RIGHT_HALF
+    for (int i = 0; i < ARRAY_SIZE(position_leds); i++) {
+        if (position_leds[i].position == position) {
+            return position_leds[i].led;
+        }
     }
-#elif CORNE_IS_RIGHT_HALF
-    switch (position) {
-    case 39:
-        return 6;
-    case 30:
-        return 7;
-    case 18:
-        return 8;
-    case 6:
-        return 9;
-    case 7:
-        return 10;
-    case 19:
-        return 11;
-    case 31:
-        return 12;
-    case 40:
-        return 13;
-    case 41:
-        return 14;
-    case 32:
-        return 15;
-    case 20:
-        return 16;
-    case 8:
-        return 17;
-    case 9:
-        return 18;
-    case 21:
-        return 19;
-    case 33:
-        return 20;
-    case 34:
-        return 21;
-    case 22:
-        return 22;
-    case 10:
-        return 23;
-    case 11:
-        return 24;
-    case 23:
-        return 25;
-    case 35:
-        return 26;
-    default:
-        return NO_LED_INDEX;
-    }
+
+    return NO_LED_INDEX;
 #else
     ARG_UNUSED(position);
     return NO_LED_INDEX;
@@ -272,7 +212,7 @@ static void apply_status_overlay(int64_t now) {
 #endif
 
     for (int i = 0; i < 10; i++) {
-        int led = position_to_led_index(status_meter_positions[i]);
+        int led = status_meter_leds[i];
         if (led < 0 || led >= STRIP_NUM_PIXELS) {
             continue;
         }
@@ -290,8 +230,8 @@ static void apply_status_overlay(int64_t now) {
     int active_profile = ble_preferred ? preferred_endpoint.ble.profile_index : -1;
     int profile_count = ZMK_BLE_PROFILE_COUNT;
 
-    for (int i = 0; i < ARRAY_SIZE(bt_status_positions); i++) {
-        int led = position_to_led_index(bt_status_positions[i]);
+    for (int i = 0; i < ARRAY_SIZE(bt_status_leds); i++) {
+        int led = bt_status_leds[i];
         if (led < 0 || led >= STRIP_NUM_PIXELS) {
             continue;
         }
@@ -312,7 +252,7 @@ static void apply_status_overlay(int64_t now) {
     }
 #endif
 
-    int usb_led = position_to_led_index(usb_status_position);
+    int usb_led = USB_STATUS_LED;
     if (usb_led >= 0 && usb_led < STRIP_NUM_PIXELS) {
         if (zmk_usb_is_powered()) {
             pixels[usb_led] = scale_rgb_brightness(catppuccin_blue, MAGIC_LAYER_BRIGHTNESS_PCT);

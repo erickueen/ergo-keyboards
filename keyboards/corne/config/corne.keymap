@@ -81,6 +81,13 @@
 
 /* ── System behaviors ── */
 
+/* MoErgo's nice_nano_v2 Corne overlay defaults this strip to 10 LEDs. This Corne has
+ * 27 LEDs per half, and keymap overlays are applied last in the current Nix build.
+ */
+&led_strip {
+    chain-length = <27>;
+};
+
 &mmv_input_listener {
     layer_MouseSlow {
         layers = <LAYER_MouseSlow>;
