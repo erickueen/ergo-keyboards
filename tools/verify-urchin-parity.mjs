@@ -84,6 +84,32 @@ const EXTRA_THUMB_KEYS = {
     [72, '&kp RALT'],
   ],
 };
+const LAYER_THUMB_OVERRIDES = {
+  Symbol: {
+    Urchin: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    Corne: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    GO60: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Glove80: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+  },
+  Cursor: {
+    Urchin: [[72, '&kp RET']],
+    Corne: [[72, '&kp RET']],
+    GO60: [[73, '&kp RET']],
+    Glove80: [[73, '&kp RET']],
+  },
+  Number: {
+    Urchin: [[73, '&space LAYER_Mouse SPACE']],
+    Corne: [[73, '&space LAYER_Mouse SPACE']],
+    GO60: [[74, '&space LAYER_Mouse SPACE']],
+    Glove80: [[74, '&space LAYER_Mouse SPACE']],
+  },
+};
+
+function thumbAccessForLayer(keyboard, layerName) {
+  const access = new Map(CANONICAL_THUMB_ACCESS[keyboard]);
+  for (const [sharedPosition, binding] of LAYER_THUMB_OVERRIDES[layerName]?.[keyboard] ?? []) access.set(sharedPosition, binding);
+  return [...access.entries()];
+}
 
 function readLayers(name) {
   const source = fs.readFileSync(path.join(root, KEYBOARDS[name]), 'utf8');
@@ -169,7 +195,7 @@ function verifyCanonicalThumbAccess(allLayers) {
     for (const [layer, bindings] of layers) {
       if (layer === 'Magic') continue;
       const mapped = byShared(keyboard, bindings);
-      for (const [sharedPosition, expectedBinding] of [...CANONICAL_THUMB_ACCESS[keyboard], ...(EXTRA_THUMB_KEYS[keyboard] ?? [])]) {
+      for (const [sharedPosition, expectedBinding] of [...thumbAccessForLayer(keyboard, layer), ...(EXTRA_THUMB_KEYS[keyboard] ?? [])]) {
         const actual = canonical(mapped.get(sharedPosition));
         const expected = canonical(expectedBinding);
         if (actual !== expected) failures.push(`${keyboard} ${layer} shared ${sharedPosition}: expected canonical thumb access "${expected}", got "${actual}"`);

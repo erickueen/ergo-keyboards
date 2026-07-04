@@ -9,6 +9,9 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  FIRMWARE_RELEASE_TAG: latest
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,6 +43,17 @@ jobs:
       - name: Build CI bundle
         run: nix-build -A ci -o ci-build
 
+      - name: Package firmware release ZIPs
+        run: |
+          RELEASE_DIR="$PWD/release"
+          mkdir -p "$RELEASE_DIR"
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-go60.zip" go60.uf2)
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-glove80.zip" glove80.uf2)
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-corne.zip" corne_left.uf2 corne_right.uf2)
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-urchin.zip" urchin_left.uf2 urchin_right.uf2)
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-settings-reset.zip" settings_reset.uf2)
+          (cd ci-build/firmware && zip -q "$RELEASE_DIR/firmware-all.zip" ./*.uf2)
+
       - name: Create SVG regeneration PR
         if: github.event_name != 'pull_request'
         uses: peter-evans/create-pull-request@v6
@@ -51,6 +65,20 @@ jobs:
           branch: ci/regenerate-keymap-svgs
           delete-branch: true
           add-paths: docs/keymaps/*.svg
+
+      - name: Publish latest firmware release
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git tag -f "$FIRMWARE_RELEASE_TAG" "$GITHUB_SHA"
+          git push --force origin "refs/tags/$FIRMWARE_RELEASE_TAG"
+          if gh release view "$FIRMWARE_RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$FIRMWARE_RELEASE_TAG" release/*.zip --clobber
+            gh release edit "$FIRMWARE_RELEASE_TAG" --title "Latest firmware" --notes "Latest firmware build from $GITHUB_SHA."
+          else
+            gh release create "$FIRMWARE_RELEASE_TAG" release/*.zip --title "Latest firmware" --notes "Latest firmware build from $GITHUB_SHA."
+          fi
 
       - name: Upload all firmware artifacts
         uses: actions/upload-artifact@v4

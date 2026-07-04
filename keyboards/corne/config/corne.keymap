@@ -863,7 +863,7 @@
    &kp CAPS  &kp RET  &kp LS(LG(Z))  &kp LG(Z)  &kp BSPC  &kp LG(X)  &kp LG(X)  &kp LS(TAB)  &kp LG(Z)  &kp LS(LG(Z))  &kp TAB  &kp PSCRN
    &sk LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &kp LSHFT  &kp LG(C)  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &sk RSHFT
    &kp LG(L)  &kp LG(A)  &cur_SELECT_LINE  &cur_SELECT_WORD  &kp LG(F)  &kp LG(V)  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &kp PSCRN  &kp LG(L)
-   &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &cur_EXTEND_WORD
+   &none  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &kp RET  &space LAYER_Symbol SPACE  &cur_EXTEND_WORD
 >;
         };
 
@@ -883,7 +883,7 @@
    &kp COMMA  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &kp FSLH
    &spanish_acute  &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &kp LA(E)
    &none  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
-   &kp LS(N5)  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &none
+   &kp LS(N5)  &kp GLOBE  &kp LS(N2)  &none  &none  &none
 >;
         };
 
@@ -903,7 +903,7 @@
    &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
    &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
    &trans  &none  &none  &none  &kp F11  &kp F12  &none  &none  &none  &none  &none  &trans
-   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Mouse SPACE  &trans
 >;
         };
 

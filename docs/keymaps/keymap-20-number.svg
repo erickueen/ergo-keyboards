@@ -273,7 +273,7 @@
     <text x="596.4" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Number</text>
     <rect class="key" x="626.4" y="459" width="48" height="48" rx="8" fill="#f5a97f"/>
     <text x="650.4" y="477" class="tap" style="font-size:12px;fill:#24273a">SPC</text>
-    <text x="650.4" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Symbol</text>
+    <text x="650.4" y="498" class="hold" style="fill:rgba(36,39,58,0.70)">Mouse</text>
     <rect class="key" x="648" y="324" width="48" height="48" rx="8" fill="#363a4f"/>
     <text x="672" y="349" class="tap transparent">↓</text>
     <rect class="key" x="702" y="324" width="48" height="48" rx="8" fill="#363a4f"/>

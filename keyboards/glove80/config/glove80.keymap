@@ -1508,7 +1508,7 @@
    &none  &kp RET  &kp LS(LG(Z))  &kp LG(Z)  &kp BSPC  &kp LG(X)  &kp LG(X)  &kp LS(TAB)  &kp LG(Z)  &kp LS(LG(Z))  &kp TAB  &none
    &sk LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &kp LSHFT  &kp LG(C)  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &none  &sk RSHFT
    &kp LG(L)  &kp LG(A)  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &kp LG(F)  &kp LG(V)  &none  &none  &none  &cur_SELECT_NONE_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &kp PSCRN  &kp LG(L)
-   &kp LG(K)  &kp LG(Z)  &kp LG(LS(Z))  &kp LG(LS(G))  &kp LG(G)  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE  &kp LG(F)  &kp LG(LS(G))  &kp LG(G)  &kp LC(H)  &kp LG(K)
+   &kp LG(K)  &kp LG(Z)  &kp LG(LS(Z))  &kp LG(LS(G))  &kp LG(G)  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &kp RET  &space_v3_TKZ LAYER_Symbol SPACE  &kp LG(F)  &kp LG(LS(G))  &kp LG(G)  &kp LC(H)  &kp LG(K)
 >;
         };
 
@@ -1519,7 +1519,7 @@
    &kp LS(N1)  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &none
    &kp LS(N3)  &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &none
    &kp LS(GRAVE)  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp BSLH  &kp DOT  &kp LS(N8)  &none  &none  &none  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
-   &symb_dotdot_v1_TKZ  &kp LS(N7)  &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE  &kp BSLH  &kp LS(N7)  &symb_dotdot_v1_TKZ  &none  &none
+   &symb_dotdot_v1_TKZ  &kp LS(N7)  &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)  &kp GLOBE  &kp LS(N2)  &kp LALT  &kp RALT  &none  &none  &kp BSLH  &kp LS(N7)  &symb_dotdot_v1_TKZ  &none  &none
 >;
         };
 
@@ -1597,7 +1597,7 @@
    &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
    &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
    &trans  &none  &none  &none  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &none  &none  &none  &trans
-   &trans  &trans  &trans  &trans  &trans  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE  &trans  &trans  &trans  &trans  &trans
+   &trans  &trans  &trans  &trans  &trans  &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Mouse SPACE  &trans  &trans  &trans  &trans  &trans
 >;
         };
 

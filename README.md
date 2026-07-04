@@ -108,9 +108,24 @@ nix-build -A ci -o ci-build
 
 `nix-build -A checks -o checks` runs generated keymap checks, generated SVG checks, and Urchin parity verification. `nix-build -A ci -o ci-build` runs the checks, regenerates SVGs in a Nix output, and builds the firmware bundle.
 
+CI uses the upstream MoErgo Cachix cache read-only for dependency acceleration. Firmware downloads are published through GitHub Actions artifacts and the GitHub `latest` release.
+
 GitHub Actions creates or updates an automated PR from `ci/regenerate-keymap-svgs` when Nix-generated SVGs differ from committed `docs/keymaps/*.svg` on trusted `push` or manual runs. Pull requests still fail the SVG check instead of pushing changes into contributor branches.
 
 CI uploads firmware as separate downloadable artifacts for `firmware-go60`, `firmware-glove80`, `firmware-corne`, `firmware-urchin`, and `firmware-settings-reset`, plus a combined `firmware-all` artifact containing every UF2.
+
+## Latest Firmware Downloads
+
+CI also publishes ZIP files to the moving `latest` release tag, so these links always point at the newest successful `main` build:
+
+| Firmware | Download |
+| --- | --- |
+| GO60 | [firmware-go60.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-go60.zip) |
+| Glove80 | [firmware-glove80.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-glove80.zip) |
+| Corne | [firmware-corne.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-corne.zip) |
+| Urchin | [firmware-urchin.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-urchin.zip) |
+| Settings reset | [firmware-settings-reset.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-settings-reset.zip) |
+| All firmware | [firmware-all.zip](https://github.com/erickueen/ergo-keyboards/releases/download/latest/firmware-all.zip) |
 
 ## Build Outputs
 

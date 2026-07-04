@@ -66,6 +66,27 @@ const EXTRA_THUMB_KEYS = {
   ],
 };
 
+const LAYER_THUMB_OVERRIDES = {
+  Symbol: {
+    Urchin: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    Corne: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    GO60: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Glove80: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+  },
+  Cursor: {
+    Urchin: [[72, '&kp RET']],
+    Corne: [[72, '&kp RET']],
+    GO60: [[73, '&kp RET']],
+    Glove80: [[73, '&kp RET']],
+  },
+  Number: {
+    Urchin: [[73, '&space LAYER_Mouse SPACE']],
+    Corne: [[73, '&space LAYER_Mouse SPACE']],
+    GO60: [[74, '&space LAYER_Mouse SPACE']],
+    Glove80: [[74, '&space LAYER_Mouse SPACE']],
+  },
+};
+
 const TARGET_BINDING_ALIASES = {
   GO60: [
     [/&cur_SELECT_LINE\b/g, '&cur_SELECT_LINE_macos_v1_TKZ'],
@@ -114,6 +135,12 @@ function bindingForTarget(target, binding) {
   return (TARGET_BINDING_ALIASES[target] ?? []).reduce((value, [pattern, replacement]) => value.replace(pattern, replacement), binding);
 }
 
+function thumbAccessForLayer(target, layerName) {
+  const access = new Map(CANONICAL_THUMB_ACCESS[target]);
+  for (const [sharedIndex, binding] of LAYER_THUMB_OVERRIDES[layerName]?.[target] ?? []) access.set(sharedIndex, binding);
+  return [...access.entries()];
+}
+
 function syncBindings(target, baseBindings, targetBindings) {
   const result = targetBindings ? [...targetBindings] : Array.from({ length: SHARED[target].length }, () => '&trans');
   const baseByShared = new Map(SHARED.Urchin.map((sharedIndex, index) => [sharedIndex, baseBindings[index]]));
@@ -150,7 +177,7 @@ function normalizeThumbAccess(target, source) {
     if (layerName === 'Magic') continue;
     const bindings = [...layer.bindings];
     let changed = false;
-    for (const [sharedIndex, binding] of [...CANONICAL_THUMB_ACCESS[target], ...(EXTRA_THUMB_KEYS[target] ?? [])]) {
+    for (const [sharedIndex, binding] of [...thumbAccessForLayer(target, layerName), ...(EXTRA_THUMB_KEYS[target] ?? [])]) {
       const bindingIndex = SHARED[target].indexOf(sharedIndex);
       if (bindingIndex === -1 || bindingIndex >= bindings.length) continue;
       const targetBinding = bindingForTarget(target, binding);

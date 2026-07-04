@@ -340,7 +340,34 @@
     <rect class="keyboard-boundary" x="584" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
-    
+    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(636.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
+        </g>
+        <g class="layer-activator" aria-label="Corne activation key" transform="translate(645.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8aadf4"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(654.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
+        </g>
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(663.9 484.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
+        </g>
   </g>
   
   

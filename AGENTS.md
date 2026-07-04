@@ -8,7 +8,6 @@ This repo is a ZMK keyboard firmware monorepo for Urchin, Corne, GO60, and Glove
 - Urchin is the canonical behavior source for shared keymap behavior.
 - Corne, GO60, and Glove80 should stay behavior-synced to Urchin through the sync/parity tools unless an exception below applies.
 - Do not reintroduce the Gaming layer.
-- Do not add `SPC -> Mouse` access on the Number layer.
 - Keep each keyboard's Bluetooth name explicit and unique in its base `.conf`: Urchin is `urchin`, Corne is `Cornelius`, GO60 is `Go60`, and Glove80 is `Glove80`.
 - Keep generated mirrors in `keymap/generated/` in sync with keyboard configs.
 - Keep generated SVGs in `docs/keymaps/` in sync after changing keymaps, layout geometry, or SVG rendering logic.
@@ -25,6 +24,10 @@ This repo is a ZMK keyboard firmware monorepo for Urchin, Corne, GO60, and Glove
   - `TAB -> Keypad`
   - `ESC -> Number`
   - `SPC -> Symbol`
+- Thumb-layer exceptions are intentional:
+  - Symbol layer uses `GLOBE` on the Backspace thumb position and `@` on the Tab thumb position.
+  - Cursor layer uses `RET` on the Esc thumb position, matching the original Urchin firmware.
+  - Number layer uses `SPC -> Mouse` on the Space thumb position.
 - GO60 and Glove80 use six-thumb visual order: `BSPC / TAB / LALT / RALT / ESC / SPC`.
 - Larger boards may keep extra keys, but Urchin-equivalent mapped positions must match Urchin behavior.
 
@@ -80,7 +83,7 @@ nix-build -A ci -o ci-build
 Clean local Nix result symlinks after validation when they are not intentionally needed:
 
 ```bash
-rm -f checks generated-keymaps ci-build firmware firmware-glove80 result
+rm -f checks generated-keymaps ci-build firmware-glove80 result
 ```
 
 ## SVG Documentation Rules
@@ -97,7 +100,9 @@ rm -f checks generated-keymaps ci-build firmware firmware-glove80 result
 
 - CI runs `nix-build -A keymapSvgs -o generated-keymaps`.
 - CI runs `nix-build -A ci -o ci-build`.
+- CI configures the upstream MoErgo Cachix cache as read-only for dependency acceleration. Do not add project-owned Cachix push steps unless the user explicitly asks for external Nix binary caching.
 - CI uploads firmware artifacts as separate downloadable ZIP artifacts: `firmware-go60`, `firmware-glove80`, `firmware-corne`, `firmware-urchin`, `firmware-settings-reset`, and combined `firmware-all`.
+- CI publishes stable ZIP downloads to the moving `latest` release tag on trusted `push` and manual runs.
 - On trusted `push` and manual runs, CI copies generated SVGs into `docs/keymaps/` and opens or updates an auto-PR from `ci/regenerate-keymap-svgs` if committed SVGs differ.
 - On pull requests, SVG drift should fail the check instead of pushing changes to contributor branches.
 
