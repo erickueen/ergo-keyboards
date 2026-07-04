@@ -27,7 +27,7 @@ const ROWS = {
   Glove80: [10, 12, 12, 12, 18, 16],
 };
 
-const SYNC_LAYERS = ['Cursor', 'Keypad', 'Symbol', 'Number', 'Mouse', 'MouseSlow', 'MouseFast', 'MouseWarp'];
+const SYNC_LAYERS = ['Cursor', 'Keypad', 'Symbol', 'ThumbShift', 'Number', 'Mouse', 'MouseSlow', 'MouseFast', 'MouseWarp'];
 const SKIP_SHARED = new Set([64, 69, 70, 71, 72, 73, 74]);
 const CANONICAL_THUMB_ACCESS = {
   Urchin: [
@@ -68,10 +68,10 @@ const EXTRA_THUMB_KEYS = {
 
 const LAYER_THUMB_OVERRIDES = {
   Symbol: {
-    Urchin: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
-    Corne: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
-    GO60: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
-    Glove80: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Urchin: [[70, '&thumb LAYER_Cursor GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    Corne: [[70, '&thumb LAYER_Cursor GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    GO60: [[69, '&thumb LAYER_Cursor GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Glove80: [[69, '&thumb LAYER_Cursor GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
   },
   Cursor: {
     Urchin: [[72, '&kp RET']],
@@ -193,7 +193,7 @@ function normalizeThumbAccess(target, source) {
 }
 
 function displayName(layer) {
-  return ({ Keypad: 'PAD', Number: 'NUM', Mouse: 'MOUSE', MouseSlow: 'MSLOW', MouseFast: 'MFAST', MouseWarp: 'MWARP' })[layer] ?? layer.toUpperCase();
+  return ({ Keypad: 'PAD', Number: 'NUM', ThumbShift: 'SHIFT', Mouse: 'MOUSE', MouseSlow: 'MSLOW', MouseFast: 'MFAST', MouseWarp: 'MWARP' })[layer] ?? layer.toUpperCase();
 }
 
 function ensureDefine(source, define, value) {
@@ -213,10 +213,13 @@ function ensureDefine(source, define, value) {
 
 function syncTarget(target, source, baseLayers) {
   let next = source;
+  if (target === 'Corne') next = ensureDefine(next, 'LAYER_ThumbShift', 20);
   if (target === 'GO60') next = ensureDefine(next, 'LAYER_Number', 19);
+  if (target === 'GO60') next = ensureDefine(next, 'LAYER_ThumbShift', 20);
   if (target === 'Glove80') {
     next = ensureDefine(next, 'LAYER_Keypad', 19);
     next = ensureDefine(next, 'LAYER_Number', 20);
+    next = ensureDefine(next, 'LAYER_ThumbShift', 21);
   }
   if (target === 'GO60') next = next.replace('&thumb_v2_TKZ LAYER_Mouse ESC', '&thumb_v2_TKZ LAYER_Number ESC');
   if (target === 'Glove80') {

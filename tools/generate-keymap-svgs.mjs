@@ -82,6 +82,7 @@ const LAYER_META = {
   Lower: { id: 'lower', name: 'Lower', desc: 'Glove80 lower layer.' },
   Magic: { id: 'magic', name: 'Magic', desc: 'System controls: Bluetooth, RGB, bootloader, reset, media, and output selection.' },
   Number: { id: 'number', name: 'Number', desc: 'Number row and function key access.' },
+  ThumbShift: { id: 'thumb-shift', name: 'Thumb Shift', desc: 'Conditional shifted typing layer active while Cursor and Symbol thumbs are both held.' },
 };
 
 const LAYER_SHORT_NAMES = {
@@ -106,6 +107,7 @@ const LAYER_SHORT_NAMES = {
   LAYER_Lower: 'Lower',
   LAYER_Magic: 'Magic',
   LAYER_Number: 'Number',
+  LAYER_ThumbShift: 'Shift',
 };
 
 const MOUSE_LAYER_GUIDES = {

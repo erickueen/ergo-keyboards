@@ -175,6 +175,7 @@
 #define LAYER_MouseWarp 17
 #define LAYER_Magic 18
 #define LAYER_Number 19
+#define LAYER_ThumbShift 20
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -269,6 +270,18 @@
 / {
     behaviors {
         ZMK_TD_LAYER(lower, LAYER_Lower)
+    };
+};
+
+/* Conditional Layers */
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        thumb_shift {
+            if-layers = <LAYER_Cursor LAYER_Symbol>;
+            then-layer = <LAYER_ThumbShift>;
+        };
     };
 };
 
@@ -1390,9 +1403,9 @@
             layers = <LAYER_HRM_macOS LAYER_Autoshift LAYER_Typing>;
         };
 
-        // capslock when pressing both T1's - TailorKey
+        // capslock on TAB + ESC thumbs - TailorKey
         combo_capslock_v1_TKZ {
-            key-positions = <POS_LH_T1 POS_RH_T1>;
+            key-positions = <POS_LH_T2 POS_RH_T2>;
             bindings = <&kp CAPS>;
             layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>;
         };
@@ -1653,7 +1666,7 @@
    &kp LS(N3)  &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &none
    &kp LS(GRAVE)  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
    &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)  &kp BSLH  &kp LS(N7)  &symb_dotdot_v1_TKZ
-   &kp GLOBE  &kp LS(N2)  &kp LALT  &kp RALT  &none  &none
+   &thumb_v2_TKZ LAYER_Cursor GLOBE  &kp LS(N2)  &kp LALT  &kp RALT  &none  &none
 >;
         };
 
@@ -1710,6 +1723,18 @@
                                     &out OUT_USB            &none  &to LAYER_Typing                                                                                                   &none         &none   &none
                                                                                                        &to 0   &none  &to LAYER_Autoshift   &none   &none   &none
             >;
+        };
+
+        layer_ThumbShift {
+            display-name = "SHIFT";
+            bindings = <
+   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+   &trans  &kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)  &kp LS(Y)  &kp LS(U)  &kp LS(I)  &kp LS(O)  &kp LS(P)  &trans
+   &trans  &kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp LS(H)  &kp LS(J)  &kp LS(K)  &kp LS(L)  &kp LS(SEMI)  &trans
+   &trans  &kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)  &trans
+   &trans  &trans  &trans  &trans  &trans  &trans
+   &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
+>;
         };
 
         layer_Number {

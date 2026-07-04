@@ -41,7 +41,7 @@ const REQUIRED_LAYERS = [
   'HRM_macOS', 'Typing', 'Autoshift',
   'LeftPinky', 'LeftRingy', 'LeftMiddy', 'LeftIndex',
   'RightPinky', 'RightRingy', 'RightMiddy', 'RightIndex',
-  'Cursor', 'Keypad', 'Symbol', 'Number',
+  'Cursor', 'Keypad', 'Symbol', 'ThumbShift', 'Number',
   'Mouse', 'MouseSlow', 'MouseFast', 'MouseWarp',
 ];
 
@@ -86,10 +86,10 @@ const EXTRA_THUMB_KEYS = {
 };
 const LAYER_THUMB_OVERRIDES = {
   Symbol: {
-    Urchin: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
-    Corne: [[70, '&kp GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
-    GO60: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
-    Glove80: [[69, '&kp GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Urchin: [[70, '&thumb LAYER_Cursor GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    Corne: [[70, '&thumb LAYER_Cursor GLOBE'], [71, '&kp LS(N2)'], [72, '&none'], [73, '&none']],
+    GO60: [[69, '&thumb LAYER_Cursor GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
+    Glove80: [[69, '&thumb LAYER_Cursor GLOBE'], [70, '&kp LS(N2)'], [73, '&none'], [74, '&none']],
   },
   Cursor: {
     Urchin: [[72, '&kp RET']],

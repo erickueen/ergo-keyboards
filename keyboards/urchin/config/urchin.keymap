@@ -56,6 +56,7 @@
 #define LAYER_MouseSlow 17
 #define LAYER_MouseFast 18
 #define LAYER_MouseWarp 19
+#define LAYER_ThumbShift 20
 
 #ifndef LAYER_Lower
 #define LAYER_Lower 0
@@ -110,6 +111,19 @@
 / {
     behaviors {
         ZMK_TD_LAYER(lower, LAYER_Lower)
+    };
+};
+
+/* ── Conditional Layers ── */
+
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        thumb_shift {
+            if-layers = <LAYER_Cursor LAYER_Symbol>;
+            then-layer = <LAYER_ThumbShift>;
+        };
     };
 };
 
@@ -715,7 +729,7 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_capslock { key-positions = <30 33>; bindings = <&caps_shift LSHFT CAPS>; slow-release;
+        combo_capslock { key-positions = <31 32>; bindings = <&kp CAPS>;
             layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>; };
     };
 };
@@ -862,7 +876,17 @@
    &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)
    &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL
    &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)
-   &kp GLOBE  &kp LS(N2)  &none  &none
+   &thumb LAYER_Cursor GLOBE  &kp LS(N2)  &none  &none
+>;
+        };
+
+        layer_ThumbShift {
+            display-name = "SHIFT";
+            bindings = <
+   &kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)  &kp LS(Y)  &kp LS(U)  &kp LS(I)  &kp LS(O)  &kp LS(P)
+   &kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp LS(H)  &kp LS(J)  &kp LS(K)  &kp LS(L)  &kp LS(SEMI)
+   &kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)
+   &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE
 >;
         };
 

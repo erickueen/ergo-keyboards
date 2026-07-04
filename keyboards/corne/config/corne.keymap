@@ -58,6 +58,7 @@
 #define LAYER_MouseSlow 17
 #define LAYER_MouseFast 18
 #define LAYER_MouseWarp 19
+#define LAYER_ThumbShift 20
 
 #ifndef LAYER_Lower
 #define LAYER_Lower 0
@@ -125,6 +126,19 @@
         crgbstat: crgbstat {
             compatible = "corne,behavior-rgb-status";
             #binding-cells = <0>;
+        };
+    };
+};
+
+/* ── Conditional Layers ── */
+
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        thumb_shift {
+            if-layers = <LAYER_Cursor LAYER_Symbol>;
+            then-layer = <LAYER_ThumbShift>;
         };
     };
 };
@@ -732,7 +746,7 @@
         combo_esc { timeout-ms = <50>; key-positions = <37 38>; bindings = <&kp ESC>;
             layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>; };
 
-        combo_capslock { key-positions = <37 40>; bindings = <&caps_shift LSHFT CAPS>; slow-release;
+        combo_capslock { key-positions = <38 39>; bindings = <&kp CAPS>;
             layers = <LAYER_HRM_macOS LAYER_Typing LAYER_Autoshift>; };
 
         combo_sticky_hyp_rght { timeout-ms = <50>; key-positions = <31 32>;
@@ -890,7 +904,7 @@
    &kp COMMA  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &kp FSLH
    &spanish_acute  &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &kp LA(E)
    &none  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
-   &kp LS(N5)  &kp GLOBE  &kp LS(N2)  &none  &none  &none
+   &kp LS(N5)  &thumb LAYER_Cursor GLOBE  &kp LS(N2)  &none  &none  &none
 >;
         };
 
@@ -902,6 +916,16 @@
    &none            &none            &bt_0            &bt_1            &bt_2            &bt_3              &none         &none                &none              &none    &none         &none
                                                       &to 0             &out OUT_USB      &to LAYER_Autoshift    &none    &none    &none
             >;
+        };
+
+        layer_ThumbShift {
+            display-name = "SHIFT";
+            bindings = <
+   &trans  &kp LS(Q)  &kp LS(W)  &kp LS(E)  &kp LS(R)  &kp LS(T)  &kp LS(Y)  &kp LS(U)  &kp LS(I)  &kp LS(O)  &kp LS(P)  &trans
+   &trans  &kp LS(A)  &kp LS(S)  &kp LS(D)  &kp LS(F)  &kp LS(G)  &kp LS(H)  &kp LS(J)  &kp LS(K)  &kp LS(L)  &kp LS(SEMI)  &trans
+   &trans  &kp LS(Z)  &kp LS(X)  &kp LS(C)  &kp LS(V)  &kp LS(B)  &kp LS(N)  &kp LS(M)  &kp LS(COMMA)  &kp LS(DOT)  &kp LS(FSLH)  &trans
+   &trans  &thumb LAYER_Cursor BSPC  &thumb LAYER_Keypad TAB  &thumb LAYER_Number ESC  &space LAYER_Symbol SPACE  &trans
+>;
         };
 
         layer_Number {
