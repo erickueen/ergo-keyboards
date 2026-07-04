@@ -167,6 +167,7 @@
     <text x="780" y="220.4" class="tap" style="font-size:10px;fill:#24273a">BT_CLR</text>
     <rect class="key" x="810" y="194.4" width="48" height="48" rx="8" fill="#939ab7"/>
     <text x="834" y="220.4" class="tap" style="font-size:12px;fill:#24273a">Rst</text>
+    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#c6a0f6"/>
     <text x="186" y="285.2" class="tap" style="font-size:12px;fill:#24273a">BT0</text>
     <rect class="key" x="216" y="259.2" width="48" height="48" rx="8" fill="#c6a0f6"/>
@@ -180,7 +181,6 @@
     <rect class="key" x="702" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="756" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="810" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
-    <rect class="key" x="54" y="324" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="291.6" y="459" width="48" height="48" rx="8" fill="#939ab7"/>
     <text x="315.6" y="477" class="tap" style="font-size:12px;fill:#24273a">USB</text>
     <rect class="key" x="345.6" y="459" width="48" height="48" rx="8" fill="#939ab7"/>
@@ -199,26 +199,12 @@
     <rect class="keyboard-boundary" x="584" y="54.8" width="338" height="327.2" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="281.6" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
     <rect class="keyboard-boundary" x="508.4" y="449" width="176" height="68" rx="18" style="stroke:#f5a97f"/>
-    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(69.0 349.0)">
+    <g class="layer-activator" aria-label="Urchin activation key" transform="translate(132.0 284.2)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8bd5ca;stroke-width:1.2"/>
           <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#8bd5ca"/>
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8bd5ca"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8bd5ca"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#8bd5ca"/>
-        </g>
-        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(78.0 349.0)">
-          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
-          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
-          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
-          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
-          <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
-        </g>
-        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(87.0 349.0)">
-          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
-          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
-          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
-          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
-          <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
         </g>
         <g class="layer-activator" aria-label="Corne activation key" transform="translate(78.0 284.2)">
           <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#8aadf4;stroke-width:1.2"/>
@@ -226,6 +212,20 @@
           <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#8aadf4"/>
           <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#8aadf4"/>
           <path d="M 0 -1.4 L 0 6.4" style="stroke:#8aadf4"/>
+        </g>
+        <g class="layer-activator" aria-label="GO60 activation key" transform="translate(73.5 349.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#f5a97f;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#f5a97f"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#f5a97f"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#f5a97f"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#f5a97f"/>
+        </g>
+        <g class="layer-activator" aria-label="Glove80 activation key" transform="translate(82.5 349.0)">
+          <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:#24273a;opacity:.72;stroke:#c6a0f6;stroke-width:1.2"/>
+          <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:#c6a0f6"/>
+          <path d="M -4.1 2.2 C -4.1 -3.1, 4.1 -3.1, 4.1 2.2" style="stroke:#c6a0f6"/>
+          <path d="M -2.2 5.0 C -2.2 .2, 2.2 .2, 2.2 5.0" style="stroke:#c6a0f6"/>
+          <path d="M 0 -1.4 L 0 6.4" style="stroke:#c6a0f6"/>
         </g>
   </g>
   

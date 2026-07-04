@@ -235,8 +235,7 @@
           <text x="888" y="240.4" class="hold" style="fill:#24273a">B4</text>
         </g>
     <rect class="key" x="54" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
-    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#8bd5ca"/>
-    <circle cx="132" cy="279.2" r="13" fill="none" stroke="#24273a" stroke-width="1.5" opacity="0.45"/><path d="M 132 267.2 L 132 290.2 M 125 283.2 L 132 290.2 L 139 283.2" fill="none" stroke="#24273a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="132" y="299.2" class="hold" style="fill:#24273a">Scroll</text>
+    <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#181926"/>
     <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#f5a97f"/>
     <text x="186" y="277.2" class="tap" style="font-size:10px;fill:#24273a">MSlow</text>
     <text x="186" y="298.2" class="hold" style="fill:rgba(36,39,58,0.70)">mo</text>

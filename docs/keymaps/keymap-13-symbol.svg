@@ -182,15 +182,15 @@
     <rect class="key" x="54" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
     <text x="78" y="220.4" class="tap" style="font-size:17px;fill:#24273a">#</text>
     <rect class="key" x="108" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="132" y="220.4" class="tap" style="font-size:17px;fill:#24273a">[</text>
+    <text x="132" y="220.4" class="tap" style="font-size:17px;fill:#24273a">^</text>
     <rect class="key" x="162" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="186" y="220.4" class="tap" style="font-size:17px;fill:#24273a">{</text>
+    <text x="186" y="220.4" class="tap" style="font-size:17px;fill:#24273a">+</text>
     <rect class="key" x="216" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="240" y="220.4" class="tap" style="font-size:17px;fill:#24273a">}</text>
+    <text x="240" y="220.4" class="tap" style="font-size:17px;fill:#24273a">_</text>
     <rect class="key" x="270" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="294" y="220.4" class="tap" style="font-size:17px;fill:#24273a">]</text>
+    <text x="294" y="220.4" class="tap" style="font-size:17px;fill:#24273a">$</text>
     <rect class="key" x="324" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="348" y="220.4" class="tap" style="font-size:17px;fill:#24273a">#</text>
+    <text x="348" y="220.4" class="tap" style="font-size:17px;fill:#24273a">*</text>
     <rect class="key" x="594" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
     <text x="618" y="220.4" class="tap" style="font-size:17px;fill:#24273a">&quot;</text>
     <rect class="key" x="648" y="194.4" width="48" height="48" rx="8" fill="#eed49f"/>
@@ -205,15 +205,15 @@
     <rect class="key" x="54" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
     <text x="78" y="285.2" class="tap" style="font-size:17px;fill:#24273a">~</text>
     <rect class="key" x="108" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="132" y="285.2" class="tap" style="font-size:17px;fill:#24273a">&lt;</text>
+    <text x="132" y="285.2" class="tap" style="font-size:17px;fill:#24273a">[</text>
     <rect class="key" x="162" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="186" y="285.2" class="tap" style="font-size:17px;fill:#24273a">=</text>
+    <text x="186" y="285.2" class="tap" style="font-size:17px;fill:#24273a">{</text>
     <rect class="key" x="216" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="240" y="285.2" class="tap" style="font-size:17px;fill:#24273a">_</text>
+    <text x="240" y="285.2" class="tap" style="font-size:17px;fill:#24273a">}</text>
     <rect class="key" x="270" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="294" y="285.2" class="tap" style="font-size:17px;fill:#24273a">$</text>
+    <text x="294" y="285.2" class="tap" style="font-size:17px;fill:#24273a">]</text>
     <rect class="key" x="324" y="259.2" width="48" height="48" rx="8" fill="#eed49f"/>
-    <text x="348" y="285.2" class="tap" style="font-size:17px;fill:#24273a">*</text>
+    <text x="348" y="285.2" class="tap" style="font-size:17px;fill:#24273a">#</text>
     <rect class="key" x="291.6" y="388.8" width="48" height="48" rx="8" fill="#eed49f"/>
     <text x="315.6" y="414.8" class="tap" style="font-size:17px;fill:#24273a">\</text>
     <rect class="key" x="345.6" y="388.8" width="48" height="48" rx="8" fill="#eed49f"/>

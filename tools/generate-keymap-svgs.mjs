@@ -148,7 +148,7 @@ const SHARED_POSITIONS = createHrmPreviewPositions();
 const URCHIN_TO_SHARED = [
   23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
   35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
-  64, 48, 49, 50, 51, 58, 59, 60, 61, 62,
+  47, 48, 49, 50, 51, 58, 59, 60, 61, 62,
   69, 70, 73, 74,
 ];
 const CORNE_TO_SHARED = [
@@ -734,7 +734,7 @@ function renderShortcuts(shortcuts, positions, keyboardY) {
 }
 
 function activationMarkersForLayer(layerId, keyboardData) {
-  if (layerId === 'hrm') return [];
+  if (layerId === 'hrm') return hrmMagicMarkers(keyboardData);
   const markers = [];
   const seen = new Set();
   for (const data of keyboardData) {
@@ -750,6 +750,23 @@ function activationMarkersForLayer(layerId, keyboardData) {
         markers.push({ sharedIndex, color: data.keyboard.color, title: data.keyboard.title });
       });
     }
+  }
+  return markers;
+}
+
+function hrmMagicMarkers(keyboardData) {
+  const markers = [];
+  for (const data of keyboardData) {
+    if (!['Urchin', 'Corne'].includes(data.keyboard.title)) continue;
+    const hrm = data.layersById.get('hrm');
+    if (!hrm) continue;
+    const mapping = sharedMappingForKeyboard(data.keyboard.title);
+    hrm.bindings.forEach((binding, index) => {
+      if (targetLayerForBinding(binding) !== 'magic') return;
+      const sharedIndex = mapping[index];
+      if (!Number.isFinite(sharedIndex)) return;
+      markers.push({ sharedIndex, color: data.keyboard.color, title: `${data.keyboard.title} Magic`, placement: 'topRight' });
+    });
   }
   return markers;
 }
@@ -772,8 +789,8 @@ function renderActivationMarkers(markers, positions) {
 function renderFootprintMarker(pos, marker, index, total) {
   const spacing = 9;
   const offset = (index - (total - 1) / 2) * spacing;
-  const cx = pos.x + KW / 2 + offset;
-  const cy = pos.y + KH / 2 + 1;
+  const cx = marker.placement === 'topRight' ? pos.x + KW - 9 + offset : pos.x + KW / 2 + offset;
+  const cy = marker.placement === 'topRight' ? pos.y + 9 : pos.y + KH / 2 + 1;
   return `<g class="layer-activator" aria-label="${esc(marker.title)} activation key" transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)})">
       <ellipse cx="0" cy="0" rx="8.2" ry="10.2" style="fill:${COLORS.base};opacity:.72;stroke:${marker.color};stroke-width:1.2"/>
       <path d="M -5.8 -0.5 C -5.8 -6.1, 5.8 -6.1, 5.8 -0.5" style="stroke:${marker.color}"/>

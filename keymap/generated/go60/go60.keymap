@@ -1650,8 +1650,8 @@
             bindings = <
    &kp GRAVE  &kp COMMA  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &none  &none  &none  &none  &none  &none
    &kp LS(N1)  &kp GRAVE  &kp LS(N9)  &kp LS(N0)  &kp SEMI  &kp DOT  &kp LS(GRAVE)  &kp LS(COMMA)  &kp LS(BSLH)  &kp MINUS  &kp LS(DOT)  &none
-   &kp LS(N3)  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &none
-   &kp LS(GRAVE)  &kp LS(COMMA)  &kp EQUAL  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
+   &kp LS(N3)  &kp LS(N6)  &kp LS(EQUAL)  &kp LS(MINUS)  &kp LS(N4)  &kp LS(N8)  &kp LS(SQT)  &kp LS(N1)  &kp LS(FSLH)  &kp LS(N7)  &kp EQUAL  &none
+   &kp LS(GRAVE)  &kp LBKT  &kp LS(LBKT)  &kp LS(RBKT)  &kp RBKT  &kp LS(N3)  &kp SQT  &kp BSLH  &kp FSLH  &kp LS(EQUAL)  &kp LS(N5)  &none
    &kp SQT  &kp LS(SINGLE_QUOTE)  &kp LS(EQUAL)  &kp BSLH  &kp LS(N7)  &symb_dotdot_v1_TKZ
    &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
 >;
@@ -1662,7 +1662,7 @@
    &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
    &none  &none  &msc SCRL_LEFT  &mmv MOVE_UP  &msc SCRL_RIGHT  &none  &msc SCRL_LEFT  &mkp LCLK  &mkp MCLK  &mkp RCLK  &msc SCRL_RIGHT  &none
    &none  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP  &msc SCRL_UP  &mo LAYER_MouseFast  &mo LAYER_MouseWarp  &mo LAYER_MouseSlow  &kp K_APP  &mkp MB4
-   &none  &msc SCRL_DOWN  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
+   &none  &none  &mo LAYER_MouseSlow  &mo LAYER_MouseWarp  &mo LAYER_MouseFast  &msc SCRL_DOWN  &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_UP  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5
    &kp LG(X)  &kp LG(C)  &kp LG(V)  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT
    &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
 >;
@@ -1718,7 +1718,7 @@
    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
    &trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
    &trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &trans
-   &trans  &trans  &none  &none  &kp F11  &kp F12  &none  &none  &none  &none  &none  &trans
+   &trans  &none  &none  &none  &kp F11  &kp F12  &none  &none  &none  &none  &none  &trans
    &trans  &trans  &trans  &trans  &trans  &trans
    &thumb_v2_TKZ LAYER_Cursor BSPC  &thumb_v2_TKZ LAYER_Keypad TAB  &kp LALT  &kp RALT  &thumb_v2_TKZ LAYER_Number ESC  &space_v3_TKZ LAYER_Symbol SPACE
 >;

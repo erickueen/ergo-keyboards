@@ -17,7 +17,7 @@ const SHARED = {
   Urchin: [
     23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
-    64, 48, 49, 50, 51, 58, 59, 60, 61, 62,
+    47, 48, 49, 50, 51, 58, 59, 60, 61, 62,
     70, 71, 72, 73,
   ],
   Corne: [
@@ -46,6 +46,7 @@ const REQUIRED_LAYERS = [
 ];
 
 const MAGIC_SHARED_POSITIONS = new Set([64]);
+const URCHIN_Z_MAGIC_LAYERS = new Set(['HRM_macOS', 'Autoshift']);
 const THUMB_SHARED_POSITIONS = new Set([69, 70, 71, 72, 73, 74]);
 const CANONICAL_THUMB_ACCESS = {
   Urchin: [
@@ -156,6 +157,7 @@ function shortFinger(finger) {
 
 function isException(layer, sharedPosition) {
   if (layer === 'Magic') return true;
+  if (sharedPosition === 47 && URCHIN_Z_MAGIC_LAYERS.has(layer)) return true;
   if (MAGIC_SHARED_POSITIONS.has(sharedPosition)) return true;
   if (THUMB_SHARED_POSITIONS.has(sharedPosition)) return true;
   return false;
