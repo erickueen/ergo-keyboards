@@ -110,6 +110,8 @@ nix-build -A ci -o ci-build
 
 GitHub Actions creates or updates an automated PR from `ci/regenerate-keymap-svgs` when Nix-generated SVGs differ from committed `docs/keymaps/*.svg` on trusted `push` or manual runs. Pull requests still fail the SVG check instead of pushing changes into contributor branches.
 
+CI uploads firmware as separate downloadable artifacts for `firmware-go60`, `firmware-glove80`, `firmware-corne`, `firmware-urchin`, and `firmware-settings-reset`, plus a combined `firmware-all` artifact containing every UF2.
+
 ## Build Outputs
 
 `nix-build -A all -o firmware` should produce:

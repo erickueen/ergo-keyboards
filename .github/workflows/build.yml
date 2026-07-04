@@ -52,8 +52,42 @@ jobs:
           delete-branch: true
           add-paths: docs/keymaps/*.svg
 
-      - name: Upload firmware artifacts
+      - name: Upload all firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: firmware-all
           path: ci-build/firmware/*.uf2
+
+      - name: Upload GO60 firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-go60
+          path: ci-build/firmware/go60.uf2
+
+      - name: Upload Glove80 firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-glove80
+          path: ci-build/firmware/glove80.uf2
+
+      - name: Upload Corne firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-corne
+          path: |
+            ci-build/firmware/corne_left.uf2
+            ci-build/firmware/corne_right.uf2
+
+      - name: Upload Urchin firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-urchin
+          path: |
+            ci-build/firmware/urchin_left.uf2
+            ci-build/firmware/urchin_right.uf2
+
+      - name: Upload settings reset firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-settings-reset
+          path: ci-build/firmware/settings_reset.uf2
