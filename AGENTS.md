@@ -11,6 +11,7 @@ This repo is a ZMK keyboard firmware monorepo for Urchin, Corne, GO60, and Glove
 - Keep each keyboard's Bluetooth name explicit and unique in its base `.conf`: Urchin is `urchin`, Corne is `Cornelius`, GO60 is `Go60`, and Glove80 is `Glove80`.
 - Keep generated mirrors in `keymap/generated/` in sync with keyboard configs.
 - Keep generated SVGs in `docs/keymaps/` in sync after changing keymaps, layout geometry, or SVG rendering logic.
+- Do not commit or push changes unless the user explicitly asks for it.
 
 ## Allowed Parity Exceptions
 
@@ -68,11 +69,20 @@ For the standard Nix validation gate, run:
 nix-build -A checks -o checks
 ```
 
-For firmware outputs, run:
+For firmware outputs, regenerate the local Nix result symlink before testing UF2 files locally. The `firmware/` directory is a local Nix output symlink and can be stale after source changes.
 
 ```bash
 nix-build -A all -o firmware
 ```
+
+For faster keyboard-specific firmware validation, build only the affected targets. For example, after Corne-only changes, run:
+
+```bash
+nix-build -A corne_left -o firmware-corne-left
+nix-build -A corne_right -o firmware-corne-right
+```
+
+Use `nix-build -A all -o firmware` when you need the aggregate local `firmware/` folder refreshed for manual flashing or final local verification.
 
 For the full CI-equivalent bundle, run:
 
@@ -83,7 +93,7 @@ nix-build -A ci -o ci-build
 Clean local Nix result symlinks after validation when they are not intentionally needed:
 
 ```bash
-rm -f checks generated-keymaps generated-keymap-svgs keymaps-check keymap-svgs-check ci-build firmware-glove80 result
+rm -f checks generated-keymaps generated-keymap-svgs keymaps-check keymap-svgs-check ci-build result
 ```
 
 ## SVG Documentation Rules

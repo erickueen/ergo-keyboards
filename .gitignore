@@ -2,6 +2,13 @@
 /result
 /result-*
 /firmware
+/firmware-*
+/checks
+/ci-build
+/generated-keymaps
+/generated-keymap-svgs
+/keymaps-check
+/keymap-svgs-check
 /src
 
 # ZMK / Zephyr local build state
